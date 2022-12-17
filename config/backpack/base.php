@@ -91,7 +91,9 @@ return [
     'breadcrumbs' => true,
 
     // Horizontal navbar classes. Helps make the admin panel look similar to your project's design.
-    'header_class' => 'app-header bg-light border-0 navbar',
+//    'header_class' => 'app-header bg-light border-0 navbar',
+    'header_class' => 'app-header bg-dark navbar',
+
     // For background colors use: bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white
     // For links to be visible on different background colors use: "navbar-dark", "navbar-light", "navbar-color"
 
@@ -100,23 +102,28 @@ return [
     // ----
 
     // Body element classes.
-    'body_class' => 'app aside-menu-fixed sidebar-lg-show',
+//    'body_class' => 'app aside-menu-fixed sidebar-lg-show',
     // Try sidebar-hidden, sidebar-fixed, sidebar-compact, sidebar-lg-show
+    'body_class' => 'app aside-menu-fixed sidebar-lg-show',
+
+
 
     // Sidebar element classes.
-    'sidebar_class' => 'sidebar sidebar-pills bg-light',
+//    'sidebar_class' => 'sidebar sidebar-pills bg-light',
     // Remove "sidebar-transparent" for standard sidebar look
     // Try "sidebar-light" or "sidebar-dark" for dark/light links
     // You can also add a background class like bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan
+    'sidebar_class' => 'sidebar bg-white sidebar-pills',
 
     // ------
     // FOOTER
     // ------
 
     // Footer element classes.
-    'footer_class' => 'app-footer d-print-none',
+//    'footer_class' => 'app-footer d-print-none',
     // hide it with d-none
     // change background color with bg-dark, bg-primary, bg-secondary, bg-danger, bg-warning, bg-success, bg-info, bg-blue, bg-light-blue, bg-indigo, bg-purple, bg-pink, bg-red, bg-orange, bg-yellow, bg-green, bg-teal, bg-cyan, bg-white
+    'footer_class' => 'app-footer d-none',
 
     // Developer or company name. Shown in footer.
     'developer_name' => 'Cristian Tabacitu',
@@ -273,8 +280,10 @@ return [
     // Username column for authentication
     // The Backpack default is the same as the Laravel default (email)
     // If you need to switch to username, you also need to create that column in your db
-    'authentication_column'      => 'email',
-    'authentication_column_name' => 'Email',
+//    'authentication_column'      => 'email',
+//    'authentication_column_name' => 'Email',
+    'authentication_column'      => 'username',
+    'authentication_column_name' => 'Username',
 
     // Backpack assumes that your "database email column" for operations like Login and Register is called "email".
     // If your database email column have a different name, you can configure it here. Eg: `user_mail`
@@ -283,7 +292,7 @@ return [
     // The guard that protects the Backpack admin panel.
     // If null, the config.auth.defaults.guard value will be used.
 //    'guard' => 'backpack',
-    'guard' => 'null',
+    'guard' => null,
 
     // The password reset configuration for Backpack.
     // If null, the config.auth.defaults.passwords value will be used.

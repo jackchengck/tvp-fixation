@@ -12,15 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-//            $table->string('email')->unique();
-//            $table->timestamp('email_verified_at')->nullable();
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->boolean('isSuperAdmin')->nullable()->default(false);
-            $table->rememberToken();
+            $table->string('title');
+            $table->text('description')->nullable();
+
+            $table->foreignId('business_id')->constrained()->onDelete('CASCADE');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('locations');
     }
 };
