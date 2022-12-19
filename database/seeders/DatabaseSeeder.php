@@ -29,5 +29,27 @@ class DatabaseSeeder extends Seeder
             "password" => Hash::make("abcadmin"),
             "isSuperAdmin" => true,
         ]);
+
+
+        DB::table('users')->insert([
+            "name" => "Test 1 Admin",
+            "username" => "test1Admin",
+            "password" => Hash::make("123456"),
+            "isSuperAdmin" => false,
+        ]);
+
+
+        DB::table('users')->insert([
+            "name" => "Test 2 Admin",
+            "username" => "test2Admin",
+            "password" => Hash::make("123456"),
+            "isSuperAdmin" => false,
+        ]);
+
+
+        $this->call([
+            SolutionIntegratorSeeder::class,
+            BusinessSeeder::class,
+        ]);
     }
 }

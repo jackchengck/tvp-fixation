@@ -16,10 +16,11 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->text('address')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone');
+            $table->text('email');
             $table->text('info')->nullable();
-            $table->text('email')->nullable();
-            $table->foreignId('user_id')->nullable()->constrained();
+//            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('admin_id')->nullable()->constrained('users');
             $table->foreignId('solution_integrator_id')->constrained()->onDelete('CASCADE');
 
             $table->timestamps();

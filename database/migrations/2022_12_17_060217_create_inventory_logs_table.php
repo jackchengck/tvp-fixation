@@ -14,12 +14,18 @@ return new class extends Migration {
     {
         Schema::create('inventory_logs', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['add', 'remove']);
+            $table->enum('type', [
+                'move_in',
+                'move_out',
+                'consume',
+                'damaged',
+                'sold',
+            ]);
             $table->integer('quantity');
             $table->text('remark')->nullable();
             $table->json('inventory_log_meta')->nullable();
 
-            $table->foreignId('location_id')->constrained()->onDelete('SET NULL');
+            $table->foreignId('location_id')->nullable()->constrained()->onDelete('SET NULL');
 
             $table->foreignId('product_id')->constrained()->onDelete('CASCADE');
 
@@ -39,3 +45,4 @@ return new class extends Migration {
         Schema::dropIfExists('inventory_logs');
     }
 };
+
