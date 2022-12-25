@@ -10,14 +10,15 @@
 <body>
 
     <?php
-//    dd($domain)
+//    dd($business);
+    dd($business->services);
     ?>
 
     {{$domain}}
 
     {{$si->title}}
 
-{{--    {{business}}--}}
+    {{--    {{business}}--}}
 
 </body>
 </html>
