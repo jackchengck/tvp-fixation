@@ -37,6 +37,12 @@ class SupplierOrderController extends Controller
     public function store(StoreSupplierOrderRequest $request)
     {
         //
+//        dd($request->supplier_order_id);
+//        $order = Order::findOrFail($request->order_id);
+//
+//        // Ship the order...
+//
+//        Mail::to($request->user())->send(new OrderShipped($order));
     }
 
     /**

@@ -39,4 +39,11 @@ class SupplierOrder extends Model
     {
         return $this->hasMany(SupplierOrderItem::class);
     }
+
+    public function getSupplierOrderEmailButton()
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("mail/send-supplier-order-email") . "/" . $this->id . ' data-toggle="tooltip" title="Supplier Order Email"><i class="la la-envelope"></i> Supplier Order Email</a>';
+    }
+
+
 }

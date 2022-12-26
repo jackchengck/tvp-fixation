@@ -19,10 +19,9 @@ class Service extends Model
         'image',
         'cost',
         'price',
-
+        'division',
         'business_id',
     ];
-
 
 
     public function business()
