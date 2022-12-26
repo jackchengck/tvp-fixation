@@ -13,13 +13,16 @@
     //    dd($business);
     //    dd($business->services);
 
+    dd($domain, $si, $business);
+    //    dd($si);
+    //    dd()
     ?>
 
-    {{$domain}}
+    {{--    {{$domain}}--}}
 
-    {{$si->title}}
+    {{--    {{$si->title}}--}}
 
-    {{$business->title}}
+    {{--    {{$business->title}}--}}
 
 </body>
 </html>
