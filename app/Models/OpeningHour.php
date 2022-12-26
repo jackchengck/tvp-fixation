@@ -6,22 +6,19 @@ use App\Traits\MultiTenantable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
-class InventoryLog extends Model
+class OpeningHour extends Model
 {
     use MultiTenantable;
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
     protected $fillable = [
-        'type',
-        'quantity',
-        'remark',
-        'location_id',
-        'product_id',
+        'day',
+        'start',
+        'end',
         'business_id',
-        'user_id',
-
     ];
 
 
@@ -30,18 +27,5 @@ class InventoryLog extends Model
         return $this->belongsTo(Business::class);
     }
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
 
-    public function location()
-    {
-        return $this->belongsTo(Location::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

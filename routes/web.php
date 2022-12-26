@@ -24,9 +24,9 @@ Route::get('/booking', function () {
     $host = explode('.', $getHost);
 
     if ($host[1] == 'localhost') {
-        $domain = "localhost";
+        $domain = "piercer-tech.com";
     } else {
-        $domain = $host[1] . ".com";
+        $domain = $host[1] . $host[2];
     }
     $subdomain = $host[0];
 

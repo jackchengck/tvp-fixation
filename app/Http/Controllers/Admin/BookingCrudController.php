@@ -29,6 +29,29 @@ class BookingCrudController extends CrudController
         CRUD::setModel(\App\Models\Booking::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/booking');
         CRUD::setEntityNameStrings('booking', 'bookings');
+
+
+        $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
+
+        if (backpack_user()->isSuperAdmin) {
+            $this->crud->allowAccess(['create', 'delete', 'list', 'update']);
+        }
+
+
+        if (backpack_user()->hasPermissionTo('view bookings')) {
+            $this->crud->allowAccess(['list',]);
+        }
+
+        if (backpack_user()->hasPermissionTo('edit bookings')) {
+            $this->crud->allowAccess(['list', 'update']);
+        }
+
+        if (backpack_user()->hasPermissionTo('create bookings')) {
+            $this->crud->allowAccess(['create']);
+        }
+        if (backpack_user()->hasPermissionTo('delete bookings')) {
+            $this->crud->allowAccess(['delete',]);
+        }
     }
 
     /**

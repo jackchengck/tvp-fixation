@@ -19,7 +19,8 @@ class SolutionIntegratorSeeder extends Seeder
         //
 
         DB::table('solution_integrators')->insert([
-            'title' => "PT"
+            'title' => "PT",
+            'domain' => 'piercer-tech.com',
         ]);
     }
 }

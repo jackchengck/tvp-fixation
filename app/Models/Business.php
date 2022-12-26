@@ -85,5 +85,13 @@ class Business extends Model
         return $this->belongsTo(User::class, 'admin_id');
     }
 
+    public function openingHours()
+    {
+        return $this->hasMany(OpeningHour::class);
+    }
+
+    public function holidays(){
+        return $this->hasMany(Holiday::class);
+    }
 
 }

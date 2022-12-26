@@ -29,6 +29,30 @@ class SupplierCrudController extends CrudController
         CRUD::setModel(\App\Models\Supplier::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/supplier');
         CRUD::setEntityNameStrings('supplier', 'suppliers');
+
+
+
+        $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
+
+        if (backpack_user()->isSuperAdmin) {
+            $this->crud->allowAccess(['create', 'delete', 'list', 'update']);
+        }
+
+
+        if (backpack_user()->hasPermissionTo('view suppliers')) {
+            $this->crud->allowAccess(['list',]);
+        }
+
+        if (backpack_user()->hasPermissionTo('edit suppliers')) {
+            $this->crud->allowAccess(['list', 'update']);
+        }
+
+        if (backpack_user()->hasPermissionTo('create suppliers')) {
+            $this->crud->allowAccess(['create']);
+        }
+        if (backpack_user()->hasPermissionTo('delete suppliers')) {
+            $this->crud->allowAccess(['delete',]);
+        }
     }
 
     /**

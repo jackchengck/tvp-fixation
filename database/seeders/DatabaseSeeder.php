@@ -48,8 +48,11 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
+            PermissionSeeder::class,
             SolutionIntegratorSeeder::class,
             BusinessSeeder::class,
+            si1stseeder::class,
+            
         ]);
     }
 }

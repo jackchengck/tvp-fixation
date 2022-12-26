@@ -27,4 +27,6 @@ Route::group([
     Route::crud('supplier', 'SupplierCrudController');
     Route::crud('supplier-order', 'SupplierOrderCrudController');
     Route::crud('supplier-order-item', 'SupplierOrderItemCrudController');
+    Route::crud('holiday', 'HolidayCrudController');
+    Route::crud('opening-hour', 'OpeningHourCrudController');
 }); // this should be the absolute last line of this file

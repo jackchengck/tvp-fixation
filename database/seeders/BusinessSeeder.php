@@ -23,6 +23,8 @@ class BusinessSeeder extends Seeder
             "email" => "jackchengck+test1@gmail.com",
             "admin_id" => 2,
             "solution_integrator_id" => 1,
+            'subdomain' => 'test1',
+
         ]);
 
         DB::table('users')->where('id', 2)->update([
@@ -35,6 +37,8 @@ class BusinessSeeder extends Seeder
             "email" => "jackchengck+test2@gmail.com",
             "admin_id" => 3,
             "solution_integrator_id" => 1,
+            'subdomain' => 'test2',
+
         ]);
 
         DB::table('users')->where('id', 3)->update([
