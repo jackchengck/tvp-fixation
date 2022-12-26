@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Backpack\PermissionManager\app\Http\Controllers\UserCrudController;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+        $this->app->bind(
+            UserCrudController::class,
+            \App\Http\Controllers\Admin\UserCrudController::class
+        );
     }
 
     /**
