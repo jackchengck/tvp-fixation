@@ -13,7 +13,7 @@
     //    dd($business);
     //    dd($business->services);
 
-    dd($host);
+    dd($host, $si, $business);
     //    dd($si);
     //    dd()
     ?>

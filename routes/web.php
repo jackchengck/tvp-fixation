@@ -27,19 +27,19 @@ Route::get('/booking', function () {
     if ($host[1] == 'localhost') {
         $domain = "piercer-tech.com";
     } else {
-        $domain = $host[1] . $host[2];
+        $domain = $host[1] . "." . $host[2];
     }
     $subdomain = $host[0];
 
-//    $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
-//    $business = \App\Models\Business::where('subdomain', $subdomain)->first();
+    $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
+    $business = \App\Models\Business::where('subdomain', $subdomain)->first();
 
 //    if ($si == null || $business == null) {
 //        return abort(404);
 //    }
 
-//    return view('booking.booking_form', ['domain' => $getHost, 'si' => $si, 'business' => $business]);
-    return view('booking.booking_form', ['host' => $host]);
+    return view('booking.booking_form', ['host' => $host, 'si' => $si, 'business' => $business]);
+//    return view('booking.booking_form', ['host' => $host]);
 });
 
 
