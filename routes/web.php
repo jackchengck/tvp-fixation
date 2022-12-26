@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-//    return view('welcome');
-    return redirect('/booking');
+    return view('welcome');
+//    return redirect('/booking');
+//    return redirect('/booking');
 });
 
 Route::get('/booking', function () {
