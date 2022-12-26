@@ -22,6 +22,7 @@ return new class extends Migration {
 //            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('admin_id')->nullable()->constrained('users');
             $table->foreignId('solution_integrator_id')->constrained()->onDelete('CASCADE');
+            $table->string("subdomain")->nullable();
 
             $table->timestamps();
         });

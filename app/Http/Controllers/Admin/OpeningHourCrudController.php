@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProductRequest;
+use App\Http\Requests\OpeningHourRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class ProductCrudController
+ * Class OpeningHourCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class ProductCrudController extends CrudController
+class OpeningHourCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +26,9 @@ class ProductCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Product::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/product');
-        CRUD::setEntityNameStrings('product', 'products');
+        CRUD::setModel(\App\Models\OpeningHour::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/opening-hour');
+        CRUD::setEntityNameStrings('opening hour', 'opening hours');
 
 
 
@@ -39,18 +39,18 @@ class ProductCrudController extends CrudController
         }
 
 
-        if (backpack_user()->hasPermissionTo('view products')) {
+        if (backpack_user()->hasPermissionTo('view settings')) {
             $this->crud->allowAccess(['list',]);
         }
 
-        if (backpack_user()->hasPermissionTo('edit products')) {
+        if (backpack_user()->hasPermissionTo('edit settings')) {
             $this->crud->allowAccess(['list', 'update']);
         }
 
-        if (backpack_user()->hasPermissionTo('create products')) {
+        if (backpack_user()->hasPermissionTo('create settings')) {
             $this->crud->allowAccess(['create']);
         }
-        if (backpack_user()->hasPermissionTo('delete products')) {
+        if (backpack_user()->hasPermissionTo('delete settings')) {
             $this->crud->allowAccess(['delete',]);
         }
     }
@@ -63,15 +63,43 @@ class ProductCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('title');
-        CRUD::column('description');
-//        CRUD::column('image');
-        CRUD::column('cost');
-        CRUD::column('price');
-//        CRUD::column('minimum_inventory');
-//        CRUD::column('alert_quantity');
-//        CRUD::column('business_id');
-        CRUD::column('supplier_id');
+
+
+        CRUD::addColumns([
+            [
+                'name' => 'day',
+                'type' => 'enum',
+                'options' => [
+                    0 => '星期日',
+                    1 => '星期一',
+                    2 => '星期二',
+                    3 => '星期三',
+                    4 => '星期四',
+                    5 => '星期五',
+                    6 => '星期六',
+                ]
+            ],
+            [
+                'label' => 'Start Time',
+                'name' => 'start',
+                'type' => 'time'
+            ],
+
+            [
+                'label' => 'End Time',
+                'name' => 'end',
+                'type' => 'time'
+            ]
+        ]);
+
+        if (backpack_user()->isSuperAdmin) {
+            CRUD::addColumn([
+                'name' => 'business',
+                'type' => 'relationship',
+
+            ]);
+        }
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -88,64 +116,51 @@ class ProductCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(ProductRequest::class);
+        CRUD::setValidation(OpeningHourRequest::class);
+        if (backpack_user()->isSuperAdmin) {
+            CRUD::addField(
+                [
+                    'name' => 'business',
+                    'type' => 'relationship',
 
-//        CRUD::field('title');
-//        CRUD::field('description');
-////        CRUD::field('image');
-//        CRUD::field('cost');
-//        CRUD::field('price');
-//        CRUD::field('minimum_inventory_quantity');
-//        CRUD::field('alert_quantity');
-        CRUD::field('business_id');
-//        CRUD::field('supplier_id');
+                ]
+            );
+        } else {
+
+            CRUD::addField(
+                [
+                    'name' => 'business',
+                    'type' => 'hidden',
+
+                ]
+            );
+        }
 
         CRUD::addFields([
             [
-                'name' => 'title',
-                'type' => 'text',
-            ],
-            [
-                'name' => 'description',
-                'type' => 'textarea',
-            ],
-            [
-                'name' => 'cost',
-                'type' => 'number',
-                'attributes' => [
-                    'step' => 'any'
+                'name' => 'day',
+                'type' => 'enum',
+                'options' => [
+                    0 => '星期日',
+                    1 => '星期一',
+                    2 => '星期二',
+                    3 => '星期三',
+                    4 => '星期四',
+                    5 => '星期五',
+                    6 => '星期六',
                 ]
             ],
-
             [
-                'name' => 'price',
-                'type' => 'number',
-                'attributes' => [
-                    'step' => 'any'
-                ]
+                'label' => 'Start Time',
+                'name' => 'start',
+                'type' => 'time'
             ],
 
             [
-                'name' => 'minimum_inventory',
-                'type' => 'number',
-                "default" => 0,
-
-            ],
-            [
-                'name' => 'alert_quantity',
-                'type' => 'number',
-                "default" => 0,
-
-            ],
-            [
-                'name' => 'supplier',
-                'type' => 'relationship',
-            ],
-//            [
-//                'name' => 'business',
-//                'type' => 'relationship',
-//                'value' => backpack_user()->business_id,
-//            ]
+                'label' => 'End Time',
+                'name' => 'end',
+                'type' => 'time'
+            ]
         ]);
 
         /**

@@ -44,6 +44,28 @@ class UserCrudController extends CrudController
         CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
         CRUD::setEntityNameStrings('user', 'users');
 
+
+        $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
+
+        if (backpack_user()->isSuperAdmin || backpack_user()->hasPermissionTo('authentication')) {
+            $this->crud->allowAccess(['create', 'delete', 'list', 'update']);
+        }
+
+
+//        if (backpack_user()->hasPermissionTo('authentication')) {
+//            $this->crud->allowAccess(['list',]);
+//        }
+//
+//        if (backpack_user()->hasPermissionTo('edit bookings')) {
+//            $this->crud->allowAccess(['list', 'update']);
+//        }
+//
+//        if (backpack_user()->hasPermissionTo('create bookings')) {
+//            $this->crud->allowAccess(['create']);
+//        }
+//        if (backpack_user()->hasPermissionTo('delete bookings')) {
+//            $this->crud->allowAccess(['delete',]);
+//        }
 //        Permissions
     }
 

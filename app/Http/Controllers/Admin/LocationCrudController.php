@@ -43,6 +43,28 @@ class LocationCrudController extends CrudController
         CRUD::column('description');
 //        CRUD::column('business_id');
 
+
+        $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
+
+        if (backpack_user()->isSuperAdmin) {
+            $this->crud->allowAccess(['create', 'delete', 'list', 'update']);
+        }
+
+
+        if (backpack_user()->hasPermissionTo('view settings')) {
+            $this->crud->allowAccess(['list',]);
+        }
+
+        if (backpack_user()->hasPermissionTo('edit settings')) {
+            $this->crud->allowAccess(['list', 'update']);
+        }
+
+        if (backpack_user()->hasPermissionTo('create settings')) {
+            $this->crud->allowAccess(['create']);
+        }
+        if (backpack_user()->hasPermissionTo('delete settings')) {
+            $this->crud->allowAccess(['delete',]);
+        }
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\SupplierOrderRequest;
+use App\Http\Requests\HolidayRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class SupplierOrderCrudController
+ * Class HolidayCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class SupplierOrderCrudController extends CrudController
+class HolidayCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,10 +26,9 @@ class SupplierOrderCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\SupplierOrder::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/supplier-order');
-        CRUD::setEntityNameStrings('supplier order', 'supplier orders');
-
+        CRUD::setModel(\App\Models\Holiday::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/holiday');
+        CRUD::setEntityNameStrings('holiday', 'holidays');
 
 
         $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
@@ -39,18 +38,19 @@ class SupplierOrderCrudController extends CrudController
         }
 
 
-        if (backpack_user()->hasPermissionTo('view supplier orders')) {
+        if (backpack_user()->hasPermissionTo('view settings')) {
             $this->crud->allowAccess(['list',]);
         }
 
-        if (backpack_user()->hasPermissionTo('edit supplier orders')) {
+        if (backpack_user()->hasPermissionTo('edit settings')) {
             $this->crud->allowAccess(['list', 'update']);
         }
 
-        if (backpack_user()->hasPermissionTo('create supplier orders')) {
+        if (backpack_user()->hasPermissionTo('create settings')) {
             $this->crud->allowAccess(['create']);
         }
-        if (backpack_user()->hasPermissionTo('delete supplier orders')) {
+
+        if (backpack_user()->hasPermissionTo('delete settings')) {
             $this->crud->allowAccess(['delete',]);
         }
     }
@@ -63,8 +63,11 @@ class SupplierOrderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('supplier_id');
-        CRUD::column('user_id');
+        CRUD::column('holiday_date');
+        CRUD::column('whole_day');
+        CRUD::column('service_id');
+        CRUD::column('start');
+        CRUD::column('end');
         CRUD::column('business_id');
 
         /**
@@ -82,43 +85,14 @@ class SupplierOrderCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(SupplierOrderRequest::class);
+        CRUD::setValidation(HolidayRequest::class);
 
-        CRUD::field('supplier_id');
-        CRUD::field('user_id');
+        CRUD::field('holiday_date');
+        CRUD::field('whole_day');
+        CRUD::field('service_id');
+        CRUD::field('start');
+        CRUD::field('end');
         CRUD::field('business_id');
-
-        CRUD::addFields([
-            [
-                'name' => 'supplierOrderItems',
-                'type' => 'relationship',
-
-
-                'subfields' => [
-                    [
-                        'name' => 'product',
-                        'type' => 'relationship',
-
-
-//                'entity' => 'maids',
-//                        'attribute' => 'name',
-//                'data_source' => url('api/maid'),
-//                'pivot' => true,
-//                        'include_all_form_fields' => true,
-//                        'method' => 'POST',
-                    ],
-                    [
-                        'name' => 'quantity',
-                        'type' => 'number',
-                        'attributes' => [
-                            'step' => 'any'
-                        ],
-                        'default' => 0,
-                    ],
-
-                ]
-            ]
-        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

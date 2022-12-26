@@ -29,6 +29,30 @@ class ServiceCrudController extends CrudController
         CRUD::setModel(\App\Models\Service::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/service');
         CRUD::setEntityNameStrings('service', 'services');
+
+
+
+        $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
+
+        if (backpack_user()->isSuperAdmin) {
+            $this->crud->allowAccess(['create', 'delete', 'list', 'update']);
+        }
+
+
+        if (backpack_user()->hasPermissionTo('view services')) {
+            $this->crud->allowAccess(['list',]);
+        }
+
+        if (backpack_user()->hasPermissionTo('edit services')) {
+            $this->crud->allowAccess(['list', 'update']);
+        }
+
+        if (backpack_user()->hasPermissionTo('create services')) {
+            $this->crud->allowAccess(['create']);
+        }
+        if (backpack_user()->hasPermissionTo('delete services')) {
+            $this->crud->allowAccess(['delete',]);
+        }
     }
 
     /**

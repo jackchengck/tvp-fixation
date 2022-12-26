@@ -29,6 +29,30 @@ class InventoryLogCrudController extends CrudController
         CRUD::setModel(\App\Models\InventoryLog::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/inventory-log');
         CRUD::setEntityNameStrings('inventory log', 'inventory logs');
+
+
+
+        $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
+
+        if (backpack_user()->isSuperAdmin) {
+            $this->crud->allowAccess(['create', 'delete', 'list', 'update']);
+        }
+
+
+        if (backpack_user()->hasPermissionTo('view inventory logs')) {
+            $this->crud->allowAccess(['list',]);
+        }
+
+        if (backpack_user()->hasPermissionTo('edit inventory logs')) {
+            $this->crud->allowAccess(['list', 'update']);
+        }
+
+        if (backpack_user()->hasPermissionTo('create inventory logs')) {
+            $this->crud->allowAccess(['create']);
+        }
+        if (backpack_user()->hasPermissionTo('delete inventory logs')) {
+            $this->crud->allowAccess(['delete',]);
+        }
     }
 
     /**
