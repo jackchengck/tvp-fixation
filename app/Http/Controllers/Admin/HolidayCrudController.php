@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\HolidayRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Carbon\Carbon;
 
 /**
  * Class HolidayCrudController
@@ -87,11 +88,29 @@ class HolidayCrudController extends CrudController
     {
         CRUD::setValidation(HolidayRequest::class);
 
-        CRUD::field('holiday_date');
+        CRUD::addField([
+            'name' => 'holiday_date',
+            'type' => 'date',
+            'default' => date('Y-m-d'),
+//            'default' => new Carbon(),
+
+        ]);
         CRUD::field('whole_day');
         CRUD::field('service_id');
-        CRUD::field('start');
-        CRUD::field('end');
+        CRUD::addFields([
+            [
+                'name' => 'start',
+                'type' => 'time',
+                'default' => '00:00'
+            ],
+            [
+                'name' => 'end',
+                'type' => 'time',
+                'default' => '23:59'
+            ],
+        ]);
+//        CRUD::field('start');
+//        CRUD::field('end');
         CRUD::field('business_id');
 
         /**

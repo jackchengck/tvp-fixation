@@ -34,6 +34,7 @@ Route::group([
     Route::group(array('prefix' => 'mail'), function () {
 
         Route::get('send-supplier-order-email/{id}', [\App\Http\Controllers\SendMailController::class, 'sendSupplierOrderEmail']);
+        Route::get('send-booking-customer-email/{id}', [\App\Http\Controllers\SendMailController::class, 'sendBookingCustomerEmail']);
 
     });
 }); // this should be the absolute last line of this file
