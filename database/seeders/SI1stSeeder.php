@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class si1stseeder extends Seeder
+class SI1StSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -396,8 +396,6 @@ class si1stseeder extends Seeder
                 'email' => $emails[$key],
                 'solution_integrator_id' => $siId[$key],
                 'subdomain' => $subdomains[$key],
-
-
             ]);
         }
 
@@ -406,7 +404,7 @@ class si1stseeder extends Seeder
                 "name" => $businesses[$key] . " Admin",
                 "username" => $value,
                 "password" => Hash::make($passwords[$key]),
-                "business_id" => $key + 2,
+                "business_id" => $key + 3,
             ]);
             User::find($key + 3)->assignRole('superAdmin');
         }

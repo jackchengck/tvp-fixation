@@ -37,4 +37,6 @@ Route::group([
         Route::get('send-booking-customer-email/{id}', [\App\Http\Controllers\SendMailController::class, 'sendBookingCustomerEmail']);
 
     });
+
+    Route::get('booking-calendar', \App\Http\Controllers\Admin\BookingCalendarController::class)->name('booking-calendar');
 }); // this should be the absolute last line of this file
