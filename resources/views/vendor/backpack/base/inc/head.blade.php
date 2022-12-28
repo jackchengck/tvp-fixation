@@ -20,21 +20,22 @@
     $getHost = \Illuminate\Support\Facades\Request::getHost();
     $host = explode('.', $getHost);
     //
-    if ($host[0] == 'localhost' || $host[1] == 'localhost') {
-        $domain = "piercer-tech.com";
-    } else {
-        $domain = $host[1] . $host[2];
-    }
+    //    if ($host[0] == 'localhost' || $host[1] == 'localhost') {
+    //        $domain = "piercer-tech.com";
+    //    } else {
+    //        $domain = $host[1] . $host[2];
+    //    }
     $subdomain = $host[0];
     //
-    $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
+    //    $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
     $business = \App\Models\Business::where('subdomain', $subdomain)->first();
     ?>
     {{--    <title>{{$si->title}}</title>--}}
 
     {{--    <title>Login to System</title>--}}
     {{--    <title>{{\Illuminate\Support\Facades\Request::getHost()}}</title>--}}
-    <title>Login - {{$business->title}} - {{$si->title}} System</title>
+    <title>Login - {{$business->title}} System</title>
+    {{--    <title>Login - {{$business->title}} - {{$si->title}} System</title>--}}
 @endunless
 
 @yield('before_styles')
