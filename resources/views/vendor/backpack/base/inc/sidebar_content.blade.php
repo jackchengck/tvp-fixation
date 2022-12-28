@@ -5,6 +5,8 @@
 {{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-th-list"></i> Users</a></li>--}}
 
 @if(backpack_user()->hasAnyPermission(['create bookings','edit bookings','view bookings','delete bookings'])||backpack_user()->isSuperAdmin)
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('booking-calendar') }}"><i class="nav-icon la la-th-list"></i>
+            Bookings Calendar</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('booking') }}"><i class="nav-icon la la-th-list"></i>
             Bookings</a></li>
 @endif

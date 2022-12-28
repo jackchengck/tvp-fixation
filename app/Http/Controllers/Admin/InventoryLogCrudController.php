@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\InventoryLogRequest;
+use App\Models\Location;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -29,7 +30,6 @@ class InventoryLogCrudController extends CrudController
         CRUD::setModel(\App\Models\InventoryLog::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/inventory-log');
         CRUD::setEntityNameStrings('inventory log', 'inventory logs');
-
 
 
         $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
@@ -63,11 +63,22 @@ class InventoryLogCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::column('type');
+
+        CRUD::column('product_id');
+        CRUD::column('location');
+        CRUD::addColumn([
+            'name' => 'type',
+            'type' => 'enum',
+            'options' => [
+                'move_in' => 'Move In',
+                'move_out' => 'Move out',
+                'consume' => 'Consumed',
+                'damaged' => 'Damaged',
+                'sold' => 'Sold'
+            ]
+        ]);
         CRUD::column('quantity');
         CRUD::column('remark');
-        CRUD::column('location_id');
-        CRUD::column('product_id');
 //        CRUD::column('business_id');
 //        CRUD::column('user_id');
 
@@ -76,6 +87,16 @@ class InventoryLogCrudController extends CrudController
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+
+        $this->crud->addFilter([
+            'name' => 'location',
+            'type' => 'select2',
+            'label' => 'Location'
+        ], function () {
+            return Location::all()->keyBy('id')->pluck('title', 'id')->toArray();
+        }, function ($value) {
+            $this->crud->addClause('where', 'location_id', $value);
+        });
     }
 
     /**

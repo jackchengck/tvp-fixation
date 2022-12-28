@@ -71,7 +71,9 @@ class BookingCrudController extends CrudController
         CRUD::column('booking_date');
         CRUD::column('booking_time');
 //        CRUD::column('business_id');
+//        getBookingCustomerEmailButton
 
+        $this->crud->addButtonFromModelFunction('line', 'get_booking_customer_button', 'getBookingCustomerEmailButton', 'beginning');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

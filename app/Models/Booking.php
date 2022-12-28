@@ -40,4 +40,10 @@ class Booking extends Model
     {
         return $this->belongsTo(Business::class);
     }
+
+
+    public function getBookingCustomerEmailButton()
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("mail/send-booking-customer-email") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Customer Email"><i class="la la-envelope"></i> Booking Confirm Email</a>';
+    }
 }

@@ -31,7 +31,6 @@ class ProductCrudController extends CrudController
         CRUD::setEntityNameStrings('product', 'products');
 
 
-
         $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
 
         if (backpack_user()->isSuperAdmin) {
@@ -64,7 +63,7 @@ class ProductCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title');
-        CRUD::column('description');
+//        CRUD::column('description');
 //        CRUD::column('image');
         CRUD::column('cost');
         CRUD::column('price');
@@ -164,5 +163,28 @@ class ProductCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+
+    protected function autoSetupShowOperation()
+    {
+        $this->setupListOperation();
+        CRUD::column('minimum_inventory');
+        CRUD::column('alert_quantity');
+        CRUD::addColumn([
+            'name' => 'quantity',
+            'type' => 'number',
+            'label' => 'Current Quantity',
+        ]);
+
+        CRUD::addColumn([
+            'name' => 'alert',
+            'type' => 'text',
+            'label' => 'Available Alert',
+            'wrapper' => [
+                'element' => 'span',
+                'class' => 'alert alert-danger',
+            ],
+        ]);
+
     }
 }
