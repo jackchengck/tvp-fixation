@@ -495,6 +495,15 @@ class SI1StSeeder extends Seeder
                 'subdomain' => $subdomains[$key],
             ]);
 
+            $userId = DB::table('users')->insertGetId([
+                "name" => $businesses[$key] . " Admin",
+                "username" => $accounts[$key],
+                "password" => Hash::make($passwords[$key]),
+                "business_id" => $business_id,
+            ]);
+
+            User::find($userId)->assignRole('superAdmin');
+
             DB::table('opening_hours')->insert([
                 ['day' => '0', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
                 ['day' => '1', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
@@ -505,10 +514,13 @@ class SI1StSeeder extends Seeder
                 ['day' => '6', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
             ]);
 
-            DB::table('locations')->insert([
-                ['title' => 'Warehouse', 'business_id' => $business_id],
-                ['title' => 'Store', 'business_id' => $business_id],
-            ]);
+            $locationId = DB::table('locations')->insertGetId(
+                ['title' => 'Warehouse', 'business_id' => $business_id]
+            );
+
+            DB::table('locations')->insert(
+                ['title' => 'Store', 'business_id' => $business_id]
+            );
 
             foreach ($services[$key] as $service) {
                 $serviceId = DB::table('services')->insertGetId([
@@ -519,6 +531,32 @@ class SI1StSeeder extends Seeder
                         'division' => 30,
                     ]
                 );
+                $name = fake()->name;
+                for ($x = 0; $x <= rand(1, 4); $x++) {
+                    $d = randomDate('2022-12-01', '2022-12-31');
+                    DB::table('bookings')->insert([
+                        'service_id' => $serviceId,
+                        'customer_name' => $name,
+                        'customer_email' => 'test@test.com',
+                        'customer_phone' => '8766 4321',
+                        'customer_password' => '123456',
+                        'booking_date' => $d['date'],
+                        'booking_time' => $d['time'],
+                        'business_id' => $business_id,
+                    ]);
+                }
+                for ($x = 0; $x <= rand(3, 10); $x++) {
+                    $d = randomDate('2022-12-01', '2022-12-31');
+                    DB::table('bookings')->insert([
+                        'service_id' => $serviceId,
+                        'customer_name' => fake()->name,
+                        'customer_email' => fake()->phoneNumber,
+                        'customer_password' => '123456',
+                        'booking_date' => $d['date'],
+                        'booking_time' => $d['time'],
+                        'business_id' => $business_id,
+                    ]);
+                }
             }
 
             foreach ($supplierProducts as $suppliers) {
@@ -538,10 +576,14 @@ class SI1StSeeder extends Seeder
                             'business_id' => $business_id,
                             'supplier_id' => $supplierId,
                         ]);
-
                         DB::table('inventory_logs')->insert([
                             'type' => 'move_in',
                             'quantity' => 10,
+                            'business_id' => $business_id,
+                            'location_id' => $locationId,
+                            'product_id' => $productId,
+                            'user_id' => $userId,
+
                         ]);
                     }
 
@@ -549,15 +591,15 @@ class SI1StSeeder extends Seeder
             }
         }
 
-        foreach ($accounts as $key => $value) {
-            DB::table('users')->insert([
-                "name" => $businesses[$key] . " Admin",
-                "username" => $value,
-                "password" => Hash::make($passwords[$key]),
-                "business_id" => $key + 3,
-            ]);
-            User::find($key + 3)->assignRole('superAdmin');
-        }
+//        foreach ($accounts as $key => $value) {
+//            DB::table('users')->insert([
+//                "name" => $businesses[$key] . " Admin",
+//                "username" => $value,
+//                "password" => Hash::make($passwords[$key]),
+//                "business_id" => $key + 3,
+//            ]);
+//            User::find($key + 3)->assignRole('superAdmin');
+//        }
 
         function randomDate($start_date, $end_date)
         {

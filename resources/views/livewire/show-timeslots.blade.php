@@ -19,19 +19,25 @@
 
     <?php
     $service = \App\Models\Service::find($serviceSelected);
+    //    if ($bookingDate) {
+    //        dd($service->getBookingSlots($bookingDate));
+    //    }
     ?>
-{{--    <h4>{{$serviceSelected}}</h4>--}}
+    {{--    <h4>{{$serviceSelected}}</h4>--}}
+
 
     <div class="mb-3">
         <label for="service" class="form-label">Select a Timeslot <span
                 style="color: red">*</span></label>
         <select name="timeslot" id="timeslot" class="form-select">
             @if($serviceSelected&&$bookingDate)
-            <option selected disabled>Please select a timeslot</option>
+                <option selected disabled>Please select a timeslot</option>
                 @foreach($service->getBookingSlots($bookingDate) as $timeslot)
-                    <option
-                        {{$timeslot['disabled']=='true'?disabled:null}} value="{{$timeslot['start']}}">{{$timeslot['start']}}
-                        ~ {{$timeslot['end']}}</option>
+                    @if(!$timeslot['disabled'])
+                        <option
+                            {{$timeslot['disabled']=='true'?disabled:null}} value="{{$timeslot['start']}}">{{$timeslot['start']}}
+                            ~ {{$timeslot['end']}} {{$timeslot['disabled']}}</option>
+                    @endif
                 @endforeach
             @else
                 <option selected disabled>Please select a date first</option>
