@@ -6,10 +6,10 @@
             <a class="navbar-brand mb-0 h1" href="#">{{$business->title}} {{$si->title}}</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/booking-form">Create Booking</a>
+                    <a class="nav-link" href="/booking">Create Booking</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary" href="#">Link</a>
+                    <a class="btn btn-outline-secondary" href="/get-ticket">Get Ticket</a>
                 </li>
             </ul>
         </div>

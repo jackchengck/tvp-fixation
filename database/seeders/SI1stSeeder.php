@@ -427,6 +427,55 @@ class SI1StSeeder extends Seeder
             ["預約試堂",],
         ];
 
+        $supplierProducts = [
+            [["title" => "紙箱", "email" => "daniel.carton@gmail.com", "products" => ["大號", "中號", "小號",],],],
+            [["title" => "包裝", "email" => "Jackie.chowlk@gmail.com", "products" => ["大", "中", "小",],], ["title" => "花", "email" => "candyfu.flower@gmail.com", "products" => ["配花", "主花",],],],
+            [["title" => "油漆", "email" => "audreanne32@ruecker.com.hk", "products" => ["白", "灰", "黑",],], ["title" => "建材2", "email" => "ygutkowski@yahoo.com", "products" => ["英泥", "大釘",],],],
+            [["title" => "水晶", "email" => "irenebibibi@gmail.com", "products" => ["冰種海藍寶8mm", "密髮級鈦晶8mm", "黑金太陽石10mm",],],],
+            [["title" => "有機食材", "email" => "alford.dicki@mills.com", "products" => ["台灣梅子釀製酒", "台灣鳳梨釀製酒", "桂花蘋果釀造醋",],], ["title" => "酒水", "email" => "kamille69@hotmail.com.hk", "products" => ["以色列紅葡萄酒",],],],
+            [["title" => "凍肉", "email" => "skiles.bertrand@lowe.com.hk", "products" => ["牛腩", "雞子", "豬皮",],], ["title" => "菜", "email" => "sales.chunjaifreshfood@gmail.com", "products" => ["生菜", "白菜仔",],],],
+            [["title" => "布", "email" => "zebert@reinger.com.hk", "products" => ["R0078", "Y390",],],],
+            [["title" => "凍肉", "email" => "rodriguez.lucile@hotmail.com.hk", "products" => ["豬骨(5斤)", "豬軟骨", "雞中翼",],], ["title" => "油/醬", "email" => "cmayer@yahoo.com", "products" => ["純正麻油", "特級辣醬",],],],
+            [["title" => "包裝", "email" => "wsipes@kling.com", "products" => ["大", "中", "小",],], ["title" => "衫", "email" => "kylekoreanpro@gmail.com", "products" => ["韓國針織女裝冷衫 (啡)", "韓國針織女裝冷衫 (白)",],],],
+            [["title" => "精華補充", "email" => "brandy80@moore.biz", "products" => ["大", "中", "小",],],],
+            [["title" => "精華補充", "email" => "brandy80@moore.biz", "products" => ["大", "中", "小",],],],
+            [["title" => "suppliment", "email" => "rhianna.schamberger@hotmail.com.hk", "products" => ["維生素D3", "Multi 1 + DHA", "黑籽油膠囊",],], ["title" => "DFS", "email" => "fuyingdfssupply@gmail.com", "products" => ["益生菌-ENHANCE IMMUNITY", "益生菌-SUPPORT IMMUE",],],],
+            [["title" => "調味", "email" => "cmayer@yahoo.com", "products" => ["韓國白砂糖", "泰國椰汁", "淡奶",],], ["title" => "生果", "email" => "kaiji28thaifruit@gmail.com", "products" => ["芒果", "榴槤",],],],
+            [["title" => "精華補充", "email" => "stanton.candida@yahoo.com", "products" => ["大", "中", "小",],],],
+            [["title" => "素", "email" => "hfeeney@hotmail.com.hk", "products" => ["素蠔仔", "素花枝丸", "素叉燒",],], ["title" => "菜", "email" => "yuhong.naturalveges@gmail.com", "products" => ["白菜", "苦瓜",],],],
+            [["title" => "凍肉", "email" => "rmayer@klein.com", "products" => ["牛腩", "鳳爪", "雞軟骨",],], ["title" => "油/醬", "email" => "tungshingfood@gmail.com", "products" => ["黃辣椒醬", "芝麻油",],],],
+            [["title" => "生果", "email" => "keara.pollich@yahoo.com", "products" => ["木瓜", "芒果", "西瓜",],],],
+            [["title" => "建材", "email" => "kaiseryaucontact@gmail.com", "products" => ["日本五合一乳膠漆", "英國包膠銅喉", "食水膠喉",],], ["title" => "浴室配件", "email" => "kwaicheungceramic@gmail.com", "products" => ["TOTO座廁SW781", "TOTO洗手盆",],],],
+            [["title" => "凍肉", "email" => "jarod220390@gmail.com", "products" => ["原隻豬手", "駝鳥肉", "鵝腸",],], ["title" => "油/醬", "email" => "faitsunwong@yahoo.com.hk", "products" => ["花生油", "老干媽風味豆豉",],],],
+            [["title" => "麵", "email" => "jameslukfood@gmail.com", "products" => ["出前一丁麻油味(餐廳專用)", "東莞米粉", "江西米線",],], ["title" => "肉", "email" => "king17@hotmail.com.hk", "products" => ["牛肉丸", "巴西豬扒",],],],
+            [["title" => "金器", "email" => "karamgoldproduct@gmail.com", "products" => ["18k足金手鏈", "999.9黃金金幣", "黃金金粒三錢",],],],
+            [["title" => "鑽", "email" => "wdickens@boyle.com", "products" => ["18K紅寶鑽石耳環", "典雅綠寶石鑽石戒指", "黄白分色綠寶鑽石耳環",],], ["title" => "銀", "email" => "jillian51@pacocha.net", "products" => ["925銀飾", "999銀條",],],],
+            [["title" => "藥水", "email" => "thomasstyle@gmail.com", "products" => ["1L裝", "3件散裝",],],],
+            [["title" => "水機", "email" => "bins.miles@gmail.com", "products" => ["純水RO機", "Micron PP濾芯", "RO膜",],], ["title" => "補充", "email" => "bins.miles@gmail.com", "products" => ["逆止閥", "接駁喉",],],],
+            [["title" => "鏡框", "email" => "daiju.contact@gmail.com", "products" => ["藤井黑框001", "藤井藍幼框163",],], ["title" => "鏡片", "email" => "daiju.contact@gmail.com", "products" => ["藤井防藍光", "藤井高透鏡片",],],],
+            [["title" => "精華補充", "email" => "vandervort.mae@gmail.com", "products" => ["大", "中", "小",],],],
+            [["title" => "陳生", "email" => "fatchan199@gmail.com", "products" => ["麗聲掛鐘style001", "927 星星吊燈",],], ["title" => "黃生", "email" => "kelvinwongwaiyip@gmail.com", "products" => ["304 白水晶吊燈", "305 紅水晶吊燈",],],],
+            [["title" => "藥水", "email" => "demetrius.schmitt@moen.com.hk", "products" => ["神仙耳水100ml", "眼藥水100ml",],], ["title" => "Wellnesscore", "email" => "kakapetfood@gmail.com", "products" => ["貓糧-無穀物經典原味配方", "貓糧-海洋魚配方",],],],
+            [["title" => "零件", "email" => "wuyunmonitor@qq.com", "products" => ["iPhone 12屏幕總成", "三星S20+屏幕總成",],], ["title" => "Accessories", "email" => "huaxin2002@yahoo.com.cn", "products" => ["iPhone 13 透明軟膠套", "iPhone 13 Pro 全黑硬膠殼",],],],
+            [["title" => "Frozen", "email" => "dileitamohamed@gmail.com", "products" => ["Lamb", "Whole Chicken Wings",],], ["title" => "Others ingredients", "email" => "dileitamohamed@gmail.com", "products" => ["masala", "chilli sauce",],],],
+            [["title" => "Frozen", "email" => "paul.singh20031130@yahoo.com", "products" => ["ox tongue", "Lamb",],], ["title" => "Others ingredients", "email" => "paul.singh20031130@yahoo.com", "products" => ["masala", "white sugar",],],],
+            [["title" => "肉", "email" => "king17@hotmail.com.hk", "products" => ["牛腩", "牛肉丸", "牛柳粒",],], ["title" => "菜", "email" => "yuhong.naturalveges@gmail.com", "products" => ["生菜", "通菜",],],],
+            [["title" => "肉", "email" => "johnnyfoodsupply@gmail.com", "products" => ["巴西豬扒", "安格斯肥牛", "豬手",],], ["title" => "油/醬", "email" => "tungshingfood@gmail.com", "products" => ["特級花生油", "豆瓣醬",],],],
+            [["title" => "凍肉", "email" => "321thaifoodcs@gmail.com", "products" => ["雞腎", "雞軟骨", "泰式生蝦",],], ["title" => "frozen food", "email" => "cs.yanchihong@gmail.com", "products" => ["春卷", "炸蝦餅",],],],
+            [["title" => "魚生", "email" => "king17@hotmail.com.hk", "products" => ["挪威三文魚", "特上油甘魚", "牡丹蝦",],], ["title" => "米", "email" => "hfnrice@gmail.com", "products" => ["特級珍珠米",],],],
+            [["title" => "木製廠", "email" => "stokes.august@yahoo.com.hk", "products" => ["梳化K080", "梳化K080-2",],], ["title" => "膠版製廠", "email" => "yungguoplasticcn@qq.com", "products" => ["櫃門P99", "櫃門P100",],],],
+            [["title" => "水晶", "email" => "kellyyung8080@gmail.com", "products" => ["紫水晶洞", "原珠",],], ["title" => "天珠", "email" => "bebecfu99@gmail.com", "products" => ["開光", "原珠",],],],
+            [["title" => "水晶", "email" => "chunkicrystaldotdot@hotmail.com", "products" => ["髮晶手鏈", "黑曜石", "原珠",],],],
+            [["title" => "equipments", "email" => "kiosleungchiho@gmail.com", "products" => ["拳套", "護膝", "護腕",],],],
+            [["title" => "肉", "email" => "kaifungfood@yahoo.com.hk", "products" => ["紅腸", "全鴨", "鵝翼",],], ["title" => "蛋", "email" => "tofaieggs@yahoo.com.hk", "products" => ["湖北大啡蛋",],],],
+            [["title" => "原料", "email" => "edisonmilestone@gmail.com", "products" => ["Cleaning Card", "Ojo Card", "Nugnokve Card",],], ["title" => "水晶", "email" => "irenebibibi@gmail.com", "products" => ["紫水晶洞", "太陽石",],],],
+            [["title" => "藥材", "email" => "takkeeyeung@yahoo.com.hk", "products" => ["紅棗", "花旗蓼", "黨蓼",],], ["title" => "成藥", "email" => "sales.apmedicine@gmail.com", "products" => ["撲熱息痛500mg", "布洛芬200mg",],],],
+            [["title" => "foam board", "email" => "tungyuenboard@gmail.com", "products" => ["L", "M", "S",],], ["title" => "陳生紙廠", "email" => "keithpaper@gmail.com", "products" => ["BPC-031", "BPK-330", "LCU-420",],],],
+            [["title" => "Rolex-852", "email" => "carl.ling168168@gmail.com", "products" => ["綠水鬼系列", "Rolex Daytona with black diamonds",],], ["title" => "貼膜", "email" => "johnnychanyau@gmail.com", "products" => ["A13-M", "A14-PM",],],],
+            [["title" => "教材", "email" => "schamberger.nettie@kuhlman.edu.hk", "products" => ["教材",],],],
+        ];
+
+
 //        $faker = Faker\Factory::create();
 
         foreach ($sis as $key => $value) {
@@ -446,15 +495,57 @@ class SI1StSeeder extends Seeder
                 'subdomain' => $subdomains[$key],
             ]);
 
+            DB::table('opening_hours')->insert([
+                ['day' => '0', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+                ['day' => '1', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+                ['day' => '2', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+                ['day' => '3', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+                ['day' => '4', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+                ['day' => '5', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+                ['day' => '6', 'start' => '10:00', 'end' => '22:00', 'business_id' => $business_id],
+            ]);
+
             DB::table('locations')->insert([
                 ['title' => 'Warehouse', 'business_id' => $business_id],
                 ['title' => 'Store', 'business_id' => $business_id],
             ]);
 
             foreach ($services[$key] as $service) {
-                DB::table('services')->insert([
-                    ['title' => $service, 'cost' => rand(100, 250), 'price' => rand(300, 400), 'business_id' => $business_id, 'division' => 30],
-                ]);
+                $serviceId = DB::table('services')->insertGetId([
+                        'title' => $service,
+                        'cost' => rand(100, 250),
+                        'price' => rand(300, 400),
+                        'business_id' => $business_id,
+                        'division' => 30,
+                    ]
+                );
+            }
+
+            foreach ($supplierProducts as $suppliers) {
+                foreach ($suppliers as $supplier) {
+                    $supplierId = DB::table('suppliers')->insertGetId([
+                        'name' => $supplier['title'],
+                        'email' => $supplier['email'],
+                        'business_id' => $business_id,
+                    ]);
+                    foreach ($supplier['products'] as $product) {
+                        $productId = DB::table('products')->insert([
+                            'title' => $product,
+                            'cost' => rand(100, 250),
+                            'price' => rand(300, 400),
+                            'minimum_inventory' => 5,
+                            'alert_quantity' => 10,
+                            'business_id' => $business_id,
+                            'supplier_id' => $supplierId,
+                        ]);
+
+                        DB::table('inventory_logs')->insert([
+                            'type' => 'move_in',
+                            'quantity' => 10,
+                        ]);
+                    }
+
+                }
             }
         }
 
