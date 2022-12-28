@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Venturecraft\Revisionable\RevisionableTrait;
 
 class Product extends Model
 {
     use MultiTenantable;
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
+    use RevisionableTrait;
+
+    public function identifiableName()
+    {
+        return $this->title;
+    }
 
 
     protected $fillable = [
