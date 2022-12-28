@@ -588,6 +588,16 @@ class SI1StSeeder extends Seeder
                             'product_id' => $productId,
                             'user_id' => $userId,
                         ]);
+                        $supplierOrderId = DB::table('supplier_orders')->insertGetId([
+                            'supplier_id' => $supplierId,
+                            'user_id' => $userId,
+                            'business_id' => $business_id,
+                        ]);
+                        DB::table('supplier_order_items')->insert([
+                            'supplier_order_id' => $supplierOrderId,
+                            'product_id' => $productId,
+                            'quantity' => rand(50, 120),
+                        ]);
                     }
 
                 }
