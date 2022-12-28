@@ -379,6 +379,54 @@ class SI1StSeeder extends Seeder
             "hFavDja6",
         ];
 
+        $services = [
+            ["全屋搬運服務", "傢私搬運服務",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約到店諮詢",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["批發協商預約",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約（1-2人）", "預約（3-4人）",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約推廣療程試做",],
+            ["預約推廣療程試做",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約推廣療程試做",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約到店諮詢",],
+            ["預約到店諮詢",],
+            ["預約到店諮詢", "預約推廣療程試做",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約到店諮詢", "預約維修",],
+            ["預約推廣療程試做",],
+            ["批發協商預約",],
+            ["批發協商預約", "寵物美容（貓）預約", "寵物美容（狗）預約",],
+            ["預約維修",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["批發協商預約",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["預約試堂",],
+            ["預約（1-2人）", "預約（3-4人）", "預約（5-6人）",],
+            ["預約到店諮詢", "批發協商預約",],
+            ["批發協商預約", "中醫診症預約",],
+            ["Design consulting",],
+            ["預約到店諮詢", "批發合作討論預約", "貼膜",],
+            ["預約試堂",],
+        ];
+
 //        $faker = Faker\Factory::create();
 
         foreach ($sis as $key => $value) {
@@ -389,7 +437,7 @@ class SI1StSeeder extends Seeder
         }
 
         foreach ($businesses as $key => $value) {
-            DB::table('businesses')->insert([
+            $business_id = DB::table('businesses')->insertGetId([
                 "title" => $value,
 //                "address" => $faker->address,
                 "phone" => $contacts[$key],
@@ -397,6 +445,17 @@ class SI1StSeeder extends Seeder
                 'solution_integrator_id' => $siId[$key],
                 'subdomain' => $subdomains[$key],
             ]);
+
+            DB::table('locations')->insert([
+                ['title' => 'Warehouse', 'business_id' => $business_id],
+                ['title' => 'Store', 'business_id' => $business_id],
+            ]);
+
+            foreach ($services[$key] as $service) {
+                DB::table('services')->insert([
+                    ['title' => $service, 'cost' => rand(100, 250), 'price' => rand(300, 400), 'business_id' => $business_id, 'division' => 30],
+                ]);
+            }
         }
 
         foreach ($accounts as $key => $value) {
@@ -407,6 +466,19 @@ class SI1StSeeder extends Seeder
                 "business_id" => $key + 3,
             ]);
             User::find($key + 3)->assignRole('superAdmin');
+        }
+
+        function randomDate($start_date, $end_date)
+        {
+            $min = strtotime($start_date);
+            $max = strtotime($end_date);
+
+            $val = rand($min, $max);
+
+            return [
+                'date' => date('Y-m-d', $val),
+                'time' => date('H:i', $val),
+            ];
         }
     }
 }

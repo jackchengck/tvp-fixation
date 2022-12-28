@@ -29,6 +29,11 @@ class Product extends Model
         'supplier_id',
     ];
 
+    protected $casts = [
+        'quantity',
+        'alert',
+    ];
+
 
     protected static function boot()
     {
@@ -58,5 +63,37 @@ class Product extends Model
     public function supplierOrderItems()
     {
         return $this->hasMany(SupplierOrderItem::class);
+    }
+
+    public function getQuantityAttribute()
+    {
+        $inventories = InventoryLog::where('product_id', '=', $this->id)->get();
+
+        $inventoryQuantity = 0;
+
+        foreach ($inventories as $inventory) {
+            $inventoryQuantity += $inventory->quantity;
+        }
+
+        return $inventoryQuantity;
+    }
+
+    public function getAlertAttribute()
+    {
+//        $alert = '<span style="color:red;">Alert! Minium Quantity Reached!</span>';
+        $alert = '';
+
+
+        if ($this->quantity <= $this->alert_quantity) {
+            $alert = "Alert Quantity Reached!!";
+        }
+
+
+        if ($this->quantity <= $this->minimum_inventory) {
+            $alert = "Minimum Quantity Reached!!!!";
+        }
+
+
+        return $alert;
     }
 }
