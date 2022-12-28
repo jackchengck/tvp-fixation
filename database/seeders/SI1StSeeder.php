@@ -563,43 +563,41 @@ class SI1StSeeder extends Seeder
                 }
             }
 
-            foreach ($supplierProducts as $suppliers) {
-                foreach ($suppliers as $supplier) {
-                    $supplierId = DB::table('suppliers')->insertGetId([
-                        'name' => $supplier['title'],
-                        'email' => $supplier['email'],
+
+            foreach ($supplierProducts[$key] as $supplier) {
+                $supplierId = DB::table('suppliers')->insertGetId([
+                    'name' => $supplier['title'],
+                    'email' => $supplier['email'],
+                    'business_id' => $business_id,
+                ]);
+                foreach ($supplier['products'] as $product) {
+                    $productId = DB::table('products')->insertGetId([
+                        'title' => $product,
+                        'cost' => rand(100, 250),
+                        'price' => rand(300, 400),
+                        'minimum_inventory' => 5,
+                        'alert_quantity' => 10,
+                        'business_id' => $business_id,
+                        'supplier_id' => $supplierId,
+                    ]);
+                    DB::table('inventory_logs')->insert([
+                        'type' => 'move_in',
+                        'quantity' => 10,
+                        'business_id' => $business_id,
+                        'location_id' => $locationId,
+                        'product_id' => $productId,
+                        'user_id' => $userId,
+                    ]);
+                    $supplierOrderId = DB::table('supplier_orders')->insertGetId([
+                        'supplier_id' => $supplierId,
+                        'user_id' => $userId,
                         'business_id' => $business_id,
                     ]);
-                    foreach ($supplier['products'] as $product) {
-                        $productId = DB::table('products')->insert([
-                            'title' => $product,
-                            'cost' => rand(100, 250),
-                            'price' => rand(300, 400),
-                            'minimum_inventory' => 5,
-                            'alert_quantity' => 10,
-                            'business_id' => $business_id,
-                            'supplier_id' => $supplierId,
-                        ]);
-                        DB::table('inventory_logs')->insert([
-                            'type' => 'move_in',
-                            'quantity' => 10,
-                            'business_id' => $business_id,
-                            'location_id' => $locationId,
-                            'product_id' => $productId,
-                            'user_id' => $userId,
-                        ]);
-                        $supplierOrderId = DB::table('supplier_orders')->insertGetId([
-                            'supplier_id' => $supplierId,
-                            'user_id' => $userId,
-                            'business_id' => $business_id,
-                        ]);
-                        DB::table('supplier_order_items')->insert([
-                            'supplier_order_id' => $supplierOrderId,
-                            'product_id' => $productId,
-                            'quantity' => rand(50, 120),
-                        ]);
-                    }
-
+                    DB::table('supplier_order_items')->insert([
+                        'supplier_order_id' => $supplierOrderId,
+                        'product_id' => $productId,
+                        'quantity' => rand(50, 120),
+                    ]);
                 }
             }
         };

@@ -33,7 +33,6 @@ class SupplierOrderCrudController extends CrudController
         CRUD::setEntityNameStrings('supplier order', 'supplier orders');
 
 
-
         $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
 
         if (backpack_user()->isSuperAdmin) {
@@ -66,6 +65,12 @@ class SupplierOrderCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('supplier_id');
+        CRUD::addColumn([
+            'name' => 'supplierOrderItems',
+            'type' => 'relationship',
+//            'label'=>
+            'attribute' => 'title',
+        ]);
         CRUD::column('user_id');
         CRUD::column('business_id');
 
