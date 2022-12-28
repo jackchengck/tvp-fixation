@@ -1,7 +1,7 @@
 {{--<div class="container">--}}
 <div>
     <div class="mb-3">
-        <label for="service" class="form-label">Select Services <span
+        <label for="service" class="form-label">{{$business->lang=='zh'?'選擇服務':'Select Service'}} <span
                 style="color: red">*</span></label>
         <select wire:model="serviceSelected" name="service" id="service" class="form-select">
             <option selected disabled>Please select a service</option>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="booking_date" class="form-label">Select a Date <span
+        <label for="booking_date" class="form-label">{{$business->lang=='zh'?'選擇日期':'Select a Date'}} <span
                 style="color: red">*</span></label>
         <input wire:model="bookingDate" class="form-control" type="date" id="booking_date" name="booking_date">
     </div>
@@ -28,11 +28,11 @@
 
 
     <div class="mb-3">
-        <label for="service" class="form-label">Select a Timeslot <span
+        <label for="service" class="form-label">{{$business->lang=='zh'?'選擇時間':'Select Timeslot'}} <span
                 style="color: red">*</span></label>
         <select name="timeslot" id="timeslot" class="form-select">
             @if($serviceSelected&&$bookingDate)
-                <option selected disabled>Please select a timeslot</option>
+                <option selected disabled>{{$business->lang=='zh'?'請選擇時間':'Please select a timeslot'}}</option>
                 @foreach($service->getBookingSlots($bookingDate) as $timeslot)
                     @if(!$timeslot['disabled'])
                         <option
@@ -41,7 +41,7 @@
                     @endif
                 @endforeach
             @else
-                <option selected disabled>Please select a date first</option>
+                <option selected disabled>{{$business->lang=='zh'?'請先選擇日期':'Please select a date first'}}</option>
             @endif
 
         </select>

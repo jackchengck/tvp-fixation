@@ -17,7 +17,7 @@ class ShowCustomerTicket extends Component
     public function mount($business)
     {
         $this->business = $business;
-        $this->result = "Please Input Email & Password first";
+        $this->result = $business->lang == 'zh' ? "請先輸入預約電郵及密碼" : "Please Input Email & Password first";
     }
 
     public function render()
@@ -29,10 +29,11 @@ class ShowCustomerTicket extends Component
     {
         if ($this->customer_email != '' && $this->customer_password != '') {
             $this->bookings = Booking::where('business_id', '=', $this->business->id)->where('customer_email', '=', $this->customer_email)->where('customer_password', '=', $this->customer_password)->get();
-            $this->result = "Search Result";
+            $this->result = $this->business->lang == 'zh' ? "結果" : "Search Result";
 //            dd($this->customer_email, $this->customer_password,$this->bookings);
         } else {
-            $this->result = "Please Input Email & Password first";
+            $this->result = $this->business->lang == 'zh' ? "請先輸入預約電郵及密碼" : "Please Input Email & Password first";
+
         }
     }
 
