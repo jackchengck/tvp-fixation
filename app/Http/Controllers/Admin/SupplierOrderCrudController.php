@@ -67,6 +67,8 @@ class SupplierOrderCrudController extends CrudController
         CRUD::column('user_id');
         CRUD::column('business_id');
 
+        $this->crud->addButtonFromModelFunction('line', 'get_supplier_order_email_button', 'getSupplierOrderEmailButton', 'beginning');
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

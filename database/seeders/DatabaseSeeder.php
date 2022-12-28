@@ -51,8 +51,9 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             SolutionIntegratorSeeder::class,
             BusinessSeeder::class,
-            si1stseeder::class,
-            
+            SI1StSeeder::class,
         ]);
+
+
     }
 }

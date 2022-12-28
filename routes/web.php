@@ -14,13 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-//    return redirect('/booking');
+//    return view('welcome');
+    return redirect('/booking');
 //    return redirect('/booking');
 });
 
 Route::get('/booking', function () {
-//    $host = request()->getHttpHost();
     $getHost = request()->getHost();
     $host = explode('.', $getHost);
 
@@ -34,16 +33,42 @@ Route::get('/booking', function () {
     $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
     $business = \App\Models\Business::where('subdomain', $subdomain)->first();
 
-//    if ($si == null || $business == null) {
-//        return abort(404);
-//    }
+    if ($si == null || $business == null) {
+        return abort(404);
+    }
 
-    return view('booking.booking_form', ['host' => $host, 'si' => $si, 'business' => $business]);
-//    return view('booking.booking_form', ['host' => $host]);
-});
+    return view('booking.booking_form', ['domain' => $getHost, 'si' => $si, 'business' => $business]);
+})->name('booking');
+
+Route::get('/get-ticket', function () {
+    $getHost = request()->getHost();
+    $host = explode('.', $getHost);
+
+    if ($host[1] == 'localhost') {
+        $domain = "piercer-tech.com";
+    } else {
+        $domain = $host[1] . $host[2];
+    }
+    $subdomain = $host[0];
+
+    $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
+    $business = \App\Models\Business::where('subdomain', $subdomain)->first();
+
+    if ($si == null || $business == null) {
+        return abort(404);
+    }
+
+    return view('booking.get_ticket', ['domain' => $getHost, 'si' => $si, 'business' => $business]);
+})->name('get-ticket');
 
 
-Route::post('/booking', function () {
+Route::post('/store-booking', [\App\Http\Controllers\BookingController::class, 'store']);
 
+Route::get('/test', function () {
+    $slots = \App\Models\Service::find(1)->getBookingSlots('2022-12-27');
+    $bookings = \App\Models\Booking::where('customer_email', '=', 'jackchengck@gmail.com')->where('customer_password', '=', "123456")->get();
+    dd($bookings);
+
+    return view('booking.test', ['slots' => $slots]);
 });
 

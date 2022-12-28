@@ -31,6 +31,7 @@ class ServiceRequest extends FormRequest
             "price" => "required",
             "title" => 'required',
             "business_id" => "required",
+            'division' => 'required|gt:0',
 
 
         ];

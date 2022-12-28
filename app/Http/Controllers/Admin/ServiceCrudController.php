@@ -31,7 +31,6 @@ class ServiceCrudController extends CrudController
         CRUD::setEntityNameStrings('service', 'services');
 
 
-
         $this->crud->denyAccess(['create', 'delete', 'list', 'update']);
 
         if (backpack_user()->isSuperAdmin) {
@@ -117,6 +116,14 @@ class ServiceCrudController extends CrudController
                 'type' => 'number',
                 'attributes' => [
                     'step' => 'any'
+                ]
+            ],
+            [
+                'name' => 'division',
+                'type' => 'number',
+                'hint' => 'In Minutes',
+                'attributes' => [
+//                    'step' => 'any'
                 ]
             ],
 //            [
