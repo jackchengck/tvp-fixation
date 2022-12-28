@@ -55,8 +55,7 @@ class BookingController extends Controller
 
         $booking->save();
 
-        Mail::to($booking->customer_email)->queue(new BookingCreatedToCustomer($booking));
-
+        Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
 
         return redirect('booking')->with('status', 'Booking Has been created');
 
