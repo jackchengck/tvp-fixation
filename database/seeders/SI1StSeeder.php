@@ -18,7 +18,6 @@ class SI1StSeeder extends Seeder
     public function run()
     {
         //
-
         $sis = [
             "Bingo (HK)",
             "Epochal Tech Holding Limited",
@@ -547,21 +546,21 @@ class SI1StSeeder extends Seeder
 
                     ]);
                 }
-                for ($x = 0; $x <= rand(3, 10); $x++) {
-                    $d = $this->randomDate('2022-12-01', '2022-12-31');
-                    DB::table('bookings')->insert([
-                        'service_id' => $serviceId,
-                        'customer_name' => fake()->name,
-                        'customer_email' => fake()->email,                        'customer_phone' => '8766 4321',
-                        'customer_phone' => '8766 4321',
-                        'customer_password' => '123456',
-                        'booking_date' => $d['date'],
-                        'booking_time' => $d['time'],
-                        'business_id' => $business_id,
-                        'order_num' => fake()->ean13(),
-
-                    ]);
-                }
+//                for ($x = 0; $x <= rand(3, 10); $x++) {
+//                    $d = $this->randomDate('2022-12-01', '2022-12-31');
+//                    DB::table('bookings')->insert([
+//                        'service_id' => $serviceId,
+//                        'customer_name' => fake()->name,
+//                        'customer_email' => fake()->email,
+//                        'customer_phone' => '8766 4321',
+//                        'customer_password' => '123456',
+//                        'booking_date' => $d['date'],
+//                        'booking_time' => $d['time'],
+//                        'business_id' => $business_id,
+//                        'order_num' => fake()->ean13(),
+//
+//                    ]);
+//                }
             }
 
             foreach ($supplierProducts as $suppliers) {
