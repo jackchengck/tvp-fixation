@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookingRequest;
 use App\Http\Requests\UpdateBookingRequest;
+use App\Mail\BookingCreatedToCustomer;
 use App\Models\Booking;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -52,6 +54,9 @@ class BookingController extends Controller
         $booking->business_id = Service::find($request->service)->id;
 
         $booking->save();
+
+        Mail::to($booking->customer_email)->queue(new BookingCreatedToCustomer($booking));
+
 
         return redirect('booking')->with('status', 'Booking Has been created');
 
