@@ -13,7 +13,10 @@
 <body>
     @include("components.navbar",['business'=>$business,'si'=>$si])
     <div class="container mt-3 ">
-        <h2>Get Ticket Now</h2>
+
+        <div class="row justify-content-center mb-4">
+            <h2 class="text-center mb-2">Get Ticket Now</h2>
+        </div>
         <livewire:show-customer-ticket :business="$business"/>
     </div>
 

@@ -1,4 +1,5 @@
-<div class="container">
+{{--<div class="container">--}}
+<div>
     <div class="mb-3">
         <label for="service" class="form-label">Select Services <span
                 style="color: red">*</span></label>

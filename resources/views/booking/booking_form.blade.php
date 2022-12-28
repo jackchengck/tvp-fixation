@@ -13,47 +13,53 @@
 <body>
     @include("components.navbar",['business'=>$business,'si'=>$si])
     <div class="container mt-3 ">
-        <h2>Booking Form</h2>
-        @if(session('status'))
-            <div class="alert alert-success">
-                {{session('status')}}
-            </div>
-        @endif
-        <div class="card p-3">
-            <form name="add-booking-post-form" id="add-booking-post-form" method="post"
-                  action="{{url('store-booking')}}">
-                @csrf
-                <div class="container">
-                    <div class="mb-3">
-                        <label for="order_num" class="form-label">Order Number <span
-                                style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="order_num" name="order_num">
-                    </div>
-                    <div class="mb-3">
-                        <label for="customer_name" class="form-label">Customer Name <span
-                                style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="customer_name" name="customer_name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="customer_email" class="form-label">Customer Email <span
-                                style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="customer_email" name="customer_email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="customer_phone" class="form-label">Customer Phone <span
-                                style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="customer_phone" name="customer_phone">
-                    </div>
-                    <div class="mb-3">
-                        <label for="customer_password" class="form-label">Customer Password <span
-                                style="color: red">*</span></label>
-                        <input class="form-control" type="text" id="customer_password" name="customer_password">
-                    </div>
+        <div class="row justify-content-center mb-4">
+            <h2 class="text-center mb-2">Booking Form</h2>
+            @if(session('status'))
+                <div class="alert alert-success">
+                    {{session('status')}}
                 </div>
-                <livewire:show-timeslots :business="$business"/>
+            @endif
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="card p-3 col-md-8">
+                    <form name="add-booking-post-form" id="add-booking-post-form" method="post"
+                          action="{{url('store-booking')}}">
+                        @csrf
+                        <div class="container  pt-3">
+                            <div class="mb-3">
+                                <label for="order_num" class="form-label">Order Number <span
+                                        style="color: red">*</span></label>
+                                <input class="form-control" type="text" id="order_num" name="order_num">
+                            </div>
+                            <div class="mb-3">
+                                <label for="customer_name" class="form-label">Customer Name <span
+                                        style="color: red">*</span></label>
+                                <input class="form-control" type="text" id="customer_name" name="customer_name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="customer_email" class="form-label">Customer Email <span
+                                        style="color: red">*</span></label>
+                                <input class="form-control" type="text" id="customer_email" name="customer_email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="customer_phone" class="form-label">Customer Phone <span
+                                        style="color: red">*</span></label>
+                                <input class="form-control" type="text" id="customer_phone" name="customer_phone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="customer_password" class="form-label">Customer Password <span
+                                        style="color: red">*</span></label>
+                                <input class="form-control" type="text" id="customer_password" name="customer_password">
+                            </div>
+                            <livewire:show-timeslots :business="$business"/>
+                            <input type="submit" class="form-control mb-5">
+                        </div>
 
-                <input type="submit" class="form-control">
-            </form>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

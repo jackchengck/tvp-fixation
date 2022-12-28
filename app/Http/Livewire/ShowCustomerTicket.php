@@ -28,7 +28,7 @@ class ShowCustomerTicket extends Component
     public function search()
     {
         if ($this->customer_email != '' && $this->customer_password != '') {
-            $this->bookings = Booking::where('customer_email', '=', $this->customer_email)->where('customer_password', '=', $this->customer_password)->get();
+            $this->bookings = Booking::where('business_id', '=', $this->business->id)->where('customer_email', '=', $this->customer_email)->where('customer_password', '=', $this->customer_password)->get();
             $this->result = "Search Result";
 //            dd($this->customer_email, $this->customer_password,$this->bookings);
         } else {
