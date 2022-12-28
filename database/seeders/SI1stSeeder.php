@@ -533,7 +533,7 @@ class SI1StSeeder extends Seeder
                 );
                 $name = fake()->name;
                 for ($x = 0; $x <= rand(1, 4); $x++) {
-                    $d = randomDate('2022-12-01', '2022-12-31');
+                    $d = $this->randomDate('2022-12-01', '2022-12-31');
                     DB::table('bookings')->insert([
                         'service_id' => $serviceId,
                         'customer_name' => $name,
@@ -543,18 +543,23 @@ class SI1StSeeder extends Seeder
                         'booking_date' => $d['date'],
                         'booking_time' => $d['time'],
                         'business_id' => $business_id,
+                        'order_num' => fake()->ean13(),
+
                     ]);
                 }
                 for ($x = 0; $x <= rand(3, 10); $x++) {
-                    $d = randomDate('2022-12-01', '2022-12-31');
+                    $d = $this->randomDate('2022-12-01', '2022-12-31');
                     DB::table('bookings')->insert([
                         'service_id' => $serviceId,
                         'customer_name' => fake()->name,
-                        'customer_email' => fake()->phoneNumber,
+                        'customer_email' => fake()->email,                        'customer_phone' => '8766 4321',
+                        'customer_phone' => '8766 4321',
                         'customer_password' => '123456',
                         'booking_date' => $d['date'],
                         'booking_time' => $d['time'],
                         'business_id' => $business_id,
+                        'order_num' => fake()->ean13(),
+
                     ]);
                 }
             }
@@ -583,13 +588,13 @@ class SI1StSeeder extends Seeder
                             'location_id' => $locationId,
                             'product_id' => $productId,
                             'user_id' => $userId,
-
                         ]);
                     }
 
                 }
             }
-        }
+        };
+
 
 //        foreach ($accounts as $key => $value) {
 //            DB::table('users')->insert([
@@ -601,17 +606,18 @@ class SI1StSeeder extends Seeder
 //            User::find($key + 3)->assignRole('superAdmin');
 //        }
 
-        function randomDate($start_date, $end_date)
-        {
-            $min = strtotime($start_date);
-            $max = strtotime($end_date);
+    }
 
-            $val = rand($min, $max);
+    public function randomDate($start_date, $end_date)
+    {
+        $min = strtotime($start_date);
+        $max = strtotime($end_date);
 
-            return [
-                'date' => date('Y-m-d', $val),
-                'time' => date('H:i', $val),
-            ];
-        }
+        $val = rand($min, $max);
+
+        return [
+            'date' => date('Y-m-d', $val),
+            'time' => date('H:i', $val),
+        ];
     }
 }
