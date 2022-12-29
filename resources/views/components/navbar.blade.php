@@ -9,7 +9,7 @@
                     <a class="nav-link" href="/booking">{{$business->lang=='zh'?'預約':'Create Booking'}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-secondary" href="/get-ticket">{{$business->lang=='zh'?'取得預約卷':'Get Ticket'}}</a>
+                    <a class="btn btn-outline-secondary" href="/get-ticket">{{$business->lang=='zh'?'取得預約劵':'Get Ticket'}}</a>
                 </li>
             </ul>
         </div>

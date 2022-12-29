@@ -36,7 +36,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="customer_name"
-                                       class="form-label">{{$business->lang=='zh'?'客戶性名':'Customer Name'}} <span
+                                       class="form-label">{{$business->lang=='zh'?'客戶姓名':'Customer Name'}} <span
                                         style="color: red">*</span></label>
                                 <input class="form-control" type="text" id="customer_name" name="customer_name">
                             </div>
