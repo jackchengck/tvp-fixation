@@ -47,7 +47,7 @@ Route::get('/get-ticket', function () {
     if ($host[1] == 'localhost') {
         $domain = "piercer-tech.com";
     } else {
-        $domain = $host[1] . $host[2];
+        $domain = $host[1] . "." . $host[2];
     }
     $subdomain = $host[0];
 
