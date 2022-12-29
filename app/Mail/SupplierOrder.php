@@ -45,7 +45,7 @@ class SupplierOrder extends Mailable
     {
 
         return new Envelope(
-            from: new Address('do-not-reply@tvp-fixation.com', 'Do not reply'),
+            from: new Address('do-not-reply@' . $this->supplierOrder->business->solutionIntegrator->domain, 'Do not reply'),
             subject: 'Order for products',
         );
     }

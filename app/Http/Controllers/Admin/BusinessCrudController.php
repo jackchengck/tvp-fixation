@@ -60,7 +60,12 @@ class BusinessCrudController extends CrudController
         CRUD::column('info');
         CRUD::column('email');
         CRUD::column('user_id');
-        CRUD::column('solution_integrator_id');
+        CRUD::addColumn([
+            'name' => 'solutionIntegrator',
+            'type' => 'relationship',
+
+        ]);
+//        CRUD::column('solution_integrator_id');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -85,7 +90,8 @@ class BusinessCrudController extends CrudController
         CRUD::field('info');
         CRUD::field('email');
         CRUD::field('user_id');
-        CRUD::field('solution_integrator_id');
+//        CRUD::field('solution_integrator_id');
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

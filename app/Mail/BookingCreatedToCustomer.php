@@ -36,7 +36,7 @@ class BookingCreatedToCustomer extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address('do-not-reply@tvp-fixation.com', 'Do not reply'),
+            from: new Address('do-not-reply@' . $this->booking->business->solutionIntegrator->domain, 'Do not reply'),
             subject: 'Booking Created',
         );
     }

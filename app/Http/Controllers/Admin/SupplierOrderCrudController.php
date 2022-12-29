@@ -64,6 +64,7 @@ class SupplierOrderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+//        CRUD::column('id');
         CRUD::column('supplier_id');
         CRUD::addColumn([
             'name' => 'supplierOrderItems',
