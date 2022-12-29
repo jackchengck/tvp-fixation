@@ -1,6 +1,6 @@
 <div>
     <div>
-        Dear {{$supplierOrder->supplier->name}} of {{$supplierOrder->business->title}}:
+        Dear {{$supplierOrder->supplier->name}}:
     </div>
     <br>
     <div>
@@ -13,9 +13,18 @@
         </div>
         <br>
     @endforeach
-    <br>
     <div>
         Thank you.
+    </div>
+    <br>
+    <div>
+        Regards,
+    </div>
+    <div style="font-weight: bold">
+        {{$supplierOrder->user->name}}
+    </div>
+    <div>
+        {{$supplierOrder->business->title}}
     </div>
 </div>
 
