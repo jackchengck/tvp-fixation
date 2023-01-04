@@ -20,7 +20,7 @@
 
                 <div class="mb-3">
                     <button type="button" class="form-control btn btn-outline-primary"
-                            wire:click="search">{{$business->lang=='zh'?'搜尋':'Search'}}</button>
+                            wire:click="search">{{$business->lang=='zh'?'進入':'Enter'}}</button>
                 </div>
                 {{--        </div>--}}
                 {{--    <button type="button" class="form-control" wire:click="test">Test</button>--}}
