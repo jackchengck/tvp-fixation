@@ -36,25 +36,35 @@
     ];
 
 
-    $widgets['before_content'][] = [
+   /* $widgets['before_content'][] = [
         'type'    => 'div',
         'class'   => 'row',
         'content' => [ // widgets
             [
-                'type'          => 'progress_white',
-                'class'         => 'card mb-2',
-                'value'         => '11.456',
-                'description'   => 'Registered users.',
-                'progress'      => 57, // integer
-                'progressClass' => 'progress-bar bg-primary',
-                'hint'          => '8544 more until next milestone.',
+                'type'=>'chart',
+                'controller'=>\App\Http\Controllers\Admin\Charts\MonthlyTopFiveChartController::class,
+                'class' => 'card mb-2',
+                'content' => [
+                    'header' => 'Monthly Top Five Sales',
+                    //'body'   => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>',
+                    ],
+            ],
+            [
+                'type'=>'chart',
+                'controller'=>\App\Http\Controllers\Admin\Charts\MonthlySalesChartController::class,
+                'class' => 'card mb-2',
+                'content' => [
+                    'header' => 'Monthly Sales',
+                    //'body'   => 'This chart should make it obvious how many new users have signed up in the past 7 days.<br><br>',
+                    ],
             ],
         ]
     ];
+   */
 @endphp
 
 @section('content')
-    <p>Your custom HTML can live here</p>
+{{--    <p>Your custom HTML can live here</p>--}}
     <?php
 
     ?>

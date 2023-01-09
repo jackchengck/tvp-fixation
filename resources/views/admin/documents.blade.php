@@ -54,13 +54,13 @@ $title = "Documents";
                 <input type="submit" formtarget="_blank" value="Submit"/>
             </form>
         </li>
-        <li>
-            Monthly Top 5 Sales Products
-            <form action="{{ backpack_url('documents/monthly_top_five_pdf') }}">
-                <input type="month" name="date" required>
-                <input type="submit" formtarget="_blank" value="Submit"/>
-            </form>
-        </li>
+{{--        <li>--}}
+{{--            Monthly Top 5 Sales Products--}}
+{{--            <form action="{{ backpack_url('documents/monthly_top_five_pdf') }}">--}}
+{{--                <input type="month" name="date" required>--}}
+{{--                <input type="submit" formtarget="_blank" value="Submit"/>--}}
+{{--            </form>--}}
+{{--        </li>--}}
         <li>
             Monthly Trashed Inventories Records
             <form action="{{ backpack_url('documents/monthly_trashed_inventories_records_pdf') }}">

@@ -71,4 +71,5 @@ Route::group([
         Route::get('monthly-sales', 'Charts\MonthlySalesChartController@response')->name('charts.monthly-sales.index');
     });
     Route::crud('user-login-log', 'UserLoginLogCrudController');
+    Route::get('charts/monthly-top-five', 'Charts\MonthlyTopFiveChartController@response')->name('charts.monthly-top-five.index');
 }); // this should be the absolute last line of this file
