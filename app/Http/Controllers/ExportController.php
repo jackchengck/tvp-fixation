@@ -42,21 +42,8 @@ class ExportController extends Controller
         $export_format = $request->export_format ? $request->export_format : 'xlsx';
 
 
-        list($year, $month, $date) = explode('-', $request_date);
-
-//        $from = new \DateTime($date . "-" . "1");
-//        $to = date_add($from, new \DateInterval('P1M'));
-//        $from = date($year . "-" . $month . "-" . "1");
-//        $to = date($year . "-" . $month + 1 . "-" . "1");
-//        var_dump($to);
         $curUser = backpack_user();
-        $InventoryLogs = InventoryLog::whereDate('created_at', $request_date)->with('product')->with('location')->get();
-        return Excel::download(new DailyStatementExport($date), 'Daily Statement' . " " . date('YmdHi') . '.' . $export_format, $this->identifyFormat($export_format));
-
-//        $sInvoiceArr = SupplierInvoice::whereBetween('created_at', [$from, $to])->get();
-//        $cInvoiceArr = CustomerInvoice::whereBetween('created_at', [$from, $to])->get();
-//        $pdf = PDF::loadView('doc_template.pdf.dailySalesStatement', ['title' => "Daily Sales Statement", 'curUser' => $curUser, 'inventory_logs' => $InventoryLogs, 'dateTime' => date("Y-m-d h:i:s a"), 'year' => $year, 'month' => $month,]);
-//        return $pdf->stream();
+        return Excel::download(new DailyStatementExport($request_date), 'Daily Statement' . " " . date('YmdHi') . '.' . $export_format, $this->identifyFormat($export_format));
     }
 
     public function monthlyStatementParamExport(Request $request)

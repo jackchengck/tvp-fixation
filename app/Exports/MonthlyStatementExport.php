@@ -9,8 +9,8 @@ use Maatwebsite\Excel\Concerns\FromView;
 class MonthlyStatementExport implements FromView
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
 
 
     protected $date;
@@ -28,12 +28,12 @@ class MonthlyStatementExport implements FromView
 //        $from = date($year . "-" . $month . "-" . "1");
 //        $to = date($year . "-" . $month + 1 . "-" . "1");
 
-        $InventoryLogs = InventoryLog::whereDate('created_at', $this->date)->with('product')->with('location')->get();
+        $InventoryLogs = InventoryLog::whereMonth('created_at', $month)->whereYear('created_at', $year)->with('product')->with('location')->get();
 
         // TODO: Implement view() method.
 
         return view('doc_template.exports.monthly_statement', [
-            'inventory_logs'=>$InventoryLogs,
+            'inventory_logs' => $InventoryLogs,
             'title' => "Monthly Statement",
             'year' => $year,
             'month' => $month,

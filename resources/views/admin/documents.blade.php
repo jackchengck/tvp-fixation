@@ -112,34 +112,34 @@ $title = "Documents";
         {{--        <li><a href="{{ backpack_url('pdf_list/bank_related_statement') }}">Bank Related Statements List</a></li>--}}
         {{--        <li><a href="{{ backpack_url('pdf_list/monthly_statement') }}">Monthly Statement</a></li>--}}
     </ul>
-{{--    <ul>--}}
-{{--        <h2>PDFs</h2>--}}
+    <ul>
+        <h2>PDFs</h2>
 
-{{--        <li>--}}
-{{--            Daily Statement--}}
-{{--            <form action="{{ backpack_url('documents/daily_statement_export') }}">--}}
-{{--                <select name="export_format" required>--}}
-{{--                    @foreach($export_formats as $exf)--}}
-{{--                        <option value="{{$exf}}">{{$exf}}</option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--                <input type="date" name="date" required>--}}
-{{--                <input type="submit" formtarget="_blank" value="Submit"/>--}}
-{{--            </form>--}}
-{{--        </li>--}}
-{{--        <li>--}}
-{{--            Monthly Statement--}}
-{{--            <form action="{{ backpack_url('documents/monthly_statement_export') }}">--}}
-{{--                <select name="export_format" required>--}}
-{{--                    @foreach($export_formats as $exf)--}}
-{{--                        <option value="{{$exf}}">{{$exf}}</option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--                <input type="month" name="date" required>--}}
-{{--                <input type="submit" formtarget="_blank" value="Submit"/>--}}
-{{--            </form>--}}
-{{--        </li>--}}
-{{--    </ul>--}}
+        <li>
+            Daily Statement
+            <form action="{{ backpack_url('documents/daily_statement_export') }}">
+                <select name="export_format" required>
+                    @foreach($export_formats as $exf)
+                        <option value="{{$exf}}">{{$exf}}</option>
+                    @endforeach
+                </select>
+                <input type="date" name="date" required>
+                <input type="submit" formtarget="_blank" value="Submit"/>
+            </form>
+        </li>
+        <li>
+            Monthly Statement
+            <form action="{{ backpack_url('documents/monthly_statement_export') }}">
+                <select name="export_format" required>
+                    @foreach($export_formats as $exf)
+                        <option value="{{$exf}}">{{$exf}}</option>
+                    @endforeach
+                </select>
+                <input type="month" name="date" required>
+                <input type="submit" formtarget="_blank" value="Submit"/>
+            </form>
+        </li>
+    </ul>
     {{--    TO BE SELECTABLE--}}
     {{--        <li><a href="{{ backpack_url('pdf_list/monthly_statement') }}">Monthly Statement</a></li>--}}
     {{--        <li><a href="{{ backpack_url('pdf_list/departmental_monthly_statement') }}">Departmental Monthly Statement</a></li>--}}
