@@ -58,4 +58,9 @@ class InventoryLog extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+//    public function getDailySales($date)
+//    {
+//
+//    }
 }

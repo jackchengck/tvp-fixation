@@ -41,6 +41,19 @@
                 class="nav-icon la la-th-list"></i> Supplier orders</a></li>
 @endif
 
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon las la-file-alt"></i> Reports &
+        Docs</a>
+    <ul class="nav-dropdown-items">
+        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('documents') }}'><i
+                    class='nav-icon la la-file-pdf'></i> Documents</a>
+        </li>
+{{--        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('export_list') }}'><i--}}
+{{--                    class='nav-icon la la-file-excel'></i>Export</a>--}}
+{{--        </li>--}}
+    </ul>
+</li>
+
 @if(backpack_user()->hasAnyPermission(['create settings','edit settings','view settings','delete settings'])||backpack_user()->isSuperAdmin)
     <!-- Settings Only -->
     <li class="nav-item nav-dropdown">
@@ -84,7 +97,9 @@
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i
                         class="nav-icon la la-user"></i>
                     <span>Users</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user-login-log') }}"><i class="nav-icon la la-th-list"></i> User login logs</a></li>
         </ul>
     </li>
 @endif
+
 

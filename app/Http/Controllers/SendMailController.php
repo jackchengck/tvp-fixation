@@ -33,8 +33,8 @@ class SendMailController extends Controller
         // Ship the order...
 
 //        Mail::to($supplierOrder->supplier->email)->send(new \App\Mail\SupplierOrder($supplierOrder));
-        Mail::to($booking->customer_email)->queue(new BookingCreatedToCustomer($booking));
+        Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
 
-        return ("Booking Email to Cutsomer sent");
+        return ("Booking Email to Customer sent");
     }
 }

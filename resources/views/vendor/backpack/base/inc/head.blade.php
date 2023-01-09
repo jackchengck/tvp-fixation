@@ -6,6 +6,7 @@
 
 <meta name="csrf-token"
       content="{{ csrf_token() }}"/> {{-- Encrypted CSRF token for Laravel, in order for Ajax requests to work --}}
+
 @auth()
     @if(\Illuminate\Support\Facades\Auth::user()->isSuperAdmin)
         <title>{{ isset($title) ? $title.' :: '.config('backpack.base.project_name') : config('backpack.base.project_name') }}</title>
@@ -13,6 +14,7 @@
         <title>{{ isset($title) ? $title.' :: '.\Illuminate\Support\Facades\Auth::user()->business->solutionIntegrator->title ." Admin Panel" : \Illuminate\Support\Facades\Auth::user()->business->solutionIntegrator->title ." Admin Panel" }}</title>
     @endif
 @endauth
+
 @unless(Auth::check())
     <?php
     $getHost = \Illuminate\Support\Facades\Request::getHost();

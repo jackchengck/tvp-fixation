@@ -6,6 +6,7 @@ use App\Traits\MultiTenantable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Venturecraft\Revisionable\RevisionableTrait;
 
 class Booking extends Model
@@ -15,6 +16,7 @@ class Booking extends Model
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use RevisionableTrait;
     use HasFactory;
+    use Notifiable;
 
     public function identifiableName()
     {
@@ -59,5 +61,17 @@ class Booking extends Model
     public function getBookingCustomerEmailButton()
     {
         return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("mail/send-booking-customer-email") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Customer Email"><i class="la la-envelope"></i> Booking Confirm Email</a>';
+    }
+
+    public function getBookingCustomerSmsButton()
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("sms/send-booking-customer-sms") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Customer SMS"><i class="la la-sms"></i> Booking Confirm SMS</a>';
+    }
+
+    public function routeNotificationForSns($notification = null)
+    {
+        return $this->customer_phone;
+//        return '+85266922577';
+//        return '+85266922577';
     }
 }

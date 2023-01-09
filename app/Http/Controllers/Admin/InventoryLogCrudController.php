@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\InventoryLogRequest;
 use App\Models\Location;
+use App\Models\Product;
+use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\ReviseOperation\ReviseOperation;
+use Carbon\Carbon;
 
 /**
  * Class InventoryLogCrudController
@@ -82,13 +85,25 @@ class InventoryLogCrudController extends CrudController
         CRUD::column('quantity');
         CRUD::column('remark');
 //        CRUD::column('business_id');
-//        CRUD::column('user_id');
+        CRUD::column('user_id');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
          * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
+
+
+        $this->crud->addFilter([
+            'name' => 'product',
+            'type' => 'select2',
+            'label' => 'Product'
+        ], function () {
+            return Product::all()->keyBy('id')->pluck('title', 'id')->toArray();
+        }, function ($value) {
+            $this->crud->addClause('where', 'product_id', $value);
+        });
+
 
         $this->crud->addFilter([
             'name' => 'location',
@@ -98,6 +113,16 @@ class InventoryLogCrudController extends CrudController
             return Location::all()->keyBy('id')->pluck('title', 'id')->toArray();
         }, function ($value) {
             $this->crud->addClause('where', 'location_id', $value);
+        });
+
+        $this->crud->addFilter([
+            'name' => 'user',
+            'type' => 'select2',
+            'label' => 'User'
+        ], function () {
+            return User::all()->keyBy('id')->pluck('name', 'id')->toArray();
+        }, function ($value) {
+            $this->crud->addClause('where', 'user_id', $value);
         });
     }
 
@@ -109,6 +134,7 @@ class InventoryLogCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
+
         CRUD::setValidation(InventoryLogRequest::class);
 
         CRUD::field('type');
@@ -129,6 +155,12 @@ class InventoryLogCrudController extends CrudController
         CRUD::field('product_id');
         CRUD::field('business_id');
         CRUD::field('user_id');
+        CRUD::addField([
+            'name' => 'created_at',
+            'type' => 'datetime',
+            'label' => 'Created At',
+            'default' => Carbon::now()->setTimezone('+8'),
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

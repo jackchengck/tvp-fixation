@@ -48,7 +48,12 @@
                             <div class="mb-3">
                                 <label for="customer_phone" class="form-label">{{$business->lang=='zh'?'電話':'Customer Phone'}} <span
                                         style="color: red">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="country_code_addon">+852</span>
+                                    </div>
                                 <input class="form-control" type="text" id="customer_phone" name="customer_phone">
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="customer_password" class="form-label">{{$business->lang=='zh'?'密碼':'Customer Password'}} <span
