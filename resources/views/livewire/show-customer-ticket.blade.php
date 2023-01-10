@@ -46,7 +46,7 @@
                                         <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>
                                     </div>
                                     <div class="align-self-center pl-4">
-                                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($booking->id)!!}
+                                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($booking->order_num)!!}
                                     </div>
                                 </div>
                             </div>

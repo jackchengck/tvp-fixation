@@ -72,6 +72,18 @@ class BookingCrudController extends CrudController
         CRUD::column('order_num');
         CRUD::column('booking_date');
         CRUD::column('booking_time');
+        CRUD::addColumn(
+            [
+                'name' => 'booking_status',
+                'type' => 'enum',
+                'label' => 'Booking Status',
+                'options' => [
+                    'booked' => 'Booked',
+                    'finish' => 'Finish',
+                    'cancelled' => 'Cancelled',
+                ],
+            ],
+        );
 //        CRUD::column('business_id');
 //        getBookingCustomerEmailButton
 
@@ -112,6 +124,18 @@ class BookingCrudController extends CrudController
         CRUD::field('order_num');
         CRUD::field('booking_date');
         CRUD::field('booking_time');
+        CRUD::addField(
+            [
+                'name' => 'booking_status',
+                'type' => 'enum',
+                'label' => 'Booking Status',
+                'options' => [
+                    'booked' => 'Booked',
+                    'finish' => 'Finish',
+                    'cancelled' => 'Cancelled',
+                ],
+            ],
+        );
         CRUD::field('business_id');
 
         /**

@@ -43,6 +43,7 @@ class Booking extends Model
         'booking_time',
 
         'business_id',
+        'booking_status',
 
     ];
 
@@ -71,7 +72,5 @@ class Booking extends Model
     public function routeNotificationForSns($notification = null)
     {
         return $this->customer_phone;
-//        return '+85266922577';
-//        return '+85266922577';
     }
 }
