@@ -96,7 +96,7 @@ class BusinessController extends Controller
         return response()->json([
             'data' => [
                 'business' => $business,
-                'subdomain' => $subdomain,
+//                'subdomain' => $subdomain,
             ]
         ]);
 //        }
