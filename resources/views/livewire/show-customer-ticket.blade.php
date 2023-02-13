@@ -33,6 +33,7 @@
                 {{--        <h4>{{$customer_password}}</h4>--}}
 
                 @if($bookings)
+                    <h5 class="mb-4">{{$bookingTitle}}</h5>
                     @foreach($bookings as $booking)
                         <div class="container pl-4 pr-4">
                             <div class="card p-5 mb-2">
@@ -47,6 +48,29 @@
                                     </div>
                                     <div class="align-self-center pl-4">
                                         {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($booking->order_num)!!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
+                @if($coupons)
+                    <h5 class="mb-4">{{$couponTitle}}</h5>
+                    @foreach($coupons as $coupon)
+                        <div class="container pl-4 pr-4">
+                            <div class="card p-5 mb-2">
+                                <div class="card-body d-flex justify-content-center align-center">
+                                    <div class="" style="padding-right: 50px">
+                                        <h4 class="mb-4">{{$business->lang=='zh'?'優惠券':'Coupon'}}
+                                            : {{$coupon->title}}</h4>
+                                        <p>{{$business->lang=='zh'?'優惠碼':'Customer'}}: {{$coupon->code}}</p>
+                                        <p>{{$business->lang=='zh'?'到期日':'Expiry Date'}}: {{$coupon->expiry_date}}</p>
+{{--                                        <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
+{{--                                        <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
+                                    </div>
+                                    <div class="align-self-center pl-4">
+                                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($coupon->code)!!}
                                     </div>
                                 </div>
                             </div>

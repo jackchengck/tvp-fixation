@@ -5,7 +5,8 @@
 {{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-th-list"></i> Users</a></li>--}}
 
 @if(backpack_user()->hasAnyPermission(['create bookings','edit bookings','view bookings','delete bookings'])||backpack_user()->isSuperAdmin)
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('booking-calendar') }}"><i class="nav-icon la la-th-list"></i>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('booking-calendar') }}"><i
+                class="nav-icon la la-th-list"></i>
             Bookings Calendar</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('booking') }}"><i class="nav-icon la la-th-list"></i>
             Bookings</a></li>
@@ -48,9 +49,9 @@
         <li class='nav-item'><a class='nav-link' href='{{ backpack_url('documents') }}'><i
                     class='nav-icon la la-file-pdf'></i> Documents</a>
         </li>
-{{--        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('export_list') }}'><i--}}
-{{--                    class='nav-icon la la-file-excel'></i>Export</a>--}}
-{{--        </li>--}}
+        {{--        <li class='nav-item'><a class='nav-link' href='{{ backpack_url('export_list') }}'><i--}}
+        {{--                    class='nav-icon la la-file-excel'></i>Export</a>--}}
+        {{--        </li>--}}
     </ul>
 </li>
 
@@ -67,7 +68,12 @@
                     Holidays</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('opening-hour') }}"><i
                         class="nav-icon la la-th-list"></i> Opening hours</a></li>
-
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('coupon') }}"><i
+                        class="nav-icon la la-th-list"></i> Coupons</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i
+                        class="nav-icon la la-th-list"></i> Faqs</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer-info-survey') }}"><i
+                        class="nav-icon la la-th-list"></i> Customer info surveys</a></li>
         </ul>
     </li>
 @endif
@@ -89,7 +95,7 @@
         </ul>
     </li>
 @endif
-@if(backpack_user()->hasAnyPermission(['create bookings','edit bookings','view bookings','delete bookings'])||backpack_user()->isSuperAdmin)
+@if(backpack_user()->hasAnyPermission(['authentication'])||backpack_user()->isSuperAdmin)
     <!-- Users, Roles, Permissions -->
     <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Authentication</a>
@@ -97,9 +103,14 @@
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i
                         class="nav-icon la la-user"></i>
                     <span>Users</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user-login-log') }}"><i class="nav-icon la la-th-list"></i> User login logs</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user-login-log') }}"><i
+                        class="nav-icon la la-th-list"></i> User login logs</a></li>
         </ul>
     </li>
 @endif
 
 
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('chatroom') }}"><i class="nav-icon la la-th-list"></i>
+        Chatrooms</a></li>
+{{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('instant-message') }}"><i class="nav-icon la la-th-list"></i> Instant messages</a></li>--}}

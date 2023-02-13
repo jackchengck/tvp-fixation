@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBusinessRequest;
 use App\Http\Requests\UpdateBusinessRequest;
 use App\Models\Business;
+use Illuminate\Http\Request;
 
 class BusinessController extends Controller
 {
@@ -31,7 +32,7 @@ class BusinessController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBusinessRequest  $request
+     * @param \App\Http\Requests\StoreBusinessRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreBusinessRequest $request)
@@ -42,7 +43,7 @@ class BusinessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Business  $business
+     * @param \App\Models\Business $business
      * @return \Illuminate\Http\Response
      */
     public function show(Business $business)
@@ -53,7 +54,7 @@ class BusinessController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Business  $business
+     * @param \App\Models\Business $business
      * @return \Illuminate\Http\Response
      */
     public function edit(Business $business)
@@ -64,8 +65,8 @@ class BusinessController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBusinessRequest  $request
-     * @param  \App\Models\Business  $business
+     * @param \App\Http\Requests\UpdateBusinessRequest $request
+     * @param \App\Models\Business $business
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateBusinessRequest $request, Business $business)
@@ -76,11 +77,29 @@ class BusinessController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Business  $business
+     * @param \App\Models\Business $business
      * @return \Illuminate\Http\Response
      */
     public function destroy(Business $business)
     {
         //
+    }
+
+    public function checkSubdomain(Request $request)
+    {
+
+        $subdomain = $request->input('subdomain');
+
+        $business = Business::where('subdomain', $subdomain)->get();
+
+//        if($business){
+        return response()->json([
+            'data' => [
+                'business' => $business,
+                'subdomain' => $subdomain,
+            ]
+        ]);
+//        }
+//        return ();
     }
 }

@@ -65,12 +65,12 @@ class BookingCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('service_id');
+        CRUD::column('booking_date');
         CRUD::column('customer_name');
-        CRUD::column('customer_email');
         CRUD::column('customer_phone');
+        CRUD::column('customer_email');
 //        CRUD::column('customer_password');
         CRUD::column('order_num');
-        CRUD::column('booking_date');
         CRUD::column('booking_time');
         CRUD::addColumn(
             [

@@ -90,8 +90,14 @@ class Business extends Model
         return $this->hasMany(OpeningHour::class);
     }
 
-    public function holidays(){
+    public function holidays()
+    {
         return $this->hasMany(Holiday::class);
+    }
+
+    public function chatrooms()
+    {
+        return $this->hasMany(Chatroom::class);
     }
 
 }

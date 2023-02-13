@@ -52,9 +52,8 @@ class DatabaseSeeder extends Seeder
             SolutionIntegratorSeeder::class,
             BusinessSeeder::class,
             SI1StSeeder::class,
-
+            CouponSeeder::class,
         ]);
-
 
     }
 }

@@ -72,4 +72,12 @@ Route::group([
     });
     Route::crud('user-login-log', 'UserLoginLogCrudController');
     Route::get('charts/monthly-top-five', 'Charts\MonthlyTopFiveChartController@response')->name('charts.monthly-top-five.index');
+    Route::crud('chatroom', 'ChatroomCrudController');
+    Route::crud('instant-message', 'InstantMessageCrudController');
+    Route::crud('coupon', 'CouponCrudController');
+    Route::crud('faq', 'FaqCrudController');
+    Route::crud('customer-info-survey', 'CustomerInfoSurveyCrudController');
+    Route::get('charts/customer-occupations', 'Charts\CustomerOccupationsChartController@response')->name('charts.customer-occupations.index');
+    Route::get('charts/customer-age-groups', 'Charts\CustomerAgeGroupsChartController@response')->name('charts.customer-age-groups.index');
+    Route::get('charts/customer-districts', 'Charts\CustomerDistrictsChartController@response')->name('charts.customer-districts.index');
 }); // this should be the absolute last line of this file
