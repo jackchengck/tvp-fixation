@@ -17,8 +17,9 @@ class FAQ extends Model
         'question',
         'answer',
         'business_id',
-
     ];
+
+    protected $table = "f_a_q_s";
 
     public function business()
     {
