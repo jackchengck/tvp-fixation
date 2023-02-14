@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\FAQ;
+use App\Models\FrequentlyAskedQuestion;
 use Livewire\Component;
 
 class ShowFrequentlyAnsweredQuestions extends Component
@@ -14,7 +15,7 @@ class ShowFrequentlyAnsweredQuestions extends Component
     public function mount($business)
     {
         $this->business = $business;
-        $this->faqs = FAQ::where('business_id', $business->id)->get();
+        $this->faqs = FrequentlyAskedQuestion::where('business_id', $business->id)->get();
     }
 
     public function render()

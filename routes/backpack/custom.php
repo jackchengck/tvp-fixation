@@ -82,4 +82,5 @@ Route::group([
     Route::get('charts/customer-occupations', 'Charts\CustomerOccupationsChartController@response')->name('charts.customer-occupations.index');
     Route::get('charts/customer-age-groups', 'Charts\CustomerAgeGroupsChartController@response')->name('charts.customer-age-groups.index');
     Route::get('charts/customer-districts', 'Charts\CustomerDistrictsChartController@response')->name('charts.customer-districts.index');
+    Route::crud('frequently-asked-question', 'FrequentlyAskedQuestionCrudController');
 }); // this should be the absolute last line of this file

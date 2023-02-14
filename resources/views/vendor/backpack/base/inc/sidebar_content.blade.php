@@ -83,8 +83,10 @@
                         class="nav-icon la la-th-list"></i> Opening hours</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('coupon') }}"><i
                         class="nav-icon la la-th-list"></i> Coupons</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i
-                        class="nav-icon la la-th-list"></i> Faqs</a></li>
+            {{--            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('faq') }}"><i--}}
+            {{--                        class="nav-icon la la-th-list"></i> Faqs</a></li>--}}
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('frequently-asked-question') }}"><i
+                        class="nav-icon la la-th-list"></i> Frequently asked questions</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer-info-survey') }}"><i
                         class="nav-icon la la-th-list"></i> Customer info surveys</a></li>
         </ul>
@@ -121,6 +123,7 @@
         </ul>
     </li>
 @endif
+
 
 
 
