@@ -110,7 +110,7 @@
     ?>
     <main>
 
-        @if($bookings)
+        @if($bookings->count()>0)
             <div class="alert alert-success" id="tomorrow_reminder" role="alert">
                 明日將會有以下預約到期 :
                 @foreach($bookings as $booking)

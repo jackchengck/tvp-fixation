@@ -17,6 +17,7 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "consoletvs/charts": "6.*",
         "fakerphp/faker": "^1.9.1",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "laravel-notification-channels/aws-sns": "^1.4",
