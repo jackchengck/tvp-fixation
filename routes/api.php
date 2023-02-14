@@ -24,7 +24,7 @@ Route::get("try", function () {
     return ("success");
 });
 
-Route::get("chatroom/{id}", [\App\Http\Controllers\ChatroomController::class, 'show']);
+//Route::get("chatroom/{id}", [\App\Http\Controllers\ChatroomController::class, 'show']);
 
 Route::get('messages', [\App\Http\Controllers\InstantMessageController::class, 'retrieveMessage']);
 Route::post('messages', [\App\Http\Controllers\InstantMessageController::class, 'sendMessage']);

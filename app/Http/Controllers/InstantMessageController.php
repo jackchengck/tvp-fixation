@@ -115,34 +115,34 @@ class InstantMessageController extends Controller
 
         $chatroom = Chatroom::where('chatroom_token', $token)->first();
 
-        $getFromCustomer = [
-            'token' => $request->input('token'),
-            'content' => $request->input('content'),
-            'content_type' => $request->input('content_type'),
-            'sender_type' => $request->input('sender_type')
-        ];
-
-        $messageCustomerSample = [
-            'business_id' => $chatroom->business_id,
-            'chatroom_id' => $chatroom->id,
-            'user_id' => null,
-            'sender_type' => 'customer',
-            'content_type' => 'text',
-            'content' => "Sample Message",
-            'image_url' => null,
-            'record_url' => null,
-        ];
-
-        $messageAdminSample = [
-            'business_id' => $chatroom->business_id,
-            'chatroom_id' => $chatroom->id,
-            'user_id' => null,
-            'sender_type' => 'admin',
-            'content_type' => 'text',
-            'content' => "Sample Message",
-            'image_url' => null,
-            'record_url' => null,
-        ];
+//        $getFromCustomer = [
+//            'token' => $request->input('token'),
+//            'content' => $request->input('content'),
+//            'content_type' => $request->input('content_type'),
+//            'sender_type' => $request->input('sender_type')
+//        ];
+//
+//        $messageCustomerSample = [
+//            'business_id' => $chatroom->business_id,
+//            'chatroom_id' => $chatroom->id,
+//            'user_id' => null,
+//            'sender_type' => 'customer',
+//            'content_type' => 'text',
+//            'content' => "Sample Message",
+//            'image_url' => null,
+//            'record_url' => null,
+//        ];
+//
+//        $messageAdminSample = [
+//            'business_id' => $chatroom->business_id,
+//            'chatroom_id' => $chatroom->id,
+//            'user_id' => null,
+//            'sender_type' => 'admin',
+//            'content_type' => 'text',
+//            'content' => "Sample Message",
+//            'image_url' => null,
+//            'record_url' => null,
+//        ];
 
         $message = new InstantMessage();
         $message->business_id = $chatroom->business_id;
