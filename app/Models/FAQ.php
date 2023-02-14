@@ -16,5 +16,13 @@ class FAQ extends Model
     protected $fillable = [
         'question',
         'answer',
+        'business_id',
+
     ];
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
+    }
+
 }

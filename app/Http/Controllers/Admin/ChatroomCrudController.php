@@ -21,7 +21,7 @@ class ChatroomCrudController extends CrudController
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
     public function setup()
@@ -33,28 +33,32 @@ class ChatroomCrudController extends CrudController
 
     /**
      * Define what happens when the List operation is loaded.
-     * 
+     *
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
     protected function setupListOperation()
     {
-        CRUD::column('business_id');
+//        CRUD::column('business_id');
         CRUD::column('customer_name');
         CRUD::column('customer_email');
         CRUD::column('customer_phone');
         CRUD::column('customer_password');
 
+        $this->crud->addButtonFromModelFunction('line', 'get_chatroom_history_download_button', 'getChatroomHistoryDownloadButton', 'beginning');
+        $this->crud->addButtonFromModelFunction('line', 'get_chatroom_link_button', 'getChatroomLinkButton', 'beginning');
+
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
          */
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
@@ -62,7 +66,7 @@ class ChatroomCrudController extends CrudController
     {
         CRUD::setValidation(ChatroomRequest::class);
 
-        CRUD::field('business_id');
+//        CRUD::field('business_id');
         CRUD::field('customer_name');
         CRUD::field('customer_email');
         CRUD::field('customer_phone');
@@ -71,13 +75,13 @@ class ChatroomCrudController extends CrudController
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
+         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
          */
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */

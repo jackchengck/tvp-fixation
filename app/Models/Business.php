@@ -100,4 +100,24 @@ class Business extends Model
         return $this->hasMany(Chatroom::class);
     }
 
+    public function instantMessages()
+    {
+        return $this->hasMany(InstantMessage::class);
+    }
+
+    public function faqs()
+    {
+        return $this->hasMany(FAQ::class);
+    }
+
+    public function customerInfoSurveys()
+    {
+        return $this->hasMany(CustomerInfoSurvey::class);
+    }
+
+    public function coupons()
+    {
+        return $this->hasMany(Coupon::class);
+    }
+
 }

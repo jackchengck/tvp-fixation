@@ -7,6 +7,9 @@ use App\Http\Requests\StoreChatroomRequest;
 use App\Http\Requests\UpdateChatroomRequest;
 use App\Http\Resources\ChatroomResource;
 use App\Models\Chatroom;
+use App\Models\InstantMessage;
+use Carbon\Carbon;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -85,6 +88,63 @@ class ChatroomController extends Controller
 //                ]
             ]
         ]);
+    }
+
+    public function downloadChatroomHistory($id)
+    {
+//        $chatroomId = $request->input('chatroom');
+
+//        $chatroom = Chatroom::with('id', $chatroomId)->first();
+        $chatroom = Chatroom::findOrFail($id);
+
+//        if()
+
+        $businessSubdomain = $chatroom->business->subdomain;
+        $domain = $chatroom->business->solutionIntegrator->domain;
+        $link = "https://message." . $domain . "/" . $businessSubdomain;
+//        $messages = InstantMessage::with('chatroom_id', $chatroom->id)->get();
+        $messages = $chatroom->instantMessages;
+
+        $content = "History Logs \n";
+        $content .= "Customer Name: " . $chatroom->customer_name . " \n";
+        $content .= "Customer Email: " . $chatroom->customer_email . " \n";
+        $content .= "Customer Phone: " . $chatroom->customer_phone . " \n";
+        $content .= "Customer Chatroom Password: " . $chatroom->customer_password . " \n";
+
+        $content .= "\n\n";
+        $content .= "-- Chat History Beginning --";
+        $content .= "\n\n";
+        foreach ($messages as $message) {
+            $content .= "[ " . $message->created_at . " ]\n";
+            if ($message->sender_type == 'admin') {
+                $content .= "Admin: ";
+            } else {
+                $content .= "Customer " . $chatroom->customer_name . ": ";
+            }
+            if ($message->content_type == 'text') {
+                $content .= " " . $message->content . " \n";
+            } elseif ($message->content_type == 'image') {
+                $content .= " Image Message: Url[ " . $link . "/" . $message->image_url . "] \n";
+            } elseif ($message->content_type == 'voice') {
+                $content .= " Voice Message: Url[ " . $link . "/" . $message->record_url . "] \n";
+            }
+            $content .= "\n";
+        }
+        $content .= "\n \n";
+        $content .= "-- Chat History Ended --";
+
+        $fileName = "Chat History" . Carbon::now() . ".txt";
+
+        $headers = [
+            'Content-type' => 'text/plain',
+            'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
+            'Content-Length' => strlen($content),
+        ];
+
+//        return Response::make($content, 200, $headers);
+
+        return response($content)->withHeaders($headers);
+
     }
 
     /**

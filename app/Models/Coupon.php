@@ -17,4 +17,10 @@ class Coupon extends Model
         'code',
         'expiry_date'
     ];
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
+    }
+
 }

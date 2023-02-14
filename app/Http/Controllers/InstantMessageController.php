@@ -96,6 +96,14 @@ class InstantMessageController extends Controller
         $token = $request->input('token');
         $chatroom = Chatroom::where('chatroom_token', $token)->first();
 
+        if(!$chatroom){
+            return response()->json([
+                'data'=>[
+                    'chatroom' => null,
+                ]
+            ]);
+        }
+
 //        $messages = InstantMessage::
         $messages = new InstantMessageCollection(InstantMessage::where('chatroom_id', $chatroom->id)->orderBy('created_at')->get());
 //        return new InstantMessageCollection(InstantMessage::where())

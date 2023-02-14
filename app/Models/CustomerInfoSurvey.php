@@ -18,4 +18,11 @@ class CustomerInfoSurvey extends Model
         'age_group',
         'other'
     ];
+
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
+    }
+
 }

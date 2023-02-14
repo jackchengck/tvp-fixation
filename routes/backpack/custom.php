@@ -64,6 +64,8 @@ Route::group([
 
     });
 
+    Route::get('chat-history/{id}', [\App\Http\Controllers\Api\ChatroomController::class, 'downloadChatroomHistory']);
+
 
     Route::get('booking-calendar', \App\Http\Controllers\Admin\BookingCalendarController::class)->name('booking-calendar');
     Route::group(array('prefix' => 'charts'), function () {

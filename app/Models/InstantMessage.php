@@ -37,6 +37,17 @@ class InstantMessage extends Model
 
     ];
 
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class);
+    }
+
+
+    public function chatroom(){
+        return $this->belongsTo(Chatroom::class);
+    }
+
 //    public function setImageUrlAttribute($value)
 //    {
 //        $attribute_name = 'image_url';
