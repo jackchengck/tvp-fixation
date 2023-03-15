@@ -20,8 +20,6 @@ class ChatroomController extends Controller
 
     public function getChatroom($request)
     {
-
-
         $customerName = $request->input('name');
         $customerEmail = $request->input('email');
         $customerPhone = $request->input('phone');
@@ -40,7 +38,6 @@ class ChatroomController extends Controller
                     'pw' => $password,
                 ],
                 'result' => $result,
-                
             ]
         ]);
     }

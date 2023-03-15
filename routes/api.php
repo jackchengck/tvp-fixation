@@ -33,3 +33,5 @@ Route::post('image-messages', [\App\Http\Controllers\InstantMessageController::c
 Route::post('voice-messages', [\App\Http\Controllers\InstantMessageController::class, 'sendVoiceMessage']);
 
 Route::get('business', [\App\Http\Controllers\BusinessController::class, 'checkSubdomain']);
+
+    Route::post('end-chat',[\App\Http\Controllers\Api\ChatroomController::class,'endChat']);

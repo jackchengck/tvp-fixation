@@ -33,6 +33,33 @@
                 {{--        <h4>{{$customer_password}}</h4>--}}
 
                 @if($bookings)
+                    <h5 class="mb-4">{{$business->lang=='zh'?'會員卡':'Membership Card'}}</h5>
+                    <div class="card p-2 mb-2 membership-card">
+                        <div class="card-body d-flex flex-column justify-content-center align-center">
+                            <div class="d-flex flex-column flex-grow-1 justify-content-between mb-2"
+                                 style="">
+                                <div class="mb-2"
+                                     style="width: 80px;height:80px;background: linear-gradient(to right,#fff,#eaeaea);border-radius: 40px;"></div>
+                                <div>
+                                    <div>
+
+                                        <h4 class="">{{$business->lang=='zh'?'會員名稱':'Member Name'}}
+                                            : {{$customer_name}}</h4>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span>{{$business->lang=='zh'?'電郵':'Email'}}: {{$customer_email}}</span>
+                                        <span>{{$business->lang=='zh'?'到期日':'Expiry date:'}}: {{$expiry_date}}</span>
+                                    </div>
+                                </div>
+                                {{--                            <p>{{$business->lang=='zh'?'日期':'Booking Date'}}: {{$booking->booking_date}}</p>--}}
+                                {{--                            <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
+                                {{--                            <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
+                            </div>
+                            <div class="pl-4 align-self-end">
+                                {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(134,239,172)->generate($customer_email)!!}
+                            </div>
+                        </div>
+                    </div>
                     <h5 class="mb-4">{{$bookingTitle}}</h5>
                     @foreach($bookings as $booking)
                         <div class="container pl-4 pr-4">
@@ -66,8 +93,8 @@
                                             : {{$coupon->title}}</h4>
                                         <p>{{$business->lang=='zh'?'優惠碼':'Customer'}}: {{$coupon->code}}</p>
                                         <p>{{$business->lang=='zh'?'到期日':'Expiry Date'}}: {{$coupon->expiry_date}}</p>
-{{--                                        <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
-{{--                                        <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
+                                        {{--                                        <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
+                                        {{--                                        <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
                                     </div>
                                     <div class="align-self-center pl-4">
                                         {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($coupon->code)!!}
@@ -81,3 +108,9 @@
         </div>
     </div>
 </div>
+<style>
+    .membership-card {
+        background: #86efac;
+        max-width: 500px;
+    }
+</style>

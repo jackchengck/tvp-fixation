@@ -63,7 +63,6 @@ class Service extends Model
 
     public function getBookingSlots($bookingDate)
     {
-//        $service = Service::findOrFail($serviceId);
         $serviceId = $this->id;
         $formDate = strtotime($bookingDate);
         $selectedDay = date('w', $formDate);
@@ -75,7 +74,6 @@ class Service extends Model
         $selectedDate = $splitDate[2];
 
         $opening_hours = new OpeningHourCollection(OpeningHour::where('business_id', '=', $this->business->id)->where('day', '=', $selectedDay)->orderBy('start', 'asc')->get());
-//        $holidays = new HolidayCollection(Holiday::where('holiday_date', '=', "{$selectedYear}-{$modifiedMonth}-{$selectedDate}")->get());
 
         $holidays = new HolidayCollection(Holiday::where('service_id', '=', $serviceId)->where('holiday_date', '=', "{$bookingDate}")->get());
 
@@ -83,9 +81,6 @@ class Service extends Model
 
 
         date_default_timezone_set('Asia/Hong_Kong');
-//        $date = date("{$selectedYear}-{$modifiedMonth}-{$selectedDate}");
-//        $startDateTime = strtotime("{$selectedYear}-{$modifiedMonth}-{$selectedDate}");
-//        $endDateTime = strtotime("{$selectedYear}-{$modifiedMonth}-{$x}");
 
         $x = $selectedDate + 1;
         $startDateTime = new \DateTime("{$bookingDate}");
@@ -122,7 +117,6 @@ class Service extends Model
             $bookingStartTime = $booking->booking_date;
 
             foreach ($timeSlots as $key => $timeSlot) {
-//                if(strtotime($timeSlot['start']))
                 if (strtotime("{$selectedYear}-{$selectedMonth}-{$selectedDate} " . $timeSlot['start']) == strtotime($bookingStartTime)) {
                     $bookbook[] = ['start_time' => strtotime($bookingStartTime), 'time' => $bookingStartTime, 'slot' => $timeSlot];
                     $timeSlots[$key]['disabled'] = true;
@@ -133,9 +127,6 @@ class Service extends Model
         }
 
         return count($wholeDayHoliday) > 0 ? [] : $timeSlots;
-//        return ["opening_hours" => $opening_hours, "bookbook" => $bookbook, "timeslots" => $timeSlots];
-//        return response()->json([$selectedDay, "opening_hours" => $opening_hours, "bookbook" => $bookbook, "timeslots" => $timeSlots]);
-
     }
 
 

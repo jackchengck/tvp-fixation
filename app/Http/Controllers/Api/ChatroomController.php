@@ -10,6 +10,7 @@ use App\Models\Chatroom;
 use App\Models\InstantMessage;
 use Carbon\Carbon;
 use http\Env\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -80,15 +81,14 @@ class ChatroomController extends Controller
                 'chatroom' => $chatroom,
                 'chat' => $chat,
                 'token' => $newToken,
-
-//                'check' => [
-//                    '1' => $checkChat1,
-//                    '2' => $checkChat2,
-//
-//                ]
             ]
         ]);
     }
+
+    public function endChat(Request $request){
+
+    }
+
 
     public function downloadChatroomHistory($id)
     {
@@ -172,7 +172,7 @@ class ChatroomController extends Controller
      * Display the specified resource.
      *
      * @param \App\Models\Chatroom $chatroom
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function show($id, Request $request)
     {
@@ -183,7 +183,6 @@ class ChatroomController extends Controller
         return response()->json([
             'data' => [
                 'chatroom' => $chatroom,
-//                'messages'=>
             ]
         ]);
 

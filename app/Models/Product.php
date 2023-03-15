@@ -77,7 +77,6 @@ class Product extends Model
         $inventories = InventoryLog::where('product_id', '=', $this->id)->get();
 
         $inventoryQuantity = 0;
-
         foreach ($inventories as $inventory) {
             $inventoryQuantity += $inventory->quantity;
         }
@@ -90,7 +89,6 @@ class Product extends Model
 //        $alert = '<span style="color:red;">Alert! Minium Quantity Reached!</span>';
         $alert = '';
 
-
         if ($this->quantity <= $this->alert_quantity) {
             $alert = "Alert Quantity Reached!!";
         }
@@ -99,8 +97,6 @@ class Product extends Model
         if ($this->quantity <= $this->minimum_inventory) {
             $alert = "Minimum Quantity Reached!!!!";
         }
-
-
         return $alert;
     }
 }

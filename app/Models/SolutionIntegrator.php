@@ -12,7 +12,8 @@ class SolutionIntegrator extends Model
 
 
     protected $fillable = [
-        'title'
+        'title',
+        'domain'
     ];
 
 

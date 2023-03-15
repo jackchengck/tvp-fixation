@@ -37,7 +37,6 @@ class Business extends Model
         'email',
         'admin_id',
         'solution_integrator_id',
-
     ];
 
     public function solutionIntegrator()

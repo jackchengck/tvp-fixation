@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\FAQ;
 use App\Models\FrequentlyAskedQuestion;
 use Livewire\Component;
 
@@ -26,9 +25,9 @@ class ShowFrequentlyAnsweredQuestions extends Component
     public function search()
     {
         if ($this->keyword != '') {
-            $this->faqs = FAQ::where('business_id', $this->business->id)->where('question', 'like', '%' . $this->keyword . '%')->orWhere('answer', 'like', '%' . $this->keyword . '%')->get();
+            $this->faqs = FrequentlyAskedQuestion::where('business_id', $this->business->id)->where('question', 'like', '%' . $this->keyword . '%')->orWhere('answer', 'like', '%' . $this->keyword . '%')->get();
         }else{
-            $this->faqs = FAQ::where('business_id', $this->business->id)->get();
+            $this->faqs = FrequentlyAskedQuestion::where('business_id', $this->business->id)->get();
         }
     }
 }
