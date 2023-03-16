@@ -55,8 +55,14 @@
                                 {{--                            <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
                                 {{--                            <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
                             </div>
-                            <div class="pl-4 align-self-end">
-                                {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(134,239,172)->generate($customer_email)!!}
+                            <div class="d-flex flex-row justify-content-between">
+                                <div class="d-flex flex-column justify-content-end">
+                                    <span>{{$business->title}}</span>
+                                </div>
+                                <div class="pl-4 align-self-end">
+
+                                    {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(134,239,172)->generate($customer_email)!!}
+                                </div>
                             </div>
                         </div>
                     </div>
