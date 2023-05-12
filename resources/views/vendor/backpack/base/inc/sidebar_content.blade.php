@@ -127,3 +127,8 @@
 
 
 
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('dish') }}"><i class="nav-icon la la-th-list"></i> Dishes</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('table') }}"><i class="nav-icon la la-th-list"></i> Tables</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order') }}"><i class="nav-icon la la-th-list"></i> Food orders</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order-item') }}"><i class="nav-icon la la-th-list"></i> Food order items</a></li>

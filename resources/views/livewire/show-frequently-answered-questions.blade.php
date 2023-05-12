@@ -4,20 +4,9 @@
             {{-- Care about people's approval and you will be their prisoner. --}}
             <div class="container">
                 <div class="mb-3">
-{{--                    <label for="keyword" class="form-label">{{$business->lang=='zh'?'電郵':'Customer Email'}} <span--}}
-{{--                            style="color: red">*</span></label>--}}
                     <input wire:model="keyword" class="form-control" type="text" id="keyword"
                            name="keyword" placeholder={{$business->lang=='zh'? "Search Keyword":"Search Keyword"}}>
                 </div>
-{{--                <div class="mb-3">--}}
-{{--                    <label for="customer_password" class="form-label">{{$business->lang=='zh'?'密碼':'Customer Password'}}--}}
-{{--                        <span--}}
-{{--                            style="color: red">*</span></label>--}}
-{{--                    <input wire:model="customer_password" class="form-control" type="text" id="customer_password"--}}
-{{--                           name="customer_password">--}}
-{{--                </div>--}}
-
-
                 <div class="mb-3">
                     <button type="button" class="form-control btn btn-outline-primary"
                             wire:click="search">{{$business->lang=='zh'?'搜尋':'Search'}}</button>
