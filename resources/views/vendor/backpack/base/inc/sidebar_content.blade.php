@@ -68,6 +68,22 @@
     </ul>
 </li>
 
+
+<li class="nav-item nav-dropdown">
+    <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-th-list"></i> Food Ordering</a>
+    <ul class="nav-dropdown-items">
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dish') }}"><i
+                    class="nav-icon la la-th-list"></i> Dishes</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('table') }}"><i
+                    class="nav-icon la la-th-list"></i> Tables</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order') }}"><i
+                    class="nav-icon la la-th-list"></i> Food orders</a></li>
+        {{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order-item') }}"><i class="nav-icon la la-th-list"></i> Food order items</a></li>--}}
+
+    </ul>
+</li>
+
+
 @if(backpack_user()->hasAnyPermission(['create settings','edit settings','view settings','delete settings'])||backpack_user()->isSuperAdmin)
     <!-- Settings Only -->
     <li class="nav-item nav-dropdown">
@@ -126,9 +142,3 @@
 
 
 
-
-
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('dish') }}"><i class="nav-icon la la-th-list"></i> Dishes</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('table') }}"><i class="nav-icon la la-th-list"></i> Tables</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order') }}"><i class="nav-icon la la-th-list"></i> Food orders</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order-item') }}"><i class="nav-icon la la-th-list"></i> Food order items</a></li>
