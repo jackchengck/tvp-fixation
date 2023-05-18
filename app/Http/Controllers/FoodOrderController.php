@@ -91,7 +91,13 @@
             $foodOrder->status = 'delivered';
             $foodOrder->save();
 
-            return "Food Order #" . $id . " is set to Delivered";
+//            return "Food Order #" . $id . " is set to Delivered";
+
+            return view(
+                'admin.delivered_set', [
+                                         'foodOrder' => $foodOrder
+                                     ]
+            );
         }
 
 
@@ -104,8 +110,8 @@
 
             return view(
                 'admin.paid_set', [
-                'foodOrder' => $foodOrder
-            ]
+                                    'foodOrder' => $foodOrder
+                                ]
             );
 //            return "Food Order #" . $id . " is set to Paid";
         }
