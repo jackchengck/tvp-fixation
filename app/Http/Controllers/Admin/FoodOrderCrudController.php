@@ -5,6 +5,7 @@
     use App\Http\Requests\FoodOrderRequest;
     use Backpack\CRUD\app\Http\Controllers\CrudController;
     use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+    use Backpack\EditableColumns\Http\Controllers\Operations\MinorUpdateOperation;
 
     /**
      * Class FoodOrderCrudController
@@ -18,6 +19,7 @@
         use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
         use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
         use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+        use MinorUpdateOperation;
 
         /**
          * Configure the CrudPanel object. Apply settings to all operations.
@@ -49,7 +51,8 @@
 
                     [
                         'name'    => 'status',
-                        'type'    => 'select_from_array',
+                        //                        'type'    => 'select_from_array',
+                        'type'    => 'editable_select',
                         'options' => [
                             'preparing' => '準備中',
                             'delivered' => '已出餐',
@@ -59,11 +62,14 @@
 
                     [
                         'name'    => 'payment_method',
-                        'type'    => 'select_from_array',
+                        //                        'type'    => 'select_from_array',
+                        'type'    => 'editable_select',
                         'options' => [
+                            null          => '---',
                             'cash'        => '現金',
                             'credit_card' => '信用卡',
                             'octopus'     => '八達通',
+                            'payme'       => 'Payme',
                             'alipay'      => '支付寶',
                             'wechatpay'   => '微信支付',
                             'other'       => '其他',
@@ -140,9 +146,11 @@
                         'name'        => 'payment_method',
                         'type'        => 'select_from_array',
                         'options'     => [
+                            null          => '---',
                             'cash'        => '現金',
                             'credit_card' => '信用卡',
                             'octopus'     => '八達通',
+                            'payme'       => 'Payme',
                             'alipay'      => '支付寶',
                             'wechatpay'   => '微信支付',
                             'other'       => '其他',

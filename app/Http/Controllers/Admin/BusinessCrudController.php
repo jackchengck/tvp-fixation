@@ -92,6 +92,10 @@ class BusinessCrudController extends CrudController
         CRUD::field('user_id');
 //        CRUD::field('solution_integrator_id');
 
+        CRUD::field('payme_code')->label('PayMe Code');
+        CRUD::field('alipay_code')->label('Alipay Code');
+        CRUD::field('wechatpay_code')->label('Wechat Pay Code');
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

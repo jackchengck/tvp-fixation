@@ -102,6 +102,11 @@
             $foodOrder->status = 'paid';
             $foodOrder->save();
 
-            return "Food Order #" . $id . " is set to Paid";
+            return view(
+                'admin.paid_set', [
+                'foodOrder' => $foodOrder
+            ]
+            );
+//            return "Food Order #" . $id . " is set to Paid";
         }
     }
