@@ -53,12 +53,13 @@
                 [
                     'customer_email'    => $customerEmail,
                     'customer_password' => $password,
+                    'business_id'       => $business->id,
                 ], [
                     'customer_name'  => $customerName,
                     //            'customer_email' => $customerEmail,
                     'customer_phone' => $customerPhone,
                     //            'customer_password' => $password,
-                    'business_id'    => $business->id,
+//                    'business_id'    => $business->id,
                     'chatroom_token' => $newToken,
                 ]
             );
