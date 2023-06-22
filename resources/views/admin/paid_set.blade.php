@@ -11,7 +11,9 @@
                         @case('payme')
                         <h2 class="text-center mb-4">Please Scan to Pay</h2>
                         <div class="m-auto">
-                            {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(300)->backgroundColor(255,255,255)->generate($foodOrder->business->payme_code)!!}
+                            @if($foodOrder->business->payme_code)
+                                {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(300)->backgroundColor(255,255,255)->generate($foodOrder->business->payme_code)!!}
+                            @endif
                             <h2 class="text-center mt-2">PayMe</h2>
                         </div>
                         @break
@@ -20,7 +22,9 @@
                         @case('alipay')
                         <h2 class="text-center mb-4">Please Scan to Pay</h2>
                         <div class="m-auto">
-                            {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(300)->backgroundColor(255,255,255)->generate($foodOrder->business->alipay_code)!!}
+                            @if($foodOrder->business->alipay_code)
+                                {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(300)->backgroundColor(255,255,255)->generate($foodOrder->business->alipay_code)!!}
+                            @endif
                             <h2 class="text-center mt-2">Alipay</h2>
                         </div>
                         @break
@@ -28,7 +32,9 @@
                         @case('wechatpay')
                         <h2 class="text-center mb-4">Wechat Pay QR Code</h2>
                         <div class="m-auto">
-                            {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(255,255,255)->generate($foodOrder->business->wechatpay_code)!!}
+                            @if($foodOrder->business->wechatpay_code)
+                                {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(255,255,255)->generate($foodOrder->business->wechatpay_code)!!}
+                            @endif
                             <h2 class="text-center mt-2">Wechat Pay</h2>
                         </div>
                         @break
