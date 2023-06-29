@@ -39,17 +39,21 @@
                             <div class="d-flex flex-column flex-grow-1 justify-content-between mb-2"
                                  style="">
                                 <div class="mb-2"
-                                     style="width: 80px;height:80px;background: linear-gradient(to right,#fff,#eaeaea);border-radius: 40px;"></div>
-                                <div>
-                                    <div>
+                                    {{--                                     style="width: 80px;height:80px;background: linear-gradient(to right,#fff,#eaeaea);border-radius: 40px;"--}}
+                                >
+                                    <h4 class="fw-bold ">{{$business->title}}</h4>
 
-                                        <h4 class="">{{$business->lang=='zh'?'會員名稱':'Member Name'}}
-                                            : {{$customer_name}}</h4>
-                                    </div>
-                                    <div class="d-flex flex-column">
-                                        <span>{{$business->lang=='zh'?'電郵':'Email'}}: {{$customer_email}}</span>
-                                        <span>{{$business->lang=='zh'?'到期日':'Expiry date:'}}: {{$expiry_date}}</span>
-                                    </div>
+                                </div>
+                                <div>
+                                    {{--                                    <div>--}}
+
+                                    {{--                                        <h4 class="">{{$business->lang=='zh'?'會員名稱':'Member Name'}}--}}
+                                    {{--                                            : {{$customer_name}}</h4>--}}
+                                    {{--                                    </div>--}}
+                                    {{--                                    <div class="d-flex flex-column">--}}
+                                    {{--                                        <span>{{$business->lang=='zh'?'電郵':'Email'}}: {{$customer_email}}</span>--}}
+                                    {{--                                        <span>{{$business->lang=='zh'?'到期日':'Expiry date:'}}: {{$expiry_date}}</span>--}}
+                                    {{--                                    </div>--}}
                                 </div>
                                 {{--                            <p>{{$business->lang=='zh'?'日期':'Booking Date'}}: {{$booking->booking_date}}</p>--}}
                                 {{--                            <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
@@ -57,7 +61,17 @@
                             </div>
                             <div class="d-flex flex-row justify-content-between">
                                 <div class="d-flex flex-column justify-content-end">
-                                    <span>{{$business->title}}</span>
+                                    {{--                                    <span>{{$business->title}}</span>--}}
+
+                                    <div>
+
+                                        <h5 class="">{{$business->lang=='zh'?'會員名稱':'Member Name'}}
+                                            : {{$customer_name}}</h5>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <span>{{$business->lang=='zh'?'電郵':'Email'}}: {{$customer_email}}</span>
+                                        <span>{{$business->lang=='zh'?'到期日':'Expiry date:'}}: {{$expiry_date}}</span>
+                                    </div>
                                 </div>
                                 <div class="pl-4 align-self-end">
 
