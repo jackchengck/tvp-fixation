@@ -10,12 +10,12 @@
 
     Route::group(
         [
-            'prefix' => config('backpack.base.route_prefix', 'admin'),
+            'prefix'     => config('backpack.base.route_prefix', 'admin'),
             'middleware' => array_merge(
                 (array)config('backpack.base.web_middleware', 'web'),
                 (array)config('backpack.base.middleware_key', 'admin')
             ),
-            'namespace' => 'App\Http\Controllers\Admin',
+            'namespace'  => 'App\Http\Controllers\Admin',
         ], function () { // custom admin routes
         Route::crud('user', 'UserCrudController');
         Route::crud('booking', 'BookingCrudController');
@@ -35,83 +35,83 @@
             array('prefix' => 'documents'), function () {
             Route::get(
                 '/', [
-                \App\Http\Controllers\DocumentsController::class,
-                'viewDocumentsList'
-            ]
+                       \App\Http\Controllers\DocumentsController::class,
+                       'viewDocumentsList'
+                   ]
             );
             Route::get(
                 'daily_sales_statement_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'dailySalesStatementParamPdfStream'
-            ]
+                                               \App\Http\Controllers\DocumentsController::class,
+                                               'dailySalesStatementParamPdfStream'
+                                           ]
             );
             Route::get(
                 'monthly_sales_statement_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlySalesStatementParamPdfStream'
-            ]
+                                                 \App\Http\Controllers\DocumentsController::class,
+                                                 'monthlySalesStatementParamPdfStream'
+                                             ]
             );
 
             Route::get(
                 'monthly_employee_sales_records_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlyEmployeeSalesRecordsParamPdfStream'
-            ]
+                                                        \App\Http\Controllers\DocumentsController::class,
+                                                        'monthlyEmployeeSalesRecordsParamPdfStream'
+                                                    ]
             );
             Route::get(
                 'monthly_employee_product_damaged_records_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlyEmployeeProductDamagedRecordsParamPdfStream'
-            ]
+                                                                  \App\Http\Controllers\DocumentsController::class,
+                                                                  'monthlyEmployeeProductDamagedRecordsParamPdfStream'
+                                                              ]
             );
             Route::get(
                 'monthly_employee_product_consumed_records_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlyEmployeeProductConsumedRecordsParamPdfStream'
-            ]
+                                                                   \App\Http\Controllers\DocumentsController::class,
+                                                                   'monthlyEmployeeProductConsumedRecordsParamPdfStream'
+                                                               ]
             );
             Route::get(
                 'monthly_top_five_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlySalesStatementParamPdfStream'
-            ]
+                                          \App\Http\Controllers\DocumentsController::class,
+                                          'monthlySalesStatementParamPdfStream'
+                                      ]
             );
             Route::get(
                 'monthly_trashed_inventories_records_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlyTrashedInventoryRecordsParamPdfStream'
-            ]
+                                                             \App\Http\Controllers\DocumentsController::class,
+                                                             'monthlyTrashedInventoryRecordsParamPdfStream'
+                                                         ]
             );
             Route::get(
                 'monthly_damaged_inventories_records_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlyDamagedInventoryRecordsParamPdfStream'
-            ]
+                                                             \App\Http\Controllers\DocumentsController::class,
+                                                             'monthlyDamagedInventoryRecordsParamPdfStream'
+                                                         ]
             );
             Route::get(
                 'monthly_booking_record_list_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'monthlyBookingRecordsParamPdfStream'
-            ]
+                                                     \App\Http\Controllers\DocumentsController::class,
+                                                     'monthlyBookingRecordsParamPdfStream'
+                                                 ]
             );
             Route::get(
                 'customer_list_pdf', [
-                \App\Http\Controllers\DocumentsController::class,
-                'customerListParamPdfStream'
-            ]
+                                       \App\Http\Controllers\DocumentsController::class,
+                                       'customerListParamPdfStream'
+                                   ]
             );
 
             Route::get(
                 'daily_statement_export', [
-                \App\Http\Controllers\ExportController::class,
-                'dailyStatementParamExport'
-            ]
+                                            \App\Http\Controllers\ExportController::class,
+                                            'dailyStatementParamExport'
+                                        ]
             );
             Route::get(
                 'monthly_statement_export', [
-                \App\Http\Controllers\ExportController::class,
-                'monthlyStatementParamExport'
-            ]
+                                              \App\Http\Controllers\ExportController::class,
+                                              'monthlyStatementParamExport'
+                                          ]
             );
 
         }
@@ -123,15 +123,15 @@
 
             Route::get(
                 'send-supplier-order-email/{id}', [
-                \App\Http\Controllers\SendMailController::class,
-                'sendSupplierOrderEmail'
-            ]
+                                                    \App\Http\Controllers\SendMailController::class,
+                                                    'sendSupplierOrderEmail'
+                                                ]
             );
             Route::get(
                 'send-booking-customer-email/{id}', [
-                \App\Http\Controllers\SendMailController::class,
-                'sendBookingCustomerEmail'
-            ]
+                                                      \App\Http\Controllers\SendMailController::class,
+                                                      'sendBookingCustomerEmail'
+                                                  ]
             );
 
         }
@@ -143,9 +143,16 @@
 
             Route::get(
                 'send-booking-customer-sms/{id}', [
-                \App\Http\Controllers\SendSmsController::class,
-                'sendBookingCustomerSms'
-            ]
+                                                    \App\Http\Controllers\SendSmsController::class,
+                                                    'sendBookingCustomerSms'
+                                                ]
+            );
+
+            Route::get(
+                'send-booking-due-customer-sms/{id}', [
+                                                        \App\Http\Controllers\SendSmsController::class,
+                                                        'sendBookingDueCustomerSms'
+                                                    ]
             );
 
         }
@@ -153,9 +160,9 @@
 
         Route::get(
             'chat-history/{id}', [
-            \App\Http\Controllers\Api\ChatroomController::class,
-            'downloadChatroomHistory'
-        ]
+                                   \App\Http\Controllers\Api\ChatroomController::class,
+                                   'downloadChatroomHistory'
+                               ]
         );
 
 
@@ -190,15 +197,15 @@
 
             Route::get(
                 'set-delivered/{id}', [
-                \App\Http\Controllers\FoodOrderController::class,
-                'setDelivered'
-            ]
+                                        \App\Http\Controllers\FoodOrderController::class,
+                                        'setDelivered'
+                                    ]
             );
             Route::get(
                 'set-paid/{id}', [
-                \App\Http\Controllers\FoodOrderController::class,
-                'setPaid'
-            ]
+                                   \App\Http\Controllers\FoodOrderController::class,
+                                   'setPaid'
+                               ]
             );
 
         }

@@ -69,6 +69,12 @@ class Booking extends Model
         return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("sms/send-booking-customer-sms") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Customer SMS"><i class="la la-sms"></i> Booking Confirm SMS</a>';
     }
 
+
+    public function getBookingDueCustomerSmsButton()
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("sms/send-booking-due-customer-sms") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Due Customer SMS"><i class="la la-sms"></i> Booking Due SMS</a>';
+    }
+
     public function routeNotificationForSns($notification = null)
     {
         return $this->customer_phone;
