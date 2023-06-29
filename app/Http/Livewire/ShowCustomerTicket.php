@@ -24,7 +24,7 @@
         public function mount($business)
         {
             $this->business = $business;
-            $this->result = $business->lang == 'zh' ? "請先輸入預約電郵及密碼" : "Please Input Email & Password first";
+            $this->result = $business->lang == 'zh' ? "請先輸入電郵及密碼" : "Please Input Email & Password first";
         }
 
         public function render()
@@ -34,11 +34,13 @@
 
         public function search()
         {
+            $this->bookings = null;
+
             if ($this->customer_email != '' && $this->customer_password != '') {
                 $this->bookings = Booking::where('business_id', '=', $this->business->id)->where('customer_email', '=', $this->customer_email)->where('customer_password', '=', $this->customer_password)->get();
                 if ($this->bookings) {
                     $this->customer_name = $this->bookings[0]->customer_name ?? "";
-                    $lastDatetime = new Carbon($this->bookings->last()->created_at);
+                    $lastDatetime = new Carbon($this->bookings->last()->created_at ?? now());
                     $this->expiry_date = $lastDatetime->addYears(2)->toDateString();
                 }
                 $this->result = $this->business->lang == 'zh' ? "結果" : "Search Result";
@@ -47,8 +49,7 @@
                 $this->coupons = Coupon::where('business_id', '=', $this->business->id)->get();
 //            dd($this->customer_email, $this->customer_password,$this->bookings);
             } else {
-                $this->result = $this->business->lang == 'zh' ? "請先輸入預約電郵及密碼" : "Please Input Email & Password first";
-
+                $this->result = $this->business->lang == 'zh' ? "請先輸入電郵及密碼" : "Please Input Email & Password first";
             }
         }
 
