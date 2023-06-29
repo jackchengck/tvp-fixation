@@ -61,6 +61,10 @@ class Service extends Model
         return $value . $v2;
     }
 
+    public function products(){
+        return $this->belongsToMany(Product::class,'products_services','service_id','product_id')->withPivot('quantity');
+    }
+
     public function getBookingSlots($bookingDate)
     {
         $serviceId = $this->id;

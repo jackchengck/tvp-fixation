@@ -72,6 +72,10 @@ class Product extends Model
         return $this->hasMany(SupplierOrderItem::class);
     }
 
+    public function services(){
+        return $this->belongsToMany(Service::class,'products_services','product_id','service_id')->withPivot('quantity');
+    }
+
     public function getQuantityAttribute()
     {
         $inventories = InventoryLog::where('product_id', '=', $this->id)->get();
