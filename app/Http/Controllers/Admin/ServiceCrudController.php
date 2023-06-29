@@ -128,6 +128,20 @@ class ServiceCrudController extends CrudController
 //                    'step' => 'any'
                 ]
             ],
+
+            [
+                'name'      => 'products',
+                'type'      => 'relationship',
+                'label'     => 'Related Products Consumption',
+                'subfields' => [
+                    [
+                        'name'  => 'quantity',
+                        'type'  => 'number',
+                        'label' => 'Quantity'
+                    ],
+                ],
+                //                        'force_delete' => true,
+            ],
 //            [
 //                'name' => 'business',
 //                'type' => 'relationship',
