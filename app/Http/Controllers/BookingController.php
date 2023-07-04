@@ -54,7 +54,10 @@
             return redirect('booking')->with('status', 'Booking Has been created');
         }
 
-        public function getStoreBooking(Request $request){
+        public function getStoreBooking(Request $request)
+        {
+
+            dd($request);
 
             $booking = new Booking();
             $booking->order_num = $request->order_num;
