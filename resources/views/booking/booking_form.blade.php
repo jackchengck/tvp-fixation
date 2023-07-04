@@ -15,6 +15,7 @@
     <div class="container mt-3 ">
         <div class="row justify-content-center mb-4">
             <h2 class="text-center mb-2">{{$business->lang=='zh'?'預約項目':'Booking'}}</h2>
+            <div>{{url('store-booking')}}</div>
             @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
