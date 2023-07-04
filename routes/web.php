@@ -193,13 +193,14 @@
     Route::post(
         '/store-booking', [
                             \App\Http\Controllers\BookingController::class,
-                            'store'
+                            'storeBooking'
                         ]
     );
+
     Route::post(
         '/store-customer-survey', [
                                     \App\Http\Controllers\CustomerInfoSurveyController::class,
-                                    'store'
+                                    'storeSurvey'
                                 ]
     );
 

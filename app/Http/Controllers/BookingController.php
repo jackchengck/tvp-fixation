@@ -32,13 +32,7 @@
             //
         }
 
-        /**
-         * Store a newly created resource in storage.
-         *
-         * @param Request $request
-         * @return \Illuminate\Http\Response
-         */
-        public function store(Request $request)
+        public function storeBooking(Request $request)
         {
             //
 //        dd($request);

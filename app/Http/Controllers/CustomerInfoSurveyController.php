@@ -34,7 +34,7 @@ class CustomerInfoSurveyController extends Controller
      * @param \App\Http\Requests\StoreCustomerInfoSurveyRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCustomerInfoSurveyRequest $request)
+    public function storeSurvey(StoreCustomerInfoSurveyRequest $request)
     {
         //
 
