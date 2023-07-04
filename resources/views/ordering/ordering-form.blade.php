@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card p-3 col-md-8">
-                    <form action="{{url('/ordering/'.$table->id)}}" method="post">
+                    <form action="{{'/ordering/'.$table->id}}" method="post">
                         {{csrf_field()}}
                         <div class="row row-cols-2">
                             {{--                    @if($tables)--}}

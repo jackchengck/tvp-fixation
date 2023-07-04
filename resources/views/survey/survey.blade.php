@@ -24,8 +24,10 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card p-3 col-md-8">
-                    <form name="customer-survey-form" id="customer-survey-form" method="post"
-                          action="{{url('store-customer-survey')}}">
+{{--                    <form name="customer-survey-form" id="customer-survey-form" method="post"--}}
+{{--                          action="{{url('store-customer-survey')}}">--}}
+                        <form name="customer-survey-form" id="customer-survey-form" method="post"
+                              action="/store-customer-survey">
                         @csrf
                         <div class="container  pt-3">
                             <input type="text" hidden id="business" name="business" value={{$business->id}}>

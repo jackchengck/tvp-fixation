@@ -15,7 +15,7 @@
     <div class="container mt-3 ">
         <div class="row justify-content-center mb-4">
             <h2 class="text-center mb-2">{{$business->lang=='zh'?'預約項目':'Booking'}}</h2>
-            <div style="display: none">{{url('store-booking')}}</div>
+{{--            <div style="display: none">{{url('store-booking')}}</div>--}}
             @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
@@ -25,8 +25,10 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card p-3 col-md-8">
+{{--                    <form name="add-booking-post-form" id="add-booking-post-form" method="post"--}}
+{{--                          action="{{url('store-booking')}}">--}}
                     <form name="add-booking-post-form" id="add-booking-post-form" method="post"
-                          action="{{url('store-booking')}}">
+                          action="/store-booking">
                         @csrf
                         <div class="container  pt-3">
                             <div class="mb-3">
