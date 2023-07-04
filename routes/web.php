@@ -190,12 +190,21 @@
     }
     );
 
+    Route::get(
+        '/store-booking', [
+                            \App\Http\Controllers\BookingController::class,
+                            'getStoreBooking'
+                        ]
+    );
+
+
     Route::post(
         '/store-booking', [
                             \App\Http\Controllers\BookingController::class,
                             'storeBooking'
                         ]
     );
+
 
     Route::post(
         '/store-customer-survey', [
@@ -395,13 +404,13 @@
 
         return view(
             'ordering.ordering-history', [
-                                        'domain'     => $getHost,
-                                        'si'         => $si,
-                                        'business'   => $business,
-                                        'table'      => $table,
-                                        'foodOrders' => $foodOrders,
+                                           'domain'     => $getHost,
+                                           'si'         => $si,
+                                           'business'   => $business,
+                                           'table'      => $table,
+                                           'foodOrders' => $foodOrders,
 
-                                    ]
+                                       ]
         );
     }
     )->name('ordering.ordering-history');
