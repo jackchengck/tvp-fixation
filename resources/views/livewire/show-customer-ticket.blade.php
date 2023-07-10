@@ -32,7 +32,7 @@
                 {{--        <h4>{{$customer_email}}</h4>--}}
                 {{--        <h4>{{$customer_password}}</h4>--}}
 
-                @if($bookings)
+                @if($customer)
                     <h5 class="mb-4">{{$business->lang=='zh'?'會員卡':'Membership Card'}}</h5>
                     <div class="card p-2 mb-2 membership-card">
                         <div class="card-body d-flex flex-column justify-content-center align-center">
@@ -59,23 +59,27 @@
                                 {{--                            <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
                                 {{--                            <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
                             </div>
-                            <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column d-sm-flex flex-sm-row justify-content-between">
                                 <div class="d-flex flex-column justify-content-end">
                                     {{--                                    <span>{{$business->title}}</span>--}}
-
                                     <div>
 
-                                        <h5 class="">{{$business->lang=='zh'?'會員名稱':'Member Name'}}
-                                            : {{$customer_name}}</h5>
+                                        <h5 class="" onclick="showName()">{{$business->lang=='zh'?'會員名稱':'Member Name'}}
+                                            : {{$customer->name}}</h5>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <span>{{$business->lang=='zh'?'電郵':'Email'}}: {{$customer_email}}</span>
+                                        <span
+                                            onclick="showEmail()">{{$business->lang=='zh'?'電郵':'Email'}}: {{$customer->email}}</span>
                                         <span>{{$business->lang=='zh'?'到期日':'Expiry date:'}}: {{$expiry_date}}</span>
                                     </div>
                                 </div>
-                                <div class="pl-4 align-self-end">
-
-                                    {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(134,239,172)->generate($customer_email)!!}
+                                <div class="d-flex flex-column pl-4 align-self-end">
+                                    <div id="member_card_name_qr" style="display: none">
+                                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(134,239,172)->generate($customer->name)!!}
+                                    </div>
+                                    <div id="member_card_name_email">
+                                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(50)->backgroundColor(134,239,172)->generate($customer->email)!!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -83,17 +87,20 @@
                     <h5 class="mb-4">{{$bookingTitle}}</h5>
                     @foreach($bookings as $booking)
                         <div class="container pl-4 pr-4">
-                            <div class="card p-5 mb-2">
-                                <div class="card-body d-flex justify-content-center align-center">
-                                    <div class="" style="padding-right: 50px">
+                            <div class="card p-lg-5 mb-2">
+                                <div
+                                    class="card-body d-flex flex-column d-sm-flex flex-sm-row justify-content-between align-center">
+                                    <div class="d-flex flex-column pr-sm-5">
                                         <h4 class="mb-4">{{$business->lang=='zh'?'項目':'Service'}}
                                             : {{$booking->service->title}}</h4>
-                                        <p>{{$business->lang=='zh'?'客戶':'Customer'}}: {{$booking->customer_name}}</p>
-                                        <p>{{$business->lang=='zh'?'日期':'Booking Date'}}: {{$booking->booking_date}}</p>
+                                        <p class="">{{$business->lang=='zh'?'客戶':'Customer'}}
+                                            : {{$booking->customer->name}}</p>
+                                        <p class="">{{$business->lang=='zh'?'日期':'Booking Date'}}
+                                            : {{$booking->booking_date}}</p>
                                         <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>
                                         <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>
                                     </div>
-                                    <div class="align-self-center pl-4">
+                                    <div class="d-flex flex-column align-self-center pl-4">
                                         {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($booking->order_num)!!}
                                     </div>
                                 </div>
@@ -106,9 +113,10 @@
                     <h5 class="mb-4">{{$couponTitle}}</h5>
                     @foreach($coupons as $coupon)
                         <div class="container pl-4 pr-4">
-                            <div class="card p-5 mb-2">
-                                <div class="card-body d-flex justify-content-center align-center">
-                                    <div class="" style="padding-right: 50px">
+                            <div class="card p-lg-5 mb-2">
+                                <div
+                                    class="card-body d-flex flex-column d-sm-flex flex-sm-row align-center justify-content-between">
+                                    <div class=" d-flex flex-column pr-sm-5  ">
                                         <h4 class="mb-4">{{$business->lang=='zh'?'優惠券':'Coupon'}}
                                             : {{$coupon->title}}</h4>
                                         <p>{{$business->lang=='zh'?'優惠碼':'Customer'}}: {{$coupon->code}}</p>
@@ -116,7 +124,7 @@
                                         {{--                                        <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
                                         {{--                                        <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
                                     </div>
-                                    <div class="align-self-center pl-4">
+                                    <div class=" d-flex flex-column align-self-center pl-4">
                                         {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($coupon->code)!!}
                                     </div>
                                 </div>
@@ -134,3 +142,15 @@
         max-width: 500px;
     }
 </style>
+
+<script>
+    function showName() {
+        document.getElementById("member_card_name_qr").style.display = "block";
+        document.getElementById("member_card_name_email").style.display = "none";
+    }
+
+    function showEmail() {
+        document.getElementById("member_card_name_qr").style.display = "none";
+        document.getElementById("member_card_name_email").style.display = "block";
+    }
+</script>

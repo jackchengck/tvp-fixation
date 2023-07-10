@@ -29,10 +29,10 @@ class BookingRequest extends FormRequest
 
             'service_id' => 'required',
 
-            'customer_name' => 'required',
-            'customer_email' => 'required',
-            'customer_phone' => 'required',
-            'customer_password' => 'required',
+//            'customer_name' => 'required',
+//            'customer_email' => 'required',
+//            'customer_phone' => 'required',
+//            'customer_password' => 'required',
             'order_num' => 'required',
 
             'booking_date' => 'required',

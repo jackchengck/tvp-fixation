@@ -105,6 +105,7 @@
                         class="nav-icon la la-th-list"></i> Frequently asked questions</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer-info-survey') }}"><i
                         class="nav-icon la la-th-list"></i> Customer info surveys</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer') }}"><i class="nav-icon la la-th-list"></i> Customers</a></li>
         </ul>
     </li>
 @endif
@@ -139,6 +140,7 @@
         </ul>
     </li>
 @endif
+
 
 
 

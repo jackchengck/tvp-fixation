@@ -189,6 +189,7 @@
         Route::crud('table', 'TableCrudController');
         Route::crud('food-order', 'FoodOrderCrudController');
         Route::crud('food-order-item', 'FoodOrderItemCrudController');
+        Route::crud('customer', 'CustomerCrudController');
 
 
 //    SMS

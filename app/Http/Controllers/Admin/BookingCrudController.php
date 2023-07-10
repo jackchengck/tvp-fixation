@@ -85,6 +85,22 @@
         {
             CRUD::column('service_id');
             CRUD::column('booking_date');
+//            CRUD::column('customer');
+            CRUD::addColumn(
+                [
+                    'name'        => 'customer',
+                    'type'        => 'relationship',
+                    'searchLogic' => function ($query, $column, $searchTerm) {
+                        $query->orWhereHas(
+                            'customer', function ($q) use ($column, $searchTerm) {
+                            $q->where('name', 'like', '%' . $searchTerm . '%')->orWhere(
+                                'email', 'like', '%' . $searchTerm . '%'
+                            );
+                        }
+                        );
+                    }
+                ]
+            );
             CRUD::column('customer_name');
             CRUD::column('customer_phone');
             CRUD::column('customer_email');
@@ -129,6 +145,7 @@
             CRUD::setValidation(BookingRequest::class);
 
             CRUD::field('service_id');
+            CRUD::field('customer');
             CRUD::field('customer_name');
             CRUD::field('customer_email');
 //        CRUD::field('customer_phone');

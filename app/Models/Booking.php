@@ -20,7 +20,7 @@
 
         public function identifiableName()
         {
-            return $this->customer_name;
+            return $this->customer_name ?? $this->customer->name;
         }
 
         // If you are using another bootable trait
@@ -63,6 +63,8 @@
             'business_id',
             'booking_status',
 
+            'customer_id'
+
         ];
 
 
@@ -74,6 +76,11 @@
         public function business()
         {
             return $this->belongsTo(Business::class);
+        }
+
+        public function customer()
+        {
+            return $this->belongsTo(Customer::class);
         }
 
 
@@ -95,6 +102,6 @@
 
         public function routeNotificationForSns($notification = null)
         {
-            return $this->customer_phone;
+            return $this->customer_phone ?? $this->customer->phone;
         }
     }
