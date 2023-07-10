@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->string('password');
+            $table->string('password')->nullable();
 
             $table->foreignId('business_id')->constrained()->onDelete('CASCADE');
             $table->timestamps();
