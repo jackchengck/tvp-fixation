@@ -50,12 +50,13 @@
             $customer = Customer::firstOrCreate(
                 [
                     'email'    => $request->customer_email,
-                    'password' => $request->customer_password
+                    'password' => $request->customer_password,
+                    'business_id' => Service::find($request->service)->business->id
+
                 ],
                 [
                     'name'        => $request->customer_name,
                     'phone'       => '+852' . $request->customer_phone,
-                    'business_id' => Service::find($request->service)->business->id
                 ]
             );
 
