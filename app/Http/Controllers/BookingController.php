@@ -53,8 +53,9 @@
                     'password' => $request->customer_password
                 ],
                 [
-                    'name'  => $request->customer_name,
-                    'phone' => '+852' . $request->customer_phone
+                    'name'        => $request->customer_name,
+                    'phone'       => '+852' . $request->customer_phone,
+                    'business_id' => Service::find($request->service)->business->id
                 ]
             );
 
