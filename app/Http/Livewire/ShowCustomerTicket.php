@@ -44,6 +44,9 @@
                 $this->customer = Customer::where('business_id', '=', $this->business->id)->where('email', '=', $this->customer_email)->where('password', '=', $this->customer_password)->first();
 
 //                dd($this->customer);
+                if (!$this->customer) {
+                    $this->customer = Customer::where('business_id', '=', $this->business->id)->where('email', '=', $this->customer_email)->where('password', '=', null)->first();
+                }
 
                 if ($this->customer) {
                     $this->customer_name = $this->customer->name;
@@ -57,6 +60,7 @@
                 } else {
                     $this->result = $this->business->lang == 'zh' ? "登入失敗" : "Login Failed";
                     $this->coupons = null;
+
                 }
 
 //                $this->bookings = Booking::where('business_id', '=', $this->business->id)->where('customer_email', '=', $this->customer_email)->where('customer_password', '=', $this->customer_password)->get();
