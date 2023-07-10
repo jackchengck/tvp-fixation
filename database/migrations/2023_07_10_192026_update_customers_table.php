@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('password');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+            $table->string('password')->nullable()->change();
 
-            $table->foreignId('business_id')->constrained()->onDelete('CASCADE');
-            $table->timestamps();
         });
     }
 
@@ -32,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+        });
     }
 };
