@@ -53,12 +53,7 @@
 
 //            dd($request['email'],$request['subject'],$request['content']);
 
-//            return redirect()->route('mail.custom', ['orderId' => $foodOrder->id]);
-            return redirect()->route('mail.custom')->with('status', 'Email Has been sent');
-
-
-//            return ($business->id . " " . $request['email']);
+            return redirect()->route('mail.custom')->with('status', 'Email Has been sent '.$request['email']);
         }
 
-//        public function customEmail
     }
