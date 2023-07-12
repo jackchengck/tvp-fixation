@@ -1,40 +1,64 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use App\Mail\BookingCreatedToCustomer;
-use App\Models\Booking;
-use App\Models\SupplierOrder;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+    use App\Mail\BookingCreatedToCustomer;
+    use App\Mail\CustomEmail;
+    use App\Models\Booking;
+    use App\Models\SupplierOrder;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Mail;
 
-class SendMailController extends Controller
-{
-    //
-
-    public function sendSupplierOrderEmail($id)
+    class SendMailController extends Controller
     {
+        //
 
-        $supplierOrder = SupplierOrder::findOrFail($id);
+        public function sendSupplierOrderEmail($id)
+        {
 
-        // Ship the order...
+            $supplierOrder = SupplierOrder::findOrFail($id);
+
+            // Ship the order...
 
 //        Mail::to($supplierOrder->supplier->email)->send(new \App\Mail\SupplierOrder($supplierOrder));
-        Mail::to($supplierOrder->supplier->email)->queue(new \App\Mail\SupplierOrder($supplierOrder));
+            Mail::to($supplierOrder->supplier->email)->queue(new \App\Mail\SupplierOrder($supplierOrder));
 
-        return ("Supplier Order Email sent");
-    }
+            return ("Supplier Order Email sent");
+        }
 
-    public function sendBookingCustomerEmail($id)
-    {
+        public function sendBookingCustomerEmail($id)
+        {
 
-        $booking = Booking::findOrFail($id);
+            $booking = Booking::findOrFail($id);
 
-        // Ship the order...
+            // Ship the order...
 
 //        Mail::to($supplierOrder->supplier->email)->send(new \App\Mail\SupplierOrder($supplierOrder));
-        Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
+            Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
 
-        return ("Booking Email to Customer sent");
+            return ("Booking Email to Customer sent");
+        }
+
+        public function customEmail()
+        {
+
+            return view('admin.custom_email');
+        }
+
+        public function sendCustomEmail(Request $request)
+        {
+            $business = backpack_user()->business;
+
+            Mail::to($request['email'])->send(new CustomEmail($business, $request['email'], $request['subject'], $request['content']));
+
+//            dd($request['email'],$request['subject'],$request['content']);
+
+//            return redirect()->route('mail.custom', ['orderId' => $foodOrder->id]);
+            return redirect()->route('mail.custom')->with('status', 'Email Has been sent');
+
+
+//            return ($business->id . " " . $request['email']);
+        }
+
+//        public function customEmail
     }
-}

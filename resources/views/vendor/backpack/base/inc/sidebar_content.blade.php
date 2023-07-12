@@ -106,6 +106,7 @@
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer-info-survey') }}"><i
                         class="nav-icon la la-th-list"></i> Customer info surveys</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer') }}"><i class="nav-icon la la-th-list"></i> Customers</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('mail/custom') }}"><i class="nav-icon la la-th-list"></i> Custom Email</a></li>
         </ul>
     </li>
 @endif

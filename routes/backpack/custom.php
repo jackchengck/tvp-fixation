@@ -122,6 +122,20 @@
             array('prefix' => 'mail'), function () {
 
             Route::get(
+                'custom', [
+                            \App\Http\Controllers\SendMailController::class,
+                            'customEmail'
+                        ]
+            )->name('mail.custom');
+
+            Route::post(
+                'send-custom-email', [
+                                       \App\Http\Controllers\SendMailController::class,
+                                       'sendCustomEmail'
+                                   ]
+            );
+
+            Route::get(
                 'send-supplier-order-email/{id}', [
                                                     \App\Http\Controllers\SendMailController::class,
                                                     'sendSupplierOrderEmail'
