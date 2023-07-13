@@ -1,4 +1,5 @@
 {{--<div class="container">--}}
+
 <div>
     <div class="mb-3">
         <label for="service" class="form-label">{{$business->lang=='zh'?'選擇服務':'Select Service'}} <span
@@ -14,15 +15,16 @@
     <div class="mb-3">
         <label for="booking_date" class="form-label">{{$business->lang=='zh'?'選擇日期':'Select a Date'}} <span
                 style="color: red">*</span></label>
-        <input wire:model="bookingDate" class="form-control" type="date" id="booking_date" name="booking_date">
+        <input wire:model="bookingDate" class="form-control" type="date" id="booking_date" name="booking_date"
+               min='{{$now->format('Y-m-d')}}'>
     </div>
 
 
     <?php
     $service = \App\Models\Service::find($serviceSelected);
-    //    if ($bookingDate) {
-    //        dd($service->getBookingSlots($bookingDate));
-    //    }
+//    if ($bookingDate) {
+//        dd($service->getBookingSlots($bookingDate));
+//    }
     ?>
     {{--    <h4>{{$serviceSelected}}</h4>--}}
 
