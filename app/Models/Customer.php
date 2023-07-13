@@ -35,4 +35,9 @@
             return $this->hasMany(Booking::class);
         }
 
+        public function orders()
+        {
+            return $this->hasMany(Order::class);
+        }
+
     }

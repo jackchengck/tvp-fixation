@@ -30,6 +30,8 @@
         Route::crud('supplier-order-item', 'SupplierOrderItemCrudController');
         Route::crud('holiday', 'HolidayCrudController');
         Route::crud('opening-hour', 'OpeningHourCrudController');
+        Route::crud('order', 'OrderCrudController');
+
 
         Route::group(
             array('prefix' => 'documents'), function () {
@@ -114,6 +116,21 @@
                                           ]
             );
 
+            Route::get(
+                'order-invoice/{id}', [
+                                        \App\Http\Controllers\DocumentsController::class,
+                                        'customerOrderInvoicePdfStream'
+                                    ]
+            )->name('order-invoice');
+
+            Route::get(
+                'order-receipt/{id}', [
+                                        \App\Http\Controllers\DocumentsController::class,
+                                        'customerOrderReceiptPdfStream'
+                                    ]
+            )->name('order-receipt');
+
+
         }
         );
 
@@ -147,6 +164,23 @@
                                                       'sendBookingCustomerEmail'
                                                   ]
             );
+
+
+
+            Route::get(
+                'send-order-invoice-email/{id}', [
+                                                   \App\Http\Controllers\SendMailController::class,
+                                                   'sendCustomerOrderInvoiceEmail'
+                                               ]
+            );
+
+            Route::get(
+                'send-order-receipt-email/{id}', [
+                                                   \App\Http\Controllers\SendMailController::class,
+                                                   'sendCustomerOrderReceiptEmail'
+                                               ]
+            );
+
 
         }
         );

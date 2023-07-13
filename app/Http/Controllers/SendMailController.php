@@ -4,7 +4,10 @@
 
     use App\Mail\BookingCreatedToCustomer;
     use App\Mail\CustomEmail;
+    use App\Mail\OrderInvoiceEmail;
+    use App\Mail\OrderReceiptEmail;
     use App\Models\Booking;
+    use App\Models\Order;
     use App\Models\SupplierOrder;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Mail;
@@ -56,4 +59,28 @@
             return redirect()->route('mail.custom')->with('status', 'Email Has been sent '.$request['email']);
         }
 
+        public function sendCustomerOrderInvoiceEmail($id)
+        {
+
+            $curUser = backpack_user();
+            $order = Order::find($id);
+
+
+            Mail::to($order->customer->email)->send(new OrderInvoiceEmail($order, $curUser));
+
+            return ('Order Invoice for Customer sent');
+
+        }
+
+        public function sendCustomerOrderReceiptEmail($id)
+        {
+
+            $curUser = backpack_user();
+            $order = Order::find($id);
+
+            Mail::to($order->customer->email)->send(new OrderReceiptEmail($order, $curUser));
+
+            return ('Order Receipt for Customer sent');
+
+        }
     }

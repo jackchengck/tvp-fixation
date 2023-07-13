@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\CustomerInvoice;
 use App\Models\InventoryLog;
+use App\Models\Order;
 use App\Models\SupplierInvoice;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -143,6 +144,39 @@ class DocumentsController extends Controller
         $bookings = Booking::select('customer_name', 'customer_email', 'customer_phone')->distinct('customer_email')->get();
 //        return $bookings;
         $pdf = Pdf::loadView('doc_template.pdf.customer_list', ['title' => "Customer List", 'curUser' => $curUser, 'bookings' => $bookings, 'dateTime' => date("Y-m-d h:i:s a"),]);
+        return $pdf->stream();
+    }
+
+
+    public function customerOrderInvoicePdfStream($id)
+    {
+        $curUser = backpack_user();
+        $order = Order::find($id);
+
+        $pdf = Pdf::loadView(
+            'doc_template.pdf.customer_invoice', [
+                                                   'title'    => "Customer Order Invoice",
+                                                   'curUser'  => $curUser,
+                                                   'data'     => $order,
+                                                   'dateTime' => date("Y-m-d h:i:s a"),
+                                               ]
+        );
+        return $pdf->stream();
+    }
+
+    public function customerOrderReceiptPdfStream($id)
+    {
+        $curUser = backpack_user();
+        $order = Order::find($id);
+
+        $pdf = Pdf::loadView(
+            'doc_template.pdf.customer_invoice', [
+                                                   'title'    => "Customer Order Receipt",
+                                                   'curUser'  => $curUser,
+                                                   'data'     => $order,
+                                                   'dateTime' => date("Y-m-d h:i:s a"),
+                                               ]
+        );
         return $pdf->stream();
     }
 }
