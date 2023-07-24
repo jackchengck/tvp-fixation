@@ -34,6 +34,7 @@ class Product extends Model
 
         'business_id',
         'supplier_id',
+        'barcode'
     ];
 
     protected $casts = [

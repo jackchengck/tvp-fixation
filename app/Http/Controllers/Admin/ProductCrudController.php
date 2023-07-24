@@ -65,7 +65,7 @@ class ProductCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title');
-//        CRUD::column('description');
+        CRUD::column('barcode');
 //        CRUD::column('image');
         CRUD::column('cost');
         CRUD::column('price');
@@ -104,6 +104,10 @@ class ProductCrudController extends CrudController
         CRUD::addFields([
             [
                 'name' => 'title',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'barcode',
                 'type' => 'text',
             ],
             [
