@@ -35,6 +35,7 @@ class InventoryLog extends Model
         'product_id',
         'business_id',
         'user_id',
+        'created_at'
 
     ];
 
