@@ -39,6 +39,10 @@ class InventoryLog extends Model
 
     ];
 
+    protected $appends = [
+        'total_cost',
+    ];
+
 
     public function business()
     {
@@ -64,4 +68,15 @@ class InventoryLog extends Model
 //    {
 //
 //    }
+
+
+    public function getTotalCostAttribute()
+    {
+        $totalCost = 0;
+//        foreach ($items as $item) {
+            $totalCost += $this->quantity * $this->product->cost;
+//        }
+
+        return $totalCost;
+    }
 }

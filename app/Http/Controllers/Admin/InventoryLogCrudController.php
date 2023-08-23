@@ -119,6 +119,23 @@
                 ]
             );
             CRUD::column('quantity');
+
+            CRUD::addColumns(
+                [
+
+                    [
+                        'name'       => 'total_cost',
+                        'type'       => 'number',
+                        'attributes' => [
+                            'step' => 'any'
+                        ],
+                        'default'    => 0,
+                        'prefix'     => '$',
+
+                    ]
+
+                ]
+            );
             CRUD::column('remark');
 //        CRUD::column('business_id');
             CRUD::column('user_id');
