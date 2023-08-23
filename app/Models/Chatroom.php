@@ -19,7 +19,8 @@ class Chatroom extends Model
         'customer_email',
         'customer_phone',
         'customer_password',
-        'chatroom_token'
+        'chatroom_token',
+        'title'
     ];
 
     public function instantMessages()

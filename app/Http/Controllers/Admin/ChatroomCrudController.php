@@ -43,7 +43,8 @@ class ChatroomCrudController extends CrudController
         CRUD::column('customer_name');
         CRUD::column('customer_email');
         CRUD::column('customer_phone');
-        CRUD::column('customer_password');
+        CRUD::column('title');
+//        CRUD::column('customer_password');
 
         $this->crud->addButtonFromModelFunction('line', 'get_chatroom_history_download_button', 'getChatroomHistoryDownloadButton', 'beginning');
         $this->crud->addButtonFromModelFunction('line', 'get_chatroom_link_button', 'getChatroomLinkButton', 'beginning');
@@ -70,6 +71,7 @@ class ChatroomCrudController extends CrudController
         CRUD::field('customer_name');
         CRUD::field('customer_email');
         CRUD::field('customer_phone');
+        CRUD::field('title');
         CRUD::field('customer_password');
 
         /**

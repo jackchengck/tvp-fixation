@@ -32,6 +32,7 @@
             $customerName = $request->input('name');
             $customerEmail = $request->input('email');
             $customerPhone = $request->input('phone');
+            $chatroomTitle = $request->input('title');
             $password = $request->input('password');
             $business = $request->input('business');
 
@@ -59,12 +60,15 @@
                     //            'customer_email' => $customerEmail,
                     'customer_phone' => $customerPhone,
                     //            'customer_password' => $password,
-//                    'business_id'    => $business->id,
+                    //                    'business_id'    => $business->id,
                     'chatroom_token' => $newToken,
                 ]
             );
 
             $chatroom->chatroom_token = $newToken;
+            if ($chatroomTitle) {
+                $chatroom->title = $chatroomTitle;
+            }
 
             $chatroom->save();
 
