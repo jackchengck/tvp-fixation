@@ -36,7 +36,7 @@
         public function storeBooking(Request $request)
         {
             //
-//        dd($request);
+//            dd($request);
             $booking = new Booking();
             $booking->order_num = $request->order_num;
 
@@ -49,14 +49,16 @@
 
             $customer = Customer::firstOrCreate(
                 [
-                    'email'    => $request->customer_email,
-                    'password' => $request->customer_password,
-                    'business_id' => Service::find($request->service)->business->id
+                    'email'       => $request->customer_email,
+                    'password'    => $request->customer_password,
+                    //                    'business_id' => Service::find($request->service)->business->id,
+                    'business_id' => $request->business_id,
+
 
                 ],
                 [
-                    'name'        => $request->customer_name,
-                    'phone'       => '+852' . $request->customer_phone,
+                    'name'  => $request->customer_name,
+                    'phone' => '+852' . $request->customer_phone,
                 ]
             );
 
@@ -68,7 +70,8 @@
             $booking->booking_date = $request->booking_date;
             $booking->booking_time = $request->timeslot;
             $booking->service_id = $request->service;
-            $booking->business_id = Service::find($request->service)->business->id;
+//            $booking->business_id = Service::find($request->service)->business->id;
+            $booking->business_id = $request->business_id;
 
             $booking->save();
 

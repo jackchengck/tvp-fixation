@@ -15,7 +15,7 @@
     <div class="container mt-3 ">
         <div class="row justify-content-center mb-4">
             <h2 class="text-center mb-2">{{$business->lang=='zh'?'預約項目':'Booking'}}</h2>
-{{--            <div style="display: none">{{url('store-booking')}}</div>--}}
+            {{--            <div style="display: none">{{url('store-booking')}}</div>--}}
             @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
@@ -25,8 +25,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="card p-3 col-md-8">
-{{--                    <form name="add-booking-post-form" id="add-booking-post-form" method="post"--}}
-{{--                          action="{{url('store-booking')}}">--}}
+                    {{--                    <form name="add-booking-post-form" id="add-booking-post-form" method="post"--}}
+                    {{--                          action="{{url('store-booking')}}">--}}
                     <form name="add-booking-post-form" id="add-booking-post-form" method="post"
                           action="/store-booking">
                         @csrf
@@ -44,25 +44,29 @@
                                 <input class="form-control" type="text" id="customer_name" name="customer_name">
                             </div>
                             <div class="mb-3">
-                                <label for="customer_email" class="form-label">{{$business->lang=='zh'?'電郵':'Customer Email'}} <span
+                                <label for="customer_email"
+                                       class="form-label">{{$business->lang=='zh'?'電郵':'Customer Email'}} <span
                                         style="color: red">*</span></label>
                                 <input class="form-control" type="text" id="customer_email" name="customer_email">
                             </div>
                             <div class="mb-3">
-                                <label for="customer_phone" class="form-label">{{$business->lang=='zh'?'電話':'Customer Phone'}} <span
+                                <label for="customer_phone"
+                                       class="form-label">{{$business->lang=='zh'?'電話':'Customer Phone'}} <span
                                         style="color: red">*</span></label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="country_code_addon">+852</span>
                                     </div>
-                                <input class="form-control" type="text" id="customer_phone" name="customer_phone">
+                                    <input class="form-control" type="text" id="customer_phone" name="customer_phone">
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="customer_password" class="form-label">{{$business->lang=='zh'?'密碼':'Customer Password'}} <span
+                                <label for="customer_password"
+                                       class="form-label">{{$business->lang=='zh'?'密碼':'Customer Password'}} <span
                                         style="color: red">*</span></label>
                                 <input class="form-control" type="text" id="customer_password" name="customer_password">
                             </div>
+                            <input type="text" id="business_id" name="business_id" value="{{$business->id}}" hidden>
                             <livewire:show-timeslots :business="$business"/>
                             <input type="submit" class="form-control mb-5">
                         </div>
