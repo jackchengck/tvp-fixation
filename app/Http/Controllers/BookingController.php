@@ -52,15 +52,14 @@
                     'email'       => $request->customer_email,
                     'password'    => $request->customer_password,
                     //                    'business_id' => Service::find($request->service)->business->id,
-                    'business_id' => intval($request->business_id),
+                    'business_id' => $request->business_id,
 
                 ],
                 [
-                    'name'  => $request->customer_name,
-                    'phone' => '+852' . $request->customer_phone,
-                    'business_id' => intval($request->business_id),
-
+                    'name'        => $request->customer_name,
+                    'phone'       => '+852' . $request->customer_phone,
                 ]
+
             );
 
             $booking->customer_id = $customer->id;

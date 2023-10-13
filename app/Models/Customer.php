@@ -18,6 +18,7 @@
             'email',
             'password',
             'phone',
+            'business_id'
         ];
 
         public function identifiableName()
