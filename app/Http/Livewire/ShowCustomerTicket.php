@@ -6,6 +6,7 @@
     use App\Models\Coupon;
     use App\Models\Customer;
     use Carbon\Carbon;
+    use Illuminate\Database\Eloquent\Builder;
     use Livewire\Component;
 
     class ShowCustomerTicket extends Component
@@ -20,6 +21,7 @@
         public $bookingTitle;
         public $couponTitle;
         public $coupons;
+        public $ownedCoupons;
         public $expiry_date;
 
         public $customer;
@@ -54,13 +56,19 @@
                     $this->expiry_date = $lastDatetime->addYears(2)->toDateString();
                     $this->bookings = $this->customer->bookings;
                     $this->result = $this->business->lang == 'zh' ? "結果" : "Search Result";
-                    $this->coupons = Coupon::where('business_id', '=', $this->business->id)->get();
+
+                    $this->coupons = Coupon::where('business_id', '=', $this->business->id)->where('show_owner_only', false)->get();
+                    $this->ownedCoupons = Coupon::whereHas(
+                        'couponOwners', function (Builder $query) {
+                        $query->where('email', '=', $this->customer_email);
+                    }
+                    )->get();
 
 
                 } else {
                     $this->result = $this->business->lang == 'zh' ? "登入失敗" : "Login Failed";
                     $this->coupons = null;
-
+                    $this->ownedCoupons = null;
                 }
 
 //                $this->bookings = Booking::where('business_id', '=', $this->business->id)->where('customer_email', '=', $this->customer_email)->where('customer_password', '=', $this->customer_password)->get();

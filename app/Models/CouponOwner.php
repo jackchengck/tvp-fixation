@@ -3,30 +3,35 @@
     namespace App\Models;
 
     use App\Traits\MultiTenantable;
+    use Backpack\CRUD\app\Models\Traits\CrudTrait;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
 
-    class Coupon extends Model
+    class CouponOwner extends Model
     {
-        use \Backpack\CRUD\app\Models\Traits\CrudTrait;
         use HasFactory;
-        use MultiTenantable;
+        use MultiTenantable, CrudTrait;
+
 
         protected $fillable = [
-            'title',
-            'code',
-            'expiry_date',
-            'show_owner_only'
+            'business_id',
+            'email',
+            'coupon_id',
         ];
+
+
+        public function identifiableName()
+        {
+            return $this->email;
+        }
 
         public function business()
         {
             return $this->belongsTo(Business::class);
         }
 
-        public function couponOwners()
+        public function coupon()
         {
-            return $this->hasMany(CouponOwner::class);
+            return $this->belongsTo(Coupon::class);
         }
-
     }

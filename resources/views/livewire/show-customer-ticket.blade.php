@@ -135,6 +135,30 @@
                         </div>
                     @endforeach
                 @endif
+
+                @if($ownedCoupons)
+{{--                    <h5 class="mb-4">{{$couponTitle}}</h5>--}}
+                    @foreach($ownedCoupons as $ownedCoupon)
+                        <div class="container pl-4 pr-4">
+                            <div class="card p-lg-5 mb-2">
+                                <div
+                                    class="card-body d-flex flex-column d-sm-flex flex-sm-row align-center justify-content-between">
+                                    <div class=" d-flex flex-column pr-sm-5  ">
+                                        <h4 class="mb-4">{{$business->lang=='zh'?'優惠券':'Coupon'}}
+                                            : {{$ownedCoupon->title}}</h4>
+                                        <p>{{$business->lang=='zh'?'優惠碼':'Customer'}}: {{$ownedCoupon->code}}</p>
+                                        <p>{{$business->lang=='zh'?'到期日':'Expiry Date'}}: {{$ownedCoupon->expiry_date}}</p>
+                                        {{--                                        <p>{{$business->lang=='zh'?'時間':'Timeslot'}}: {{$booking->booking_time}}</p>--}}
+                                        {{--                                        <p>{{$business->lang=='zh'?'訂單號碼':'Order Number'}}: {{$booking->order_num}}</p>--}}
+                                    </div>
+                                    <div class=" d-flex flex-column align-self-center pl-4">
+                                        {!! \SimpleSoftwareIO\QrCode\Facades\QrCode::size(120)->backgroundColor(255,255,255)->generate($ownedCoupon->code)!!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
