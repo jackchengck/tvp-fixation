@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Mail\BookingCreatedToBusiness;
     use App\Mail\BookingCreatedToCustomer;
     use App\Mail\CustomEmail;
     use App\Mail\OrderInvoiceEmail;
@@ -39,8 +40,26 @@
 //        Mail::to($supplierOrder->supplier->email)->send(new \App\Mail\SupplierOrder($supplierOrder));
             Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
 
+            if ($booking->business->on_booking_email_notification && $booking->business->email) {
+                Mail::to($booking->buiness->email)->send(new BookingCreatedToBusiness($booking));
+            }
+
             return ("Booking Email to Customer sent");
         }
+
+//        public function sendBookingBusinessEmail($id)
+//        {
+//
+//            $booking = Booking::findOrFail($id);
+//
+//            // Ship the order...
+//
+////        Mail::to($supplierOrder->supplier->email)->send(new \App\Mail\SupplierOrder($supplierOrder));
+//            if($booking->buiness->email) {
+//                Mail::to($booking->buiness->email)->send(new BookingCreatedToBusiness($booking));
+//            }
+//            return ("Booking Email to Business sent");
+//        }
 
         public function customEmail()
         {
@@ -56,7 +75,7 @@
 
 //            dd($request['email'],$request['subject'],$request['content']);
 
-            return redirect()->route('mail.custom')->with('status', 'Email Has been sent '.$request['email']);
+            return redirect()->route('mail.custom')->with('status', 'Email Has been sent ' . $request['email']);
         }
 
         public function sendCustomerOrderInvoiceEmail($id)

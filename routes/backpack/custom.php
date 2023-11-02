@@ -259,5 +259,16 @@
 
         }
         );
+
+
+        Route::get(
+            '/qr-pay', function () {
+            return view(
+                'admin.payment_qr', [
+                                      'business' => backpack_user()->business,
+                                  ]
+            );
+        }
+        );
     }
     ); // this should be the absolute last line of this file

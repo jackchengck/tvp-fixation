@@ -5,6 +5,7 @@
     use App\Http\Requests\FoodOrderRequest;
     use Backpack\CRUD\app\Http\Controllers\CrudController;
     use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+    use Backpack\CRUD\app\Library\Widget;
     use Backpack\EditableColumns\Http\Controllers\Operations\MinorUpdateOperation;
 
     /**
@@ -168,6 +169,21 @@
              * - CRUD::field('price')->type('number');
              * - CRUD::addField(['name' => 'price', 'type' => 'number']));
              */
+
+
+            Widget::add()->to('after_content')->type('div')->class('row')->content(
+                [
+                    Widget::make(
+                        [
+                            'type'     => 'view',
+                            'view'     => 'admin.components.show_payment_qrcode',
+                            'someAttr' => 'some value',
+                        ]
+                    ),
+
+                ]
+            );
+
         }
 
         /**

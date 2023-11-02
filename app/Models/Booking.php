@@ -2,11 +2,15 @@
 
     namespace App\Models;
 
+    use App\Mail\BookingCreatedEmail;
+    use App\Mail\BookingCreatedToBusiness;
+    use App\Mail\BookingCreatedToCustomer;
     use App\Traits\MultiTenantable;
     use Illuminate\Database\Eloquent\Builder;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Notifications\Notifiable;
+    use Illuminate\Support\Facades\Mail;
     use Venturecraft\Revisionable\RevisionableTrait;
 
     class Booking extends Model
@@ -42,6 +46,13 @@
                             $newInventoryLog->save();
                         }
 
+                    }
+
+                    if($model->customer->email){
+                        Mail::to($model->customer->email)->send(new BookingCreatedToCustomer($model));
+                    }
+                    if($model->business->on_booking_email_notification && $model->business->email){
+                        Mail::to($model->business->email)->send(new BookingCreatedToBusiness($model));
                     }
 
                 }
@@ -88,6 +99,11 @@
         {
             return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("mail/send-booking-customer-email") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Customer Email"><i class="la la-envelope"></i> Booking Confirm Email</a>';
         }
+
+//        public function getBookingBusinessEmailButton()
+//        {
+//            return '<a class="btn btn-sm btn-link" target="_blank" href=' . backpack_url("mail/send-booking-customer-email") . "/" . $this->id . ' data-toggle="tooltip" title="Booking Customer Email"><i class="la la-envelope"></i> Booking Confirm Email</a>';
+//        }
 
         public function getBookingCustomerSmsButton()
         {

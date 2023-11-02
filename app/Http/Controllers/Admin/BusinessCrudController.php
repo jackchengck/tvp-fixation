@@ -89,8 +89,9 @@ class BusinessCrudController extends CrudController
         CRUD::field('phone');
         CRUD::field('info');
         CRUD::field('email');
-        CRUD::field('user_id');
 //        CRUD::field('solution_integrator_id');
+        CRUD::field('user_id');
+        CRUD::field('on_booking_email_notification');
 
         CRUD::field('payme_code')->label('PayMe Code');
         CRUD::field('alipay_code')->label('Alipay Code');

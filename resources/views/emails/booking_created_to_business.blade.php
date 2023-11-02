@@ -1,10 +1,10 @@
 <div>
     <div>
-        Dear {{$booking->customer_name}}:
+        Dear {{$booking->business->title}}:
     </div>
     <br>
     <div>
-        Booking created for {{$booking->business->title}}
+        Booking created for {{$booking->customer_name}}
     </div>
     <br>
     <div>
@@ -21,7 +21,7 @@
     </div>
     <br>
     <div>
-        Please use your email and password to retrieve.
+        Retrieve by email and password:
     </div>
     <div>
         Email: {{$booking->customer_email}}

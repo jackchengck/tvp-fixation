@@ -43,6 +43,7 @@
             'alipay_code',
             'wechatpay_code',
 
+            'on_booking_email_notification'
         ];
 
         public function solutionIntegrator()
