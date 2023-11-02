@@ -44,7 +44,7 @@
                 Mail::to($booking->business->email)->send(new BookingCreatedToBusiness($booking));
             }
 
-            return ("Booking Email to Customer sent");
+            return ($booking->business->on_booking_email_notification ? "Booking Email to Customer and Business sent" : "Booking Email to Customer sent");
         }
 
 //        public function sendBookingBusinessEmail($id)
