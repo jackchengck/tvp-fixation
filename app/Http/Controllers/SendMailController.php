@@ -41,7 +41,7 @@
             Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
 
             if ($booking->business->on_booking_email_notification && $booking->business->email) {
-                Mail::to($booking->buiness->email)->send(new BookingCreatedToBusiness($booking));
+                Mail::to($booking->business->email)->send(new BookingCreatedToBusiness($booking));
             }
 
             return ("Booking Email to Customer sent");
