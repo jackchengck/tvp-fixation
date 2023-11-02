@@ -48,8 +48,8 @@
 
                     }
 
-                    if($model->customer->email){
-                        Mail::to($model->customer->email)->send(new BookingCreatedToCustomer($model));
+                    if($model->customer_email){
+                        Mail::to($model->customer_email)->send(new BookingCreatedToCustomer($model));
                     }
                     if($model->business->on_booking_email_notification && $model->business->email){
                         Mail::to($model->business->email)->send(new BookingCreatedToBusiness($model));
