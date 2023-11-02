@@ -413,4 +413,41 @@
                                        ]
         );
     }
-    )->name('ordering.ordering-history');
+    )->name('ordering.ordering-history');;
+
+
+    Route::get(
+        '/ordering/{id}/qr-pay', function ($id) {
+        $getHost = request()->getHost();
+        $host = explode('.', $getHost);
+
+        if ($host[1] == 'localhost') {
+            $domain = "piercer-tech.com";
+        } else {
+            $domain = $host[1] . "." . $host[2];
+        }
+        $subdomain = $host[0];
+
+        $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
+        $business = \App\Models\Business::where('subdomain', $subdomain)->first();
+
+        if ($si == null || $business == null) {
+            return abort(404);
+        }
+
+        $table = \App\Models\Table::where('business_id', $business->id)->where('id', $id)->firstOrFail();
+
+//        $dishes = \App\Models\Dish::where('business_id', $business->id)->where('active', true)->get();
+        $foodOrders = \App\Models\FoodOrder::where('business_id', $business->id)->where('table_id', $table->id)->where('status', '!=', 'paid')->get();
+
+        return view(
+            'ordering.ordering-qr-pay', [
+                                           'domain'     => $getHost,
+                                           'si'         => $si,
+                                           'business'   => $business,
+                                           'table'      => $table,
+                                           'foodOrders' => $foodOrders,
+                                       ]
+        );
+    }
+    )->name('ordering.ordering-qr');
