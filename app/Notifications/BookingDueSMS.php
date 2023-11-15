@@ -70,9 +70,8 @@
         {
             return SnsMessage::create(
                 [
-                    'body'          => $this->booking->business->title.'Smart Notification 智能提示:\n'.'Your booking will due on ' . $this->booking->booking_date . " " . $this->booking->booking_time . "\n閣下 " . $this->booking->booking_date . " " . $this->booking->booking_time . "的預約即將到期。\n",
+                    'body'          => $this->booking->business->title."Smart Notification 智能提示:\n".'Your booking will due on ' . $this->booking->booking_date . " " . $this->booking->booking_time . "\n閣下 " . $this->booking->booking_date . " " . $this->booking->booking_time . "的預約即將到期。\n",
                     'transactional' => true,
-
                 ]
             );
         }

@@ -70,7 +70,7 @@
         {
             return SnsMessage::create(
                 [
-                    'body'          => $this->booking->business->title.'Smart Notification 智能提示:\n'.'Your booking on ' . $this->booking->booking_date . " " . $this->booking->booking_time . " has been confirmed.\nWallet passcode: " . $this->booking->customer_password . "\n閣下 " . $this->booking->booking_date . " " . $this->booking->booking_time . "的預約已經確認。\n錢包密碼： " . $this->booking->customer_password,
+                    'body'          => $this->booking->business->title."Smart Notification 智能提示: \n'.'Your booking on " . $this->booking->booking_date . " " . $this->booking->booking_time . " has been confirmed.\nWallet passcode: " . $this->booking->customer_password . "\n閣下 " . $this->booking->booking_date . " " . $this->booking->booking_time . "的預約已經確認。\n錢包密碼： " . $this->booking->customer_password,
                     'transactional' => true,
 
                 ]
