@@ -72,6 +72,8 @@
                 [
                     'body'          => 'Your booking on ' . $this->booking->booking_date . " " . $this->booking->booking_time . " has been confirmed.\nWallet passcode: " . $this->booking->customer_password . "\n閣下 " . $this->booking->booking_date . " " . $this->booking->booking_time . "的預約已經確認。\n錢包密碼： " . $this->booking->customer_password,
                     'transactional' => true,
+                    'sender' => $this->booking->business->title,
+
                 ]
             );
         }
