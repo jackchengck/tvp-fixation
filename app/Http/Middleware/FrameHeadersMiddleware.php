@@ -18,7 +18,8 @@
         {
             $response = $next($request);
 
-            if($_SERVER['HTTP_ORIGIN']==='jnjtrading.epochal-tech-hk.com'){
+            if ($request->server('HTTP_ORIGIN') == 'jnjtrading.epochal-tech-hk.com') {
+//            if ($request->server('HTTP_ORIGIN') == 'jnjtrading.localhost') {
                 $response->header('X-Frame-Options', 'ALLOW FROM https://jjtrading.ibusiness.com.hk/');
             }
 
