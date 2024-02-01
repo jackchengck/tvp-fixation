@@ -2,6 +2,7 @@
 
     namespace App\Http;
 
+    use App\Http\Middleware\DefaultFrameHeadersMiddleware;
     use App\Http\Middleware\FrameHeadersMiddleware;
     use Fruitcake\Cors\HandleCors;
     use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -25,6 +26,7 @@
             \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
             HandleCors::class,
 
+
         ];
 
         /**
@@ -40,6 +42,7 @@
                 \Illuminate\View\Middleware\ShareErrorsFromSession::class,
                 \App\Http\Middleware\VerifyCsrfToken::class,
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
+//                DefaultFrameHeadersMiddleware::class,
                 FrameHeadersMiddleware::class,
 
             ],
@@ -48,6 +51,8 @@
                 // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
                 'throttle:api',
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
+                DefaultFrameHeadersMiddleware::class,
+
             ],
         ];
 
