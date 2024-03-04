@@ -30,13 +30,13 @@
             <div class="row justify-content-center">
                 <div class="card p-3 col-md-8">
                     @if($foodOrders)
-                        <?php
-                        $statusArr = [
-                            'preparing' => '準備中',
-                            'delivered' => '已出餐',
-                            'paid'      => '已結帳',
-                        ];
-                        ?>
+                            <?php
+                            $statusArr = [
+                                'preparing' => '準備中',
+                                'delivered' => '已出餐',
+                                'paid'      => '已結帳',
+                            ];
+                            ?>
                         @foreach($foodOrders as $foodOrder)
                             <div class="card p-3 col-md-8 my-3 mx-auto">
                                 <div class="row row-cols-3 mb-3" style="border-bottom: 1px #0000001A solid;">
@@ -67,7 +67,13 @@
                             </div>
                         @endforeach
 
-                        <div class="col-md-12 text-center">
+
+                        <div class="col-md-12 text-center py-2">
+                            <a href="{{url('/ordering/'.$table->id.'/qr-code')}}" class="btn btn-primary py-3 px-5"
+                            >櫃枱結帳</a>
+                        </div>
+
+                        <div class="col-md-12 text-center py-2">
                             <a class="btn btn-primary py-3 px-5" href="{{ url('/ordering/'.$table->id.'/qr-pay') }}">QR付款</a>
                         </div>
 

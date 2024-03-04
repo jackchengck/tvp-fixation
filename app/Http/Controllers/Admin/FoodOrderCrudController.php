@@ -43,12 +43,25 @@
         protected function setupListOperation()
         {
             CRUD::column('business_id');
-            CRUD::column('table_id');
+//            CRUD::column('table_id');
 //            CRUD::column('status');
 //            CRUD::column('payment_method');
 
             CRUD::addColumns(
                 [
+                    [
+
+                        'name' => 'table',
+                        'type' => 'relationship',
+
+                        'searchLogic' => function ($query, $column, $searchTerm) {
+                            $query->orWhereHas('table', function ($q) use ($column, $searchTerm) {
+                                $q->where('title', 'like', '%'.$searchTerm.'%');
+//                                    ->orWhereDate('depart_at', '=', date($searchTerm));
+                            });
+                        }
+                    ],
+
 
                     [
                         'name'    => 'status',
@@ -59,6 +72,7 @@
                             'delivered' => '已出餐',
                             'paid'      => '已結帳',
                         ],
+
                     ],
 
                     [
@@ -88,6 +102,23 @@
             $this->crud->addButtonFromModelFunction('line', 'set_status_paid_button', 'getSetStatusPaidButton', 'beginning');
             $this->crud->addButtonFromModelFunction('line', 'set_status_delivered_button', 'getSetStatusDeliveredButton', 'beginning');
 
+
+            $this->crud->addFilter(
+                [
+                    'name'  => 'status',
+                    'type'  => 'select2_multiple',
+                    'label' => 'Status',
+                ],
+                [
+                    'preparing' => '準備中',
+                    'delivered' => '已出餐',
+                    'paid'      => '已結帳',
+                ], function ($values) { // if the filter is active
+//                $this->crud->addClause('where', 'status', $value);
+                $this->crud->addClause('whereIn', 'status', json_decode($values));
+
+            }
+            );
 
         }
 
