@@ -23,6 +23,7 @@
                 'jnjtrading.localhost'               => 'https://jjtrading.ibusiness.com.hk/test',
                 'tastydiner.futurustechshk.com'      => 'https://tastydiner.ibusiness.com.hk/',
                 'kobayashiramen.epochal-tech-hk.com' => 'https://kobayashi.ibusiness.com.hk/',
+                'kobayashiramen.localhost'           => 'http://kobayashiramen.localhost/',
                 'guardwell.gosmartltdhk.com'         => 'https://guardwellmall.ibusiness.com.hk/',
             ];
 
