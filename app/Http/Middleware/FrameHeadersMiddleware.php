@@ -34,11 +34,13 @@
                 if ($getHost == $key) {
 //                $response->header('X-Frame-Options', 'ALLOW FROM https://jjtrading.ibusiness.com.hk/');
                     $response->headers->set('X-Frame-Options', 'ALLOW FROM ' . $value, true);
+                    $response->headers->set('X-Content-Security-Policy', 'ALLOW FROM ' . $value, true);
                     $flag = true;
                 }
             }
             if (!$flag) {
                 $response->headers->set('X-Frame-Options', 'SAMEORIGIN', true);
+                $response->headers->set('X-Content-Security-Policy', 'SAMEORIGIN', true);
             }
 //            if ($getHost == 'jnjtrading.epochal-tech-hk.com') {
 ////            if ($getHost == 'jnjtrading.localhost') {
