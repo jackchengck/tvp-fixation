@@ -199,7 +199,7 @@
         |
         */
 
-        //        'same_site' => 'lax',
-        'same_site' => 'none',
+                'same_site' => 'lax',
+//        'same_site' => 'none',
 
     ];
