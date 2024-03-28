@@ -190,12 +190,12 @@
     }
     );
 
-    Route::get(
-        '/store-booking', [
-                            \App\Http\Controllers\BookingController::class,
-                            'getStoreBooking'
-                        ]
-    );
+//    Route::get(
+//        '/store-booking', [
+//                            \App\Http\Controllers\BookingController::class,
+//                            'getStoreBooking'
+//                        ]
+//    );
 
 
     Route::post(
