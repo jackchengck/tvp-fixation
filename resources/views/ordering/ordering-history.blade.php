@@ -77,6 +77,12 @@
                             <a class="btn btn-primary py-3 px-5" href="{{ url('/ordering/'.$table->id.'/qr-pay') }}">QR付款</a>
                         </div>
 
+
+                        <div class="col-md-12 text-center py-2">
+                            <a href="{{url('/ordering/'.$table->id)}}" class="btn btn-primary py-3 px-5"
+                            >繼續下單</a>
+                        </div>
+
                     @endif
                 </div>
             </div>

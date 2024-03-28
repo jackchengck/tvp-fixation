@@ -62,6 +62,15 @@
                         </div>
                     @endif
                 </div>
+
+                @if($foodOrder)
+
+                <div class="col-md-12 text-center py-2">
+                    <a href="{{url('/ordering/'.$foodOrder->table->id)}}" class="btn btn-primary py-3 px-5"
+                    >繼續下單</a>
+                </div>
+                @endif
+
             </div>
         </div>
 
