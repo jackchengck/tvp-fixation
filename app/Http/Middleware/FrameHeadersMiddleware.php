@@ -24,6 +24,7 @@
                 'tastydiner.futurustechshk.com'      => 'https://tastydiner.ibusiness.com.hk/',
                 'kobayashiramen.epochal-tech-hk.com' => 'https://kobayashi.ibusiness.com.hk/',
                 'kobayashiramen.localhost'           => 'http://kobayashiramen.localhost/',
+                'tastydiner.localhost'               => 'http://tastydiner.localhost/',
                 'guardwell.gosmartltdhk.com'         => 'https://guardwellmall.ibusiness.com.hk/',
             ];
 
@@ -34,13 +35,17 @@
                 if ($getHost == $key) {
 //                $response->header('X-Frame-Options', 'ALLOW FROM https://jjtrading.ibusiness.com.hk/');
                     $response->headers->set('X-Frame-Options', 'ALLOW FROM ' . $value, true);
-                    $response->headers->set('X-Content-Security-Policy', 'ALLOW FROM ' . $value, true);
+//                    $response->headers->set('X-Content-Security-Policy', 'ALLOW FROM ' . $value, true);
+
+                    $response->headers->set('Content-Security-Policy', "frame-ancestors https://*.ibusiness.com.hk/ *.localhost " . $value . ";", true);
                     $flag = true;
                 }
             }
             if (!$flag) {
                 $response->headers->set('X-Frame-Options', 'SAMEORIGIN', true);
-                $response->headers->set('X-Content-Security-Policy', 'SAMEORIGIN', true);
+//                $response->headers->set('X-Content-Security-Policy', 'SAMEORIGIN', true);
+                $response->headers->set('Content-Security-Policy', "frame-ancestors 'self';", true);
+
             }
 //            if ($getHost == 'jnjtrading.epochal-tech-hk.com') {
 ////            if ($getHost == 'jnjtrading.localhost') {
