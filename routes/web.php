@@ -139,27 +139,31 @@
     )->name('survey');
 
 
-//Route::get('/survey-result', function () {
-//
-//    $getHost = request()->getHost();
-//    $host = explode('.', $getHost);
-//
-//    if ($host[1] == 'localhost') {
-//        $domain = "piercer-tech.com";
-//    } else {
-//        $domain = $host[1] . "." . $host[2];
-//    }
-//    $subdomain = $host[0];
-//
-//    $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
-//    $business = \App\Models\Business::where('subdomain', $subdomain)->first();
-//
-//    if ($si == null || $business == null) {
-//        return abort(404);
-//    }
-//
-//    return view('survey.result', ['domain' => $getHost, 'si' => $si, 'business' => $business]);
-//});
+    Route::get('/survey-result', function () {
+
+        $getHost = request()->getHost();
+        $host = explode('.', $getHost);
+
+        if ($host[1] == 'localhost') {
+            $domain = "piercer-tech.com";
+        } else {
+            $domain = $host[1] . "." . $host[2];
+        }
+        $subdomain = $host[0];
+
+        $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
+        $business = \App\Models\Business::where('subdomain', $subdomain)->first();
+
+        if ($si == null || $business == null) {
+            return abort(404);
+        }
+
+        return view('survey.result', [
+            'domain'   => $getHost,
+            'si'       => $si,
+            'business' => $business
+        ]);
+    })->name('survey-result');
 
     Route::get(
         '/faqs', function () {
@@ -226,10 +230,10 @@
 
         return view(
             'booking.booking_success', [
-                                      'domain'   => $getHost,
-                                      'si'       => $si,
-                                      'business' => $business
-                                  ]
+                                         'domain'   => $getHost,
+                                         'si'       => $si,
+                                         'business' => $business
+                                     ]
         );
     }
     )->name('booking-success');
@@ -470,12 +474,12 @@
 
         return view(
             'ordering.ordering-qr-pay', [
-                                           'domain'     => $getHost,
-                                           'si'         => $si,
-                                           'business'   => $business,
-                                           'table'      => $table,
-                                           'foodOrders' => $foodOrders,
-                                       ]
+                                          'domain'     => $getHost,
+                                          'si'         => $si,
+                                          'business'   => $business,
+                                          'table'      => $table,
+                                          'foodOrders' => $foodOrders,
+                                      ]
         );
     }
     )->name('ordering.ordering-qr');
@@ -507,12 +511,12 @@
 
         return view(
             'ordering.ordering-qr-code', [
-                                          'domain'     => $getHost,
-                                          'si'         => $si,
-                                          'business'   => $business,
-                                          'table'      => $table,
-//                                          'foodOrders' => $foodOrders,
-                                      ]
+                                           'domain'   => $getHost,
+                                           'si'       => $si,
+                                           'business' => $business,
+                                           'table'    => $table,
+                                           //                                          'foodOrders' => $foodOrders,
+                                       ]
         );
     }
     )->name('ordering.ordering-qr-code');

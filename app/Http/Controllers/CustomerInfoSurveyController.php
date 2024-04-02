@@ -49,7 +49,8 @@ class CustomerInfoSurveyController extends Controller
 
 //        Mail::to($booking->customer_email)->send(new BookingCreatedToCustomer($booking));
 
-        return redirect('survey')->with('status', 'Survey Has been submitted');
+        return redirect('survey-result');
+//        return redirect('survey')->with('status', 'Survey Has been submitted');
 
     }
 
