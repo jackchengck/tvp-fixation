@@ -14,5 +14,10 @@
         protected $except = [
             //
             'livewire/*',
+            'booking',
+            'store-booking',
+            'survey',
+            'store-customer-survey',
+
         ];
     }

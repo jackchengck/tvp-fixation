@@ -205,6 +205,34 @@
                         ]
     );
 
+    Route::get(
+        '/booking-success', function () {
+        $getHost = request()->getHost();
+        $host = explode('.', $getHost);
+
+        if ($host[1] == 'localhost') {
+            $domain = "piercer-tech.com";
+        } else {
+            $domain = $host[1] . "." . $host[2];
+        }
+        $subdomain = $host[0];
+
+        $si = \App\Models\SolutionIntegrator::where('domain', $domain)->first();
+        $business = \App\Models\Business::where('subdomain', $subdomain)->first();
+
+        if ($si == null || $business == null) {
+            return abort(404);
+        }
+
+        return view(
+            'booking.booking_success', [
+                                      'domain'   => $getHost,
+                                      'si'       => $si,
+                                      'business' => $business
+                                  ]
+        );
+    }
+    )->name('booking-success');
 
     Route::post(
         '/store-customer-survey', [

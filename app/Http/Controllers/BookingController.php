@@ -77,6 +77,8 @@
 
             Mail::to($booking->customer->email)->send(new BookingCreatedToCustomer($booking));
 
+//            ordering.ordering-success
+//            return redirect('booking-success');
             return redirect('booking')->with('status', 'Booking Has been created');
         }
 

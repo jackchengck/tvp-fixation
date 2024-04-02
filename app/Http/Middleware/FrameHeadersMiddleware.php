@@ -37,7 +37,7 @@
                     $response->headers->set('X-Frame-Options', 'ALLOW FROM ' . $value, true);
 //                    $response->headers->set('X-Content-Security-Policy', 'ALLOW FROM ' . $value, true);
 
-                    $response->headers->set('Content-Security-Policy', "frame-ancestors https://*.ibusiness.com.hk/ *.localhost " . $value . ";", true);
+                    $response->headers->set('Content-Security-Policy', "frame-ancestors https://*.ibusiness.com.hk/ http://*.localhost/ " . $value . ";", true);
                     $flag = true;
                 }
             }
