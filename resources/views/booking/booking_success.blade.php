@@ -16,11 +16,12 @@
         <div class="row justify-content-center mb-4">
             <h2 class="text-center mb-2">{{$business->lang=='zh'?'預約項目':'Booking'}}</h2>
             {{--            <div style="display: none">{{url('store-booking')}}</div>--}}
-            @if(session('status'))
-                <div class="alert alert-success">
-                    {{session('status')}}
-                </div>
-            @endif
+            {{--            @if(session('status'))--}}
+            <div class="alert alert-success">
+                {{--                    {{session('status')}}--}}
+                Booking Has been created
+            </div>
+            {{--            @endif--}}
         </div>
         <div class="container">
             <div class="row justify-content-center">
