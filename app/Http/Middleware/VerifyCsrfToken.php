@@ -22,6 +22,6 @@
             'survey',
             'survey-result',
             'store-customer-survey',
-
+            'ordering'
         ];
     }
