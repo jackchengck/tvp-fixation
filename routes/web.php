@@ -520,3 +520,9 @@
         );
     }
     )->name('ordering.ordering-qr-code');
+
+
+//    Route::get('/cottex', function () {
+//        \Illuminate\Support\Facades\Mail::to('aachan111996@gmail.com')->send(new \App\Mail\CottexMail());
+//        return ('sending');
+//    });
