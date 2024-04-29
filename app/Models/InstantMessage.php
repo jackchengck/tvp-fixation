@@ -49,7 +49,7 @@
 
 //                Notification::send($model->business, new CustomNotification($model));
                     if ($model->sender_type == 'customer') {
-                        Mail::to('jacobforleisure@gmail.com')->send(new ChatroomReceiveMessageEmail($model));
+                        Mail::to('info@blisscc.com')->send(new ChatroomReceiveMessageEmail($model));
                     }
 
                 }
