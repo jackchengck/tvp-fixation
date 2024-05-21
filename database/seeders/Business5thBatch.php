@@ -29,7 +29,7 @@
                 "92178588",
             ];
             $subdomains = [
-                "thai",
+                "thai-order",
             ];
             $siId = [
                 "8",
