@@ -30,13 +30,13 @@
             <div class="row justify-content-center">
                 <div class="card p-3 col-md-8">
                     @if($foodOrders)
-							<?php
-							$statusArr = [
-								'preparing' => '準備中',
-								'delivered' => '已出餐',
-								'paid'      => '已結帳',
-							];
-							?>
+                            <?php
+                            $statusArr = [
+                                'preparing' => '準備中',
+                                'delivered' => '已出餐',
+                                'paid'      => '已結帳',
+                            ];
+                            ?>
                         @foreach($foodOrders as $foodOrder)
                             <div class="card p-3 col-md-8 my-3 mx-auto">
                                 <div class="row row-cols-3 mb-3" style="border-bottom: 1px #0000001A solid;">
@@ -66,16 +66,17 @@
                                 </div>
                             </div>
                         @endforeach
-							<?php
-							$t = 0;
-							foreach ($foodOrders as $foodO) {
-								$foodOT = 0;
-								foreach ($foodO->foodOrderItems as $fOI) {
-									$foodOT += $fOI->dish->price * $fOI->quantity;
-								}
-								$t += $foodOT;
-							}
-							?>
+                            <?php
+                            $t = 0;
+                            foreach ($foodOrders as $foodO) {
+                                $foodOT = 0;
+                                foreach ($foodO->foodOrderItems as $fOI) {
+                                    $foodOT += $fOI->dish->price * $fOI->quantity;
+                                }
+                                $t += $foodOT;
+                            }
+                            ?>
+                        <div id="table_title" style="display: none;"> {{$table->title}}</div>
                         <div id="order_sum" style="display: none;">{{$t}}</div>
 
 
