@@ -76,7 +76,7 @@
                                 $t += $foodOT;
                             }
                             ?>
-                        <div id="table_title" style="display: none;"> {{$table->title}}</div>
+                        <div id="table_title" style="display: none;">{{$table->title}}</div>
                         <div id="order_sum" style="display: none;">{{$t}}</div>
 
 
