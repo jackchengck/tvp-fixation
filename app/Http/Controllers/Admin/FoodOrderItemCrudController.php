@@ -42,7 +42,7 @@
             CRUD::column('business_id');
             CRUD::column('food_order_id');
             CRUD::column('dish_id');
-            CRUD::column('dishCost')->label("Cost");
+            CRUD::column('dish_cost')->label("Cost");
             CRUD::column('quantity');
 
             /**

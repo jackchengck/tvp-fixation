@@ -23,7 +23,7 @@
         ];
 
         protected $appends = [
-            'dishCost'
+            'dish_cost'
         ];
 
         public function business()
@@ -41,7 +41,7 @@
             return $this->belongsTo(Dish::class);
         }
 
-        protected function dishCost()
+        protected function getDishCostAttribute()
         {
             return $this->dish->cost;
 
