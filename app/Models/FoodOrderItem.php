@@ -22,6 +22,9 @@
             'quantity',
         ];
 
+        protected $appends = [
+            'dishCost'
+        ];
 
         public function business()
         {
@@ -36,5 +39,12 @@
         public function dish()
         {
             return $this->belongsTo(Dish::class);
+        }
+
+        protected function dishCost(): Attribute
+        {
+            return new Attribute(
+                get: fn() => $this->dish()->cost
+            );
         }
     }

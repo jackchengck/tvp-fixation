@@ -25,6 +25,8 @@
             'active',
 
             'business_id',
+
+            'cost'
         ];
 
 

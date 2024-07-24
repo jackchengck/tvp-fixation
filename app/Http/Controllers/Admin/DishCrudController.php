@@ -102,6 +102,18 @@
 
                     ],
 
+                    [
+                        'name'       => 'cost',
+                        'label'      => 'Cost',
+                        'type'       => 'number',
+                        'attributes' => [
+                            'step' => 'any'
+                        ],
+                        'prefix'     => "$",
+
+
+                    ],
+
                 ]
             );
             CRUD::field('title');

@@ -78,7 +78,8 @@
                     class="nav-icon la la-th-list"></i> Tables</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order') }}"><i
                     class="nav-icon la la-th-list"></i> Food orders</a></li>
-        {{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order-item') }}"><i class="nav-icon la la-th-list"></i> Food order items</a></li>--}}
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('food-order-item') }}"><i
+                    class="nav-icon la la-th-list"></i> Food order Records</a></li>
 
     </ul>
 </li>
@@ -105,8 +106,10 @@
                         class="nav-icon la la-th-list"></i> Frequently asked questions</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer-info-survey') }}"><i
                         class="nav-icon la la-th-list"></i> Customer info surveys</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer') }}"><i class="nav-icon la la-th-list"></i> Customers</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('mail/custom') }}"><i class="nav-icon la la-th-list"></i> Custom Email</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('customer') }}"><i
+                        class="nav-icon la la-th-list"></i> Customers</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ backpack_url('mail/custom') }}"><i
+                        class="nav-icon la la-th-list"></i> Custom Email</a></li>
         </ul>
     </li>
 @endif
