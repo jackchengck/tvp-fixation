@@ -41,10 +41,9 @@
             return $this->belongsTo(Dish::class);
         }
 
-        protected function dishCost(): Attribute
+        protected function dishCost()
         {
-            return new Attribute(
-                get: fn() => $this->dish()->cost
-            );
+            return $this->dish->cost;
+
         }
     }

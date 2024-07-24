@@ -28,7 +28,7 @@
         {
             CRUD::setModel(\App\Models\FoodOrderItem::class);
             CRUD::setRoute(config('backpack.base.route_prefix') . '/food-order-item');
-            CRUD::setEntityNameStrings('food order Record', 'food order record');
+            CRUD::setEntityNameStrings('food order Record', 'food order Records');
         }
 
         /**
@@ -42,7 +42,7 @@
             CRUD::column('business_id');
             CRUD::column('food_order_id');
             CRUD::column('dish_id');
-            CRUD::column('dishCost')->title("Cost");
+            CRUD::column('dishCost')->label("Cost");
             CRUD::column('quantity');
 
             /**
